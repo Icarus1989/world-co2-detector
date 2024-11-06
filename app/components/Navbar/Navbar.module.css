@@ -1,0 +1,98 @@
+.navbar {
+	width: 100%;
+	height: 20dvh;
+	position: absolute;
+	top: 0%;
+}
+
+.menu-btn {
+	display: grid;
+	place-items: center;
+	position: absolute;
+	top: 2.3dvh;
+	right: 2.3dvh;
+	width: 5dvh;
+	height: 5dvh;
+	z-index: 3;
+	background: transparent;
+	border: 1px solid transparent;
+}
+
+.menu-btn > svg {
+	width: 3dvh;
+	height: 3dvh;
+}
+
+.menu-list {
+	width: 90dvw;
+	height: 65dvh;
+	background: linear-gradient(#020329f7 30%, #1b2079eb 70%);
+	/* filter: blur(px); */
+	border: 1px solid transparent;
+	border-radius: 70px 0px 0px 0px;
+	position: fixed;
+	bottom: 0%;
+	right: 0%;
+	/* top: -50dvh; */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	z-index: 2;
+	list-style: none;
+	box-shadow: -1px -1px 3px #ffffff23;
+}
+
+.menu-elem {
+	width: 80dvw;
+	height: 10dvh;
+	position: relative;
+	top: 0%;
+	/* border: 1px solid salmon; */
+	background: linear-gradient(rgb(62 81 154), rgb(8 51 118));
+	/* border: 1px solid transparent; */
+	border-radius: 35px 0px 0px 35px;
+	margin: 5% 0% 5% 0%;
+	/* filter: blur(-100px); */
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.menu-elem:first-child {
+	/* border-top: 1px solid blue;
+	border-left: 1px solid blue;
+	border-radius: 110px 0px 0px 0px / 80px 0px 0px 80px; */
+	/* top: 10%; */
+}
+
+.menu-elem:last-child {
+	/* border-radius: 0px 0px 0px 110px / 80px 0px 0px 80px; */
+	top: 0%;
+	margin-bottom: 10%;
+}
+
+.menu-link {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 10;
+	/* filter: blur(0px); */
+}
+
+.route-bkg {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid white; */
+	transform-origin: right;
+	z-index: 12;
+}
+
+#about-route-bkg {
+}

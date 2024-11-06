@@ -1,0 +1,272 @@
+.form-container {
+	/* display: grid;
+	place-items: center; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	bottom: 0%;
+	width: 100dvw;
+	height: 30dvh;
+	font-size: 16px;
+}
+
+.name-field,
+.coords-field,
+.time-field {
+	width: 100%;
+	/* height: 5dvh; */
+	display: flex;
+	flex-direction: row;
+	/* height: 20%; */
+	line-height: 1rem;
+	border: 1px solid brown;
+	align-items: center;
+	justify-content: space-between;
+	/* margin: 5% 0% 5% 0%; */
+}
+
+.name-label {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.name-input {
+	font-size: 16px;
+	background: transparent;
+	color: white;
+	border: 0px solid transparent;
+	border-bottom: 2px solid white;
+}
+
+.input-label {
+	width: 90%;
+	/* display: grid;
+	place-items: center; */
+}
+
+.label-text {
+	margin-left: 2%;
+	margin-right: 2%;
+	/* color: red; */
+	/* margin: 0% 2% 0% 2%; */
+	/* display: grid;
+	place-items: center; */
+}
+
+.coords-input {
+	width: 90%;
+	font-size: 16px;
+	background: transparent;
+	border: 0px solid transparent;
+	border-bottom: 2px solid rgb(230, 230, 230);
+}
+
+.coords-input:invalid {
+	content: " ✖";
+	color: red;
+	border: 1px solid red;
+}
+
+.coords-input:invalid + span::after {
+	position: absolute;
+	content: "✖";
+	padding-left: 5px;
+}
+
+/* .coords-input:valid {
+	content: " ✓";
+	border: 1px solid green;
+} */
+
+.time-label {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.time-input {
+	/* display: flex;
+	flex-direction: row-reverse; */
+	/* display: grid;
+	place-items: center; */
+	width: 40dvw;
+	/* height: 20dvh; */
+	position: relative;
+	background: linear-gradient(rgb(60 120 189), rgb(61 141 223));
+	color: rgba(230, 230, 230, 0.9);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	padding: 0% 4% 0% 4%;
+	border-top: 3px solid rgb(188 229 245 / 10%);
+	border-left: 3px solid rgb(188 229 245 / 10%);
+	border-bottom: 3px solid rgb(188 229 245 / 10%);
+	border-right: 3px solid transparent;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.time-input::-webkit-calendar-picker-indicator {
+	/* stroke: blue; */
+
+	/* position: fixed;
+	top: 0; */
+	/* content: 🎮;
+	position: absolute; */
+	/* position: absolute;
+	top: 0; */
+	display: none;
+	color: green;
+	/* background: black; */
+	/* top: 0%; */
+	/* width: 100%;
+	height: 100%; */
+	margin: 0% 2% 0% 2%;
+}
+
+.time-input::-webkit-datetime-edit {
+	display: flex;
+	flex-direction: column;
+	color: blue;
+	padding: 3% 5%;
+}
+
+.time-input::-webkit-datetime-edit-fields-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: transparent;
+}
+
+.time-input::-webkit-datetime-edit-text {
+	color: red;
+}
+
+.time-input:focus {
+	border: 1px solid blueviolet;
+}
+
+.time-input:first-child {
+	margin: 0% 2%;
+}
+
+/* webkit-calen calendar-picker-indicator */
+
+/* .time-input {
+}
+
+.time-input:invalid {
+	content: " ✖";
+	color: red;
+}
+.time-input:valid {
+	content: " ✓";
+} */
+
+.co2-field {
+	width: 100%;
+	height: auto;
+	display: grid;
+	place-items: center;
+}
+
+.co2-field > span {
+	margin: 1% 0% 4% 0%;
+}
+
+.name-input::-webkit-input-placeholder {
+	/* Chrome/Opera/Safari */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+	background: transparent;
+	border: 0px solid transparent;
+	border-bottom: 2px solid rgb(230, 230, 230);
+}
+.name-input::-moz-placeholder {
+	/* Firefox 19+ */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+	background: transparent;
+	border: 0px solid transparent;
+	border-bottom: 2px solid rgb(230, 230, 230);
+}
+.name-input:-ms-input-placeholder {
+	/* IE 10+ */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+.name-input:-moz-placeholder {
+	/* Firefox 18- */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+
+.coords-input::-webkit-input-placeholder {
+	/* Chrome/Opera/Safari */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+.coords-input::-moz-placeholder {
+	/* Firefox 19+ */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+.coords-input:-ms-input-placeholder {
+	/* IE 10+ */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+.coords-input:-moz-placeholder {
+	/* Firefox 18- */
+	font-style: italic;
+	color: rgb(230, 230, 230);
+	font-weight: 300;
+}
+
+.time-input:focus {
+	border: 0px solid transparent;
+	outline: none;
+}
+
+.name-input:focus {
+	border: 0px solid transparent;
+	outline: none;
+}
+
+.coords-input:focus {
+	border: 0px solid transparent;
+	outline: none;
+}
+
+.time-input:active {
+	border: 0px solid transparent;
+	outline: none;
+}
+
+.name-input:active {
+	border: 0px solid transparent;
+	outline: none;
+}
+
+.coords-input:active {
+	border: 0px solid transparent;
+	outline: none;
+}

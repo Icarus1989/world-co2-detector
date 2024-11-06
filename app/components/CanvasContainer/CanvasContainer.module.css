@@ -1,0 +1,11 @@
+.container {
+	width: 100dvw;
+	height: 70dvh;
+
+	display: grid;
+	place-items: center;
+	/* <--- probabile aumento */
+	/* border: 1px solid white; */
+	position: absolute;
+	z-index: 0;
+}

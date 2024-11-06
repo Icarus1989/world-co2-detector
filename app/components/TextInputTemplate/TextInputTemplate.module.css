@@ -1,0 +1,100 @@
+.name-field {
+	position: relative;
+	width: 100dvw;
+	height: 10dvh;
+}
+
+.name-field > label {
+	display: flex;
+	flex-direction: row;
+
+	width: 100dvw;
+
+	line-height: 1rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.coords-field {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 100dvw;
+	height: 23dvh;
+}
+
+.coords-field > label {
+	display: flex;
+	flex-direction: row;
+
+	width: 50dvw;
+
+	line-height: 1rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.label-text {
+	padding: 0% 3% 0% 3%;
+}
+
+.name-input {
+	width: 70dvw;
+	height: 5dvh;
+	background: linear-gradient(rgb(60 120 189), rgb(61 141 223));
+	color: rgba(230, 230, 230, 0.9);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	padding: 0% 4% 0% 4%;
+	border-top: 3px solid rgb(188 229 245 / 10%);
+	border-left: 3px solid rgb(188 229 245 / 10%);
+	border-bottom: 3px solid rgb(188 229 245 / 10%);
+	border-right: 3px solid transparent;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+	z-index: 1;
+}
+
+.name-input::placeholder {
+	color: rgba(230, 230, 230, 0.9);
+	font-style: italic;
+	font-weight: 300;
+}
+
+.name-input:focus {
+	z-index: 10;
+}
+
+.coords-input {
+	width: 40dvw;
+	height: 5dvh;
+	background: linear-gradient(rgb(60 120 189), rgb(61 141 223));
+	color: rgba(230, 230, 230, 0.9);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	padding: 0% 4% 0% 4%;
+	border-top: 3px solid rgb(188 229 245 / 10%);
+	border-left: 3px solid rgb(188 229 245 / 10%);
+	border-bottom: 3px solid rgb(188 229 245 / 10%);
+	border-right: 3px solid transparent;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+	z-index: 1;
+}
+
+.coords-input::placeholder {
+	color: rgba(230, 230, 230, 0.9);
+	font-style: italic;
+	font-weight: 300;
+	padding-left: 5%;
+}
