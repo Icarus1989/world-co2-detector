@@ -20,7 +20,8 @@
 	display: flex;
 	flex-direction: row;
 	width: 100dvw;
-	height: 23dvh;
+	height: 100%;
+	overflow: hidden;
 }
 
 .coords-field > label {
@@ -30,8 +31,21 @@
 	width: 50dvw;
 
 	line-height: 1rem;
-	align-items: center;
+	/* align-items: center; */
 	justify-content: center;
+	position: relative;
+}
+
+.lat-label {
+	align-items: flex-start;
+	margin: 2% 0% 0% 0%;
+	z-index: 3;
+}
+
+.lon-label {
+	align-items: flex-end;
+	margin: 0% 0% 2% 0%;
+	z-index: 3;
 }
 
 .label-text {
@@ -73,7 +87,7 @@
 .coords-input {
 	width: 40dvw;
 	height: 5dvh;
-	background: linear-gradient(rgb(60 120 189), rgb(61 141 223));
+	background: linear-gradient(rgba(60, 120, 189, 1), rgba(61, 141, 223, 1));
 	color: rgba(230, 230, 230, 0.9);
 	font-size: 16px;
 	font-style: normal;

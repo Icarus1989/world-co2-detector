@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import styles from "./SvgTemplate.module.css";
+import styles from "../SvgTemplate.module.css";
+import PathMagnifierBottom from "../PathComponents/PathMagnifierBottom";
+import PathMagnifierTop from "../PathComponents/PathMagnifierTop";
 
 export default function SvgMagnifierComponent({
 	passedRef,
@@ -34,17 +36,17 @@ export default function SvgMagnifierComponent({
 	// 	console.log(svgRef.current.parentElement);
 	// }, []);
 
-	console.log("svg measures: ");
-	console.log(svgWidth);
-	console.log(svgHeight);
+	// console.log("svg measures: ");
+	// console.log(svgWidth);
+	// console.log(svgHeight);
 
-	console.log(
-		`M${centerX + Math.cos(alphaAng) * radius}, ${
-			centerY + Math.sin(alphaAng) * radius
-		} a${radius}, ${radius}, 0, 1, 0, ${
-			-(Math.cos(alphaAng) * radius) + Math.cos(betaAng) * radius
-		}, ${-(Math.sin(alphaAng) * radius) + Math.sin(betaAng) * radius}`
-	);
+	// console.log(
+	// 	`M${centerX + Math.cos(alphaAng) * radius}, ${
+	// 		centerY + Math.sin(alphaAng) * radius
+	// 	} a${radius}, ${radius}, 0, 1, 0, ${
+	// 		-(Math.cos(alphaAng) * radius) + Math.cos(betaAng) * radius
+	// 	}, ${-(Math.sin(alphaAng) * radius) + Math.sin(betaAng) * radius}`
+	// );
 
 	return (
 		<svg
@@ -56,7 +58,7 @@ export default function SvgMagnifierComponent({
 				passedRef?.focus();
 			}}
 		>
-			<path
+			{/* <path
 				stroke="white"
 				strokeWidth="4px"
 				// strokeMiterlimit="4"
@@ -73,8 +75,27 @@ export default function SvgMagnifierComponent({
 				} a${radius}, ${radius}, 0, 1, 0, ${
 					-(Math.cos(alphaAng) * radius) + Math.cos(betaAng) * radius
 				}, ${-(Math.sin(alphaAng) * radius) + Math.sin(betaAng) * radius}`}
+			/> */}
+			<PathMagnifierTop
+				centerX={centerX}
+				centerY={centerY}
+				alphaAng={alphaAng}
+				betaAng={betaAng}
+				radius={radius}
+				fill={"url('#magnGradient')"}
+				strokeWidth={"4px"}
 			/>
-			<path
+			<PathMagnifierBottom
+				centerX={centerX}
+				centerY={centerY}
+				radius={radius}
+				alphaAng={alphaAng}
+				betaAng={betaAng}
+				gammaAng={gammaAng}
+				deltaAng={deltaAng}
+				strokeWidth={"4px"}
+			/>
+			{/* <path
 				stroke="white"
 				strokeWidth="4px"
 				// strokeMiterlimit="4"
@@ -97,7 +118,7 @@ export default function SvgMagnifierComponent({
 				} l${-Math.cos(deltaAng) * 1.23 * radius}, ${
 					Math.sin(-deltaAng) * 1.3 * radius
 				}`}
-			/>
+			/> */}
 			<defs>
 				<radialGradient id="magnGradient" cx="44%" cy="50%">
 					{/* <stop offset="5%" stop-color="rgba(255, 255, 255, 0.1)" />
