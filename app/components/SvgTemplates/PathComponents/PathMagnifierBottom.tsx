@@ -1,5 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
+import anime from "animejs";
+import { useSearchAnimation } from "@/app/searchContext/SearchContext";
+
 export default function PathMagnifierBottom({
 	centerX,
 	centerY,
@@ -8,7 +12,8 @@ export default function PathMagnifierBottom({
 	gammaAng,
 	radius,
 	deltaAng,
-	strokeWidth
+	strokeWidth,
+	animate
 }: {
 	centerX: number;
 	centerY: number;
@@ -18,6 +23,7 @@ export default function PathMagnifierBottom({
 	radius: number;
 	deltaAng: number;
 	strokeWidth: string;
+	animate: boolean;
 }) {
 	const startD = `M${centerX + Math.cos(alphaAng) * radius}, ${
 		centerY + Math.sin(alphaAng) * radius
@@ -32,6 +38,17 @@ export default function PathMagnifierBottom({
 	} l${-Math.cos(deltaAng) * 1.23 * radius}, ${
 		Math.sin(-deltaAng) * 1.3 * radius
 	}`;
+
+	const firstStepD = ``;
+	const lastStepD = ``;
+
+	const { animationHandling, stopLat, stopLon, reverseLat, reverseLon } =
+		useSearchAnimation();
+
+	useEffect(() => {
+		if (animate) {
+		}
+	}, [animationHandling]);
 	return (
 		<path
 			stroke="white"
@@ -39,7 +56,7 @@ export default function PathMagnifierBottom({
 			// strokeMiterlimit="4"
 			strokeLinejoin="round"
 			strokeOpacity="1.0"
-			// arcs | bevel |miter | miter-clip | round
+			// arcs | bevel | miter | miter-clip | round
 			// strokeLinecap="round"
 			fill="none"
 			style={{ zIndex: 4 }}

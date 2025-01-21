@@ -69,11 +69,14 @@ export default function SearchTextComponent(
 		<>
 			{props.active ? (
 				<TextInputTemplate
-					fieldName="name"
-					labels={["name"]}
+					fieldName="search"
+					labels={["search"]}
 					formData={props.formData}
 					handleChange={(event: ChangeEvent<HTMLInputElement>) => {
 						return props.handleChange(event);
+					}}
+					handleSubmit={(event: ChangeEvent<HTMLInputElement>) => {
+						return props.handleSubmit(event);
 					}}
 					animationComp={props.animationComp}
 					setAnimationComp={props.setAnimationComp}

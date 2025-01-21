@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "../SvgTemplate.module.css";
+
 export default function PathWindRoseX({
 	containerHeight,
 	width,
@@ -15,28 +17,29 @@ export default function PathWindRoseX({
 	const centerY = height / 2;
 	return (
 		<path
-			// stroke="white"
+			// stroke="rgb(230, 230, 230, 1.0)"
 			id="xPath"
-			stroke="url('#roseGradient')"
+			stroke="url('#roseXGradient')"
 			strokeWidth={strokeWidth}
 			// strokeMiterlimit="4"
 			strokeLinejoin="round"
 			strokeOpacity="1"
-			fill="white"
+			fill="url('#roseXGradient')"
+			// className={styles["x-path"]}
 			// fillRule="nonzero"
 			d={` M${centerX}, ${centerY} l${containerHeight / 5.5},${
 				containerHeight / 5.5
 			} L${centerX + containerHeight / 23}, ${
 				centerY - containerHeight / 23
-			} M${centerX}, ${centerY} m${containerHeight / 5.5},${
-				containerHeight / 5.5
+			} M${centerX}, ${centerY} M${containerHeight / 5.5 + centerX},${
+				containerHeight / 5.5 + centerY
 			} L${centerX - containerHeight / 23}, ${
 				centerY + containerHeight / 23
-			} M${centerX}, ${centerY} l${-containerHeight / 5.5},${
+			} M${centerX}, ${centerY} m${-containerHeight / 5.5},${
 				containerHeight / 5.5
 			} L${centerX - containerHeight / 23}, ${
 				centerY - containerHeight / 23
-			} M${centerX}, ${centerY}  m${-containerHeight / 5.5},${
+			} M${centerX}, ${centerY}  l${-containerHeight / 5.5},${
 				containerHeight / 5.5
 			} L${centerX + containerHeight / 23}, ${
 				centerY + containerHeight / 23

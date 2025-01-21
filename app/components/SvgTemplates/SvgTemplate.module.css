@@ -17,3 +17,15 @@
 .svg-container > path {
 	position: relative;
 }
+
+.svg-icon > path {
+	stroke: white;
+}
+
+.cross-path {
+	stroke: url("#roseCrossGradient");
+}
+
+.x-path {
+	stroke: url("#roseXGradient");
+}

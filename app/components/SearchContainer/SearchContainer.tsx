@@ -73,17 +73,13 @@ export default function SearchContainer() {
 		}
 	};
 
-	useEffect(() => {
-		// usare isPResent qui?
-	});
-
 	return (
 		<div className={styles["search-container"]}>
 			<AnimatePresence>
 				{openMenu ? (
 					// <AnimatePresence>
 					<SearchProvider
-						data={initialSettings.data}
+						details={initialSettings.details}
 						animationHandling={initialSettings.animationHandling}
 					>
 						<SearchMenu key="menu" handleOpenMenu={handleOpenMenu} />

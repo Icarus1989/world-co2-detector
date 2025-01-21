@@ -14,7 +14,7 @@
 	margin: 0% 0% 5% 0%;
 }
 
-.name-field,
+.search-field,
 .coords-field,
 .time-field {
 	width: 100%;
@@ -29,7 +29,7 @@
 	/* margin: 5% 0% 5% 0%; */
 }
 
-.name-label {
+.search-label {
 	width: 90%;
 	display: flex;
 	flex-direction: row;
@@ -37,7 +37,7 @@
 	align-items: center;
 }
 
-.name-input {
+.search-input {
 	font-size: 16px;
 	background: transparent;
 	color: white;
@@ -192,7 +192,7 @@
 	margin: 1% 0% 4% 0%;
 }
 
-.name-input::-webkit-input-placeholder {
+.search-input::-webkit-input-placeholder {
 	/* Chrome/Opera/Safari */
 	font-style: italic;
 	color: rgb(230, 230, 230);
@@ -201,7 +201,7 @@
 	border: 0px solid transparent;
 	border-bottom: 2px solid rgb(230, 230, 230);
 }
-.name-input::-moz-placeholder {
+.search-input::-moz-placeholder {
 	/* Firefox 19+ */
 	font-style: italic;
 	color: rgb(230, 230, 230);
@@ -210,13 +210,13 @@
 	border: 0px solid transparent;
 	border-bottom: 2px solid rgb(230, 230, 230);
 }
-.name-input:-ms-input-placeholder {
+.search-input:-ms-input-placeholder {
 	/* IE 10+ */
 	font-style: italic;
 	color: rgb(230, 230, 230);
 	font-weight: 300;
 }
-.name-input:-moz-placeholder {
+.search-input:-moz-placeholder {
 	/* Firefox 18- */
 	font-style: italic;
 	color: rgb(230, 230, 230);
@@ -253,7 +253,7 @@
 	outline: none;
 }
 
-.name-input:focus {
+.search-input:focus {
 	border: 0px solid transparent;
 	outline: none;
 }
@@ -268,7 +268,7 @@
 	outline: none;
 }
 
-.name-input:active {
+.search-input:active {
 	border: 0px solid transparent;
 	outline: none;
 }
@@ -287,8 +287,14 @@
 }
 
 .menu-section {
-	display: grid;
-	place-items: center;
+	/* display: grid; */
+	/* place-items: center; */
+	/* justify-content: space-around;
+    align-items: center; */
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	flex-grow: 1;
 	height: 15dvh;
@@ -307,7 +313,12 @@
 }
 
 .search-btn {
-	padding: 10%;
+	/* width: 6dvh;
+	height: 6dvh; */
+	padding: 2%;
+}
+
+.search-btn > svg {
 }
 
 .coords-btn {
@@ -320,8 +331,8 @@
 }
 
 .close-btn-section {
-	display: grid;
-	place-items: center;
+	display: flex;
+	flex-direction: row;
 	width: 100%;
 	height: 15dvh;
 	/* height: 16%; */
@@ -336,6 +347,7 @@
 	background: rgba(230, 230, 230, 0.23);
 	border: 0px solid transparent;
 	border-radius: 50%;
+	margin: 0% 5% 0% 5%;
 }
 
 .close-btn > svg {
@@ -344,6 +356,7 @@
 }
 
 .list-elem {
+	width: 100%;
 	list-style: none;
 	border: 0px solid transparent;
 }
@@ -351,4 +364,21 @@
 .calendar-btn > svg {
 	width: 4dvh;
 	height: 4dvh;
+}
+
+.start-btn {
+	display: grid;
+	place-items: center;
+	width: 8dvh;
+	height: 8dvh;
+	padding: 2%;
+	background: rgba(230, 230, 230, 0.23);
+	border: 0px solid transparent;
+	border-radius: 50%;
+	margin: 0% 5% 0% 5%;
+}
+
+.start-btn > svg {
+	width: 3.5dvh;
+	height: 3.5dvh;
 }

@@ -8,7 +8,8 @@ import {
 	useEffect,
 	useRef,
 	useState,
-	FocusEvent
+	FocusEvent,
+	Fragment
 } from "react";
 import SvgMagnifierComponent from "../SvgTemplates/SvgComponents/SvgMagnifierComponent";
 import SvgWindRoseComponent from "../SvgTemplates/SvgComponents/SvgWindRoseComponent";
@@ -26,12 +27,14 @@ import {
 	useSearchAnimation,
 	useSearchData
 } from "@/app/searchContext/SearchContext";
+import CoordsInputComponent from "../CoordsInputComponent/CoordsInputComponent";
 
 export default function TextInputTemplate({
 	fieldName,
 	labels,
 	formData,
 	handleChange,
+	handleSubmit,
 	animationComp,
 	setAnimationComp
 }: {
@@ -39,6 +42,7 @@ export default function TextInputTemplate({
 	labels: string[]; //lat lon | name
 	formData: FormData;
 	handleChange: any;
+	handleSubmit: any;
 	animationComp: AnimationMapping;
 	setAnimationComp: Dispatch<SetStateAction<AnimationMapping>>; // riattivare
 }) {
@@ -72,6 +76,8 @@ export default function TextInputTemplate({
 		stopEnd
 	} = useSearchAnimation();
 
+	const { data } = useSearchData();
+
 	useEffect(() => {
 		// console.log(containerRef.current?.clientWidth);
 		const actualWidth =
@@ -92,8 +98,8 @@ export default function TextInputTemplate({
 
 	const nameRef = useRef<HTMLInputElement | null>(null);
 
-	const latRef = useRef<HTMLInputElement | null>(null);
-	const lonRef = useRef<HTMLInputElement | null>(null);
+	// const latRef = useRef<HTMLInputElement | null>(null);
+	// const lonRef = useRef<HTMLInputElement | null>(null);
 
 	// type FormData = {
 	// 	name: string;
@@ -189,6 +195,23 @@ export default function TextInputTemplate({
 	// 	console.log(animationComp);
 	// }, [animationComp]);
 
+	// const latitude: string = data.lat.coord && String(data.lat.coord).slice(0, 2);
+
+	const latData = data["lat"];
+	const lonData = data["lon"];
+
+	function calculateSymbol(inputType: string): "" | "°" | "'" | '"' {
+		if (inputType === "degrees") {
+			return "°";
+		} else if (inputType === "minutes") {
+			return "'";
+		} else if (inputType === "seconds") {
+			return '"';
+		} else {
+			return "";
+		}
+	}
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -212,70 +235,91 @@ export default function TextInputTemplate({
 				<>
 					{/* <span className={styles["label-text"]}>Coords-Text-Label: </span> */}
 					{labels.map((labelName) => {
+						// const group = data[ind];
+						const actualData = labelName === "lat" ? latData : lonData;
+						const tags: string[] = [...Object.keys(actualData)];
 						return (
-							<motion.label
-								initial={{ left: labelName === "lat" ? "-200%" : "200%" }}
-								animate={{ left: "0%" }}
-								exit={{ left: labelName === "lat" ? "-200%" : "200%" }}
-								transition={{
-									duration: 0.3,
-									delay: 0.1,
-									ease: "linear",
-									staggerChildren: 0.1
-								}}
-								id={labelName}
-								key={labelName}
-								htmlFor={`${labelName}-input`}
-								className={styles[`${labelName}-label`]}
-							>
-								<motion.input
-									id={labelName}
-									name={`${labelName}-input`}
-									type="text"
-									// min="-90.0000000"
-									// max="90.0000000"
-									// step="0.0000001"
-									value={labelName === "lat" ? formData.lat : formData.lon}
-									onChange={handleChange}
-									onFocus={(event: FocusEvent<HTMLInputElement, Element>) => {
-										// event.preventDefault();
-										// // if (event.target) {
-										// // 	console.log(event.target);
-										// // 	const name = event.target.name;
-										// // 	console.log(name);
-										// // }
-										// const name = event.target.id;
-										// console.log("focus");
-										// console.log(labelName);
-										// setAnimationComp((prevAnimComp: AnimationMapping) => {
-										// 	// console.log(prevAnimComp.coords[name]);
-										// 	// const coordiantes: AnimatonStatus =
-										// 	// 	prevAnimComp.coords[name];
-										// 	return {
-										// 		...prevAnimComp,
-										// 		coords: {
-										// 			...prevAnimComp.coords,
-										// 			[name]: { status: "play" }
-										// 		}
-										// 	};
-										// });
-										// console.log(animationComp);
-										console.log("focus");
-										handleFocus(event);
-									}}
-									onBlur={(event: FocusEvent<HTMLInputElement, Element>) => {
-										console.log("blur");
-										handleBlur(event);
-									}}
-									ref={labelName === "lat" ? latRef : lonRef}
-									inputMode="numeric"
-									placeholder={
-										labelName === "lat" ? "Latitude..." : "Longitude..."
-									}
-									pattern="\^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$"
-									className={styles[`${fieldName}-input`]}
-								/>
-							</motion.label>
+							<Fragment key={labelName}>
+								<div className={styles[`${labelName}-container`]}>
+									<div
+										className={styles["coords-inputs-container"]}
+										onFocus={(event: FocusEvent<HTMLInputElement, Element>) => {
+											console.log("focus");
+											handleFocus(event);
+										}}
+										onBlur={(event: FocusEvent<HTMLInputElement, Element>) => {
+											console.log("blur");
+											handleBlur(event);
+										}}
+									>
+										{tags.map((tag) => {
+											return (
+												<Fragment key={`${labelName}-${tag}`}>
+													<CoordsInputComponent
+														labelName={labelName}
+														labelTag={tag}
+														labelSymbol={calculateSymbol(tag)}
+														// <--- cambiare
+														handleChange={handleChange}
+													/>
+												</Fragment>
+											);
+										})}
+									</div>
+								</div>
+							</Fragment>
+							// <motion.label
+							// 	initial={{ left: labelName === "lat" ? "-200%" : "200%" }}
+							// 	animate={{ left: "0%" }}
+							// 	exit={{ left: labelName === "lat" ? "-200%" : "200%" }}
+							// 	transition={{
+							// 		duration: 0.3,
+							// 		delay: 0.1,
+							// 		ease: "linear",
+							// 		staggerChildren: 0.1
+							// 	}}
+							// 	id={labelName}
+							// 	key={labelName}
+							// 	htmlFor={`${
+							// 		labelName === "lat" ? data.lat.coord : data.lon.coord
+							// 	}-input`}
+							// 	className={styles[`${labelName}-label`]}
+							// >
+							// 	{/* trasformare in tre input per gradi primi e secondi ---> */}
+							// 	<motion.input
+							// 		id={labelName}
+							// 		name={`${labelName === "lat" ? "lat" : "lon"}-input`}
+							// 		type="number"
+							// 		min={labelName === "lat" ? "-90.000" : "0.000"}
+							// 		max={labelName === "lat" ? "90.000" : "180.000"}
+							// 		// step="0.0000001"
+							// 		value={
+							// 			labelName === "lat"
+							// 				? data.lat.coord
+							// 					? data.lat.coord
+							// 					: ""
+							// 				: data.lon.coord
+							// 				? data.lon.coord
+							// 				: ""
+							// 		}
+							// 		onChange={handleChange}
+							// 		onFocus={(event: FocusEvent<HTMLInputElement, Element>) => {
+							// 			console.log("focus");
+							// 			handleFocus(event);
+							// 		}}
+							// 		onBlur={(event: FocusEvent<HTMLInputElement, Element>) => {
+							// 			console.log("blur");
+							// 			handleBlur(event);
+							// 		}}
+							// 		// ref={labelName === "lat" ? latRef : lonRef}
+							// 		// inputMode="numeric"
+							// 		placeholder={
+							// 			labelName === "lat" ? "Latitude..." : "Longitude..."
+							// 		}
+							// 		pattern="\^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$"
+							// 		className={styles[`${fieldName}-input`]}
+							// 	/>
+							// </motion.label>
 						);
 					})}
 					<SvgWindRoseComponent
@@ -314,7 +358,8 @@ export default function TextInputTemplate({
 							// initial={{ translateX: "-200%" }}
 							// animate={{ translateX: "0%" }}
 							// exit={{ translateX: "-200%" }}
-							value={formData.name}
+							value={data.search.text}
+							// <--- sistemare naming ovunque e qui
 							onChange={handleChange}
 							// onChange={(event) => {
 							// 	const value = event.target.value;

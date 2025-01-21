@@ -1,5 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
+import anime from "animejs";
+import { useSearchAnimation } from "@/app/searchContext/SearchContext";
+
 export default function PathMagnifierTop({
 	centerX,
 	centerY,
@@ -7,7 +11,8 @@ export default function PathMagnifierTop({
 	betaAng,
 	radius,
 	fill,
-	strokeWidth
+	strokeWidth,
+	animate
 }: {
 	centerX: number;
 	centerY: number;
@@ -16,7 +21,25 @@ export default function PathMagnifierTop({
 	radius: number;
 	fill: string;
 	strokeWidth: string;
+	animate: boolean;
 }) {
+	// const { animationHandling, stopLat, stopLon, reverseLat, reverseLon } =
+	// 	useSearchAnimation();
+
+	const startD = `M${centerX + Math.cos(alphaAng) * radius}, ${
+		centerY + Math.sin(alphaAng) * radius
+	} a${radius}, ${radius}, 0, 1, 0, ${
+		-(Math.cos(alphaAng) * radius) + Math.cos(betaAng) * radius
+	}, ${-(Math.sin(alphaAng) * radius) + Math.sin(betaAng) * radius}`;
+
+	// const firstStepD = ``;
+	// const lastStepD = ``;
+
+	// useEffect(() => {
+	// 	if (animate) {
+	// 	}
+	// }, [animationHandling]);
+
 	return (
 		<path
 			stroke="white"

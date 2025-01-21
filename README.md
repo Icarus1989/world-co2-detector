@@ -36,3 +36,7 @@ Inizio:
 - [ ] Configurare Route
 - [ ] i18?
 - [ ]
+
+ToDo:
+
+- [ ] sistemare showPicker (basta try catch per eliminare eventuali saltuari errori)

@@ -6,11 +6,15 @@ import SearchMenu from "./components/SearchMenu/SearchMenu";
 import SearchContainer from "./components/SearchContainer/SearchContainer";
 import { MainPrimary } from "./components/MainPrimary/MainPrimary";
 
+import { analyzeCoastLineData } from "./ServerActions/ServerActions";
+import coastLineData from "@/public/coastlines/ne_10m_coastline.json";
+
 export default function Home() {
+	// analyzeCoastLineData(coastLineData);
 	return (
 		<MainPrimary>
 			<Navbar />
-			<CanvasContainer />
+			<CanvasContainer analyzeCoastLineData={analyzeCoastLineData} />
 			{/* <SearchMenu /> */}
 			<SearchContainer />
 		</MainPrimary>

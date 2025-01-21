@@ -26,7 +26,8 @@ export default function MagnifierIcon() {
 				betaAng={betaAng}
 				radius={radius}
 				fill={"none"}
-				strokeWidth={"2px"}
+				strokeWidth={"1.5px"}
+				animate={false}
 			/>
 			<PathMagnifierBottom
 				centerX={centerX}
@@ -36,7 +37,8 @@ export default function MagnifierIcon() {
 				gammaAng={gammaAng}
 				deltaAng={deltaAng}
 				radius={radius}
-				strokeWidth={"2px"}
+				strokeWidth={"1.5px"}
+				animate={false}
 			/>
 		</svg>
 	);

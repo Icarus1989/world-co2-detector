@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type FormData = {
-	name: string;
+	search: string;
 	lat: string;
 	lon: string;
 	begin: string;
@@ -22,6 +22,7 @@ export type SearchTextProps = {
 	setActiveBtn: Dispatch<SetStateAction<ActiveSearch>>;
 	formData: FormData;
 	handleChange: any;
+	handleSubmit: any;
 	animationComp: AnimationMapping;
 	setAnimationComp: Dispatch<SetStateAction<AnimationMapping>>;
 	// setFormData: Dispatch<SetStateAction<FormData>>;
@@ -44,4 +45,54 @@ export type AnimationMapping = {
 		begin: AnimatonStatus;
 		end: AnimatonStatus;
 	};
+};
+
+export type TextData = {
+	text: string;
+};
+
+// export type CoordKeys = "degrees" | "minutes" | "seconds" | "dir";
+
+export type DegreeKey = "degrees";
+
+export type DegreeSpec = {
+	degrees: number | null;
+};
+
+export type MinuteSpec = {
+	minutes: number | null;
+};
+
+export type SecondSpec = {
+	seconds: number | null;
+};
+
+export type CoordsData = DegreeSpec & MinuteSpec & SecondSpec;
+
+export type LatSpecs = {
+	dir: "N" | "S" | null;
+};
+
+export type LonSpecs = {
+	dir: "E" | "W" | null;
+};
+
+// export type CoordsData = {
+// 	coord: number | null;
+// };
+
+export type DateData = {
+	date: Date;
+};
+
+export interface DataComposition {
+	search: TextData;
+	lat: LatSpecs & CoordsData;
+	lon: LonSpecs & CoordsData;
+	begin: DateData;
+	end: DateData;
+}
+
+export type ContinentInfo = {
+	continent: [number, number][];
 };

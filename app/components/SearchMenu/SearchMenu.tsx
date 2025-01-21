@@ -33,6 +33,9 @@ import { motion, AnimatePresence, delay, usePresence } from "framer-motion";
 import WindRoseIcon from "../SvgTemplates/SvgIcons/SvgWindRoseIcon";
 
 import type { FormData, AnimationMapping } from "@/app/utilities/types/types";
+import StartIcon from "../SvgTemplates/SvgIcons/SvgStartIcon";
+
+import { useSearchData } from "@/app/searchContext/SearchContext";
 
 type ActiveSearch = {
 	first: boolean;
@@ -97,20 +100,8 @@ export default function SearchMenu({
 		third: false
 	});
 
-	// esportare in file a se state per types --->
-
-	// type FormData = {
-	// 	name: string;
-	// 	lat: string;
-	// 	lon: string;
-	// 	begin: string;
-	// 	end: string;
-	// };
-
-	// import type { FormData } from "@/app/utilities/types/types";
-
 	const [formData, setFormData] = useState<FormData>({
-		name: "",
+		search: "",
 		lat: "",
 		lon: "",
 		begin: "2023-10",
@@ -131,27 +122,48 @@ export default function SearchMenu({
 		}
 	});
 
+	const {
+		data,
+		// handleInput,
+		handleTextInput,
+		handleCoordsInput,
+		handleDateInput
+	} = useSearchData();
+
+	function handleSubmit(event: React.SyntheticEvent) {
+		event.preventDefault();
+		console.log(data);
+		// handleInput(event);
+	}
+
 	function handleChange(event: ChangeEvent<HTMLInputElement>) {
 		const name = event.target.name.split("-")[0];
 		const value = event.target.value;
-		// console.log(name);
-		// console.log(value);
-		if (value.length > 0) {
-			setFormData((prevData) => {
-				return { ...prevData, [name]: value };
-			});
-		} else {
-			return;
+
+		if (name === "lat" || name === "lon") {
+			handleCoordsInput(event);
+		} else if (name === "search") {
+			handleTextInput(event);
+		} else if (name === "begin" || name === "end") {
+			handleDateInput(event);
 		}
+		setFormData((prevData) => {
+			return { ...prevData, [name]: value };
+		});
+		// }
+		// else {
+		// 	return;
+		// }
 	}
 
 	const [sections, setSections] = useState<ReactElement[]>([
-		<CloseSectionComponent
+		<ActionSectionComponent
 			id="close"
 			key="close"
 			active={false}
 			// activeBtn={activeBtn}
 			handleClick={handleOpenMenu}
+			handleSubmit={handleSubmit}
 			// setActiveBtn={setActiveBtn}
 		/>,
 		<SearchDateComponent
@@ -165,6 +177,7 @@ export default function SearchMenu({
 			handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 				handleChange(event)
 			}
+			handleSubmit={handleSubmit}
 			animationComp={animationComp}
 			setAnimationComp={setAnimationComp}
 		/>,
@@ -179,6 +192,7 @@ export default function SearchMenu({
 			handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 				handleChange(event)
 			}
+			handleSubmit={handleSubmit}
 			animationComp={animationComp}
 			setAnimationComp={setAnimationComp}
 		/>,
@@ -193,6 +207,7 @@ export default function SearchMenu({
 			handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 				handleChange(event)
 			}
+			handleSubmit={handleSubmit}
 			animationComp={animationComp}
 			setAnimationComp={setAnimationComp}
 			// setSections={setSections}
@@ -271,11 +286,12 @@ export default function SearchMenu({
 	useEffect(() => {
 		setSections(() => {
 			const baseArr: ReactElement[] = [
-				<CloseSectionComponent
+				<ActionSectionComponent
 					id="close"
 					key="close"
 					active={false}
 					handleClick={handleOpenMenu}
+					handleSubmit={handleSubmit}
 				/>,
 				<SearchDateComponent
 					id="date"
@@ -288,6 +304,7 @@ export default function SearchMenu({
 					handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 						handleChange(event)
 					}
+					handleSubmit={handleSubmit}
 					animationComp={animationComp}
 					setAnimationComp={setAnimationComp}
 				/>,
@@ -302,6 +319,7 @@ export default function SearchMenu({
 					handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 						handleChange(event)
 					}
+					handleSubmit={handleSubmit}
 					animationComp={animationComp}
 					setAnimationComp={setAnimationComp}
 				/>,
@@ -316,6 +334,7 @@ export default function SearchMenu({
 					handleChange={(event: ChangeEvent<HTMLInputElement>) =>
 						handleChange(event)
 					}
+					handleSubmit={handleSubmit}
 					animationComp={animationComp}
 					setAnimationComp={setAnimationComp}
 					// setSections={setSections}
@@ -330,15 +349,22 @@ export default function SearchMenu({
 				const activeElem: boolean = elem?.props.active;
 				return index !== 0 && !activeElem;
 			});
-			const updatedArr: ReactElement[] = [baseArr[0], ...disabledArr];
+			// const updatedArr: ReactElement[] = [baseArr[0], ...disabledArr];
 			if (enabledElem) {
-				updatedArr.push(enabledElem);
+				const closeElement: ReactElement = baseArr[0];
+				// updatedArr.unshift(enabledElem);
+
+				const activeArray: ReactElement[] = [
+					closeElement,
+					enabledElem,
+					...disabledArr
+				];
 				// console.log(updatedArr);
-				return updatedArr;
+				return activeArray;
 			}
 			return baseArr;
 		});
-		console.log("sections update");
+		// console.log("sections update")
 	}, [activeBtn.first, activeBtn.second, activeBtn.third, formData]);
 
 	// console.log(formData);
@@ -348,15 +374,23 @@ export default function SearchMenu({
 	// 	!isPresent && setTimeout(safeToRemove, 500);
 	// }, [isPresent]);
 
+	useEffect(() => {
+		console.log(data);
+		// console.log(handleInput);
+	}, [data]);
+
+	// console.log(data);
+
 	return (
 		// <AnimatePresence>
-		<motion.ul
+		<motion.form
 			className={styles["form-container"]}
 			key="menu"
 			variants={formVariants}
 			initial="hidden"
 			animate="visible"
 			exit="exit"
+			onSubmit={handleSubmit}
 		>
 			{sections.map((elem: ReactElement) => {
 				// console.log(elem);
@@ -388,7 +422,7 @@ export default function SearchMenu({
 
 				// const actualElem = Object.entries(elem);
 			})}
-		</motion.ul>
+		</motion.form>
 		// </AnimatePresence>
 	);
 }
@@ -439,24 +473,73 @@ function MotionSectionComponent({
 	);
 }
 
-function CloseSectionComponent({
+function ActionSectionComponent({
 	id,
 	active,
-	handleClick
+	handleClick,
+	handleSubmit
 }: {
 	id: string;
 	active: boolean;
 	handleClick: any;
+	handleSubmit: any;
 }): ReactElement {
 	// const [measures, setMeasures] = useState({
 	// 	width: 0,
 	// 	height: 0
 	// })
+
+	const { data } = useSearchData();
+	const checkText: boolean = data.search.text.length > 0;
+	// const checkCoord: boolean =
+	// 	data.lat.coord !== null || data.lon.coord !== null;
+	const checkLat: boolean =
+		data.lat.degrees !== null ||
+		data.lat.minutes !== null ||
+		data.lat.seconds !== null ||
+		data.lat.dir !== null;
+
+	const checkLon: boolean =
+		data.lon.degrees !== null ||
+		data.lon.minutes !== null ||
+		data.lon.seconds !== null ||
+		data.lon.dir !== null;
+
+	const [activeStartBtn, setActiveStartBtn] = useState<boolean>(true);
+	// inserire rilevamento presenza dati con set in useEffect al cambio come per animazioni
+
+	// function handleSubmitAndClose() {
+	// 	handleSubmit();
+	// 	return handleClick();
+	// }
 	return (
 		<>
 			{/* <AnimatePresence> */}
+			{(checkText || checkLat || checkLon) && (
+				<motion.button
+					id={`${id}-start`}
+					// onClick={() => {
+					// 	handleSubmit();
+					// }}
+					type="submit"
+					onSubmit={() => {
+						handleSubmit();
+					}}
+					onClick={handleClick}
+					variants={sectionVariants}
+					initial="hidden"
+					animate="visible"
+					className={styles["start-btn"]}
+				>
+					<StartIcon
+						containerWidth={32}
+						containerHeight={32}
+						strokeWidth={4.5}
+					/>
+				</motion.button>
+			)}
 			<motion.button
-				id={`${id}`}
+				id={`${id}-close`}
 				onClick={() => {
 					handleClick();
 				}}
@@ -464,6 +547,7 @@ function CloseSectionComponent({
 			>
 				<CloseIcon containerWidth={32} containerHeight={32} strokeWidth="6px" />
 			</motion.button>
+
 			{/* </AnimatePresence> */}
 		</>
 	);

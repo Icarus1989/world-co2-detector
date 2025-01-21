@@ -84,6 +84,7 @@ export default function SvgMagnifierComponent({
 				radius={radius}
 				fill={"url('#magnGradient')"}
 				strokeWidth={"4px"}
+				animate={true}
 			/>
 			<PathMagnifierBottom
 				centerX={centerX}
@@ -94,6 +95,7 @@ export default function SvgMagnifierComponent({
 				gammaAng={gammaAng}
 				deltaAng={deltaAng}
 				strokeWidth={"4px"}
+				animate={true}
 			/>
 			{/* <path
 				stroke="white"
