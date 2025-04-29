@@ -365,10 +365,10 @@ function EarthShapeExt(
 
 	// const materialRef = useRef<THREE.ShaderMaterial | null>(null);
 
-	// const earthShapeIndexed = BufferGeometryUtils.toCreasedNormals(earthShape, 0);
+	const earthShapeIndexed = BufferGeometryUtils.toCreasedNormals(earthShape, 0);
 	// const earthShapeIndexed = BufferGeometryUtils.toTrianglesDrawMode(
 	// 	earthShape,
-	// 	THREE.TrianglesDrawMode
+	// 	THREE.TriangleFanDrawMode
 	// );
 
 	// earthShapeIndexed.setIndex(new THREE.BufferAttribute(indices, 1));
@@ -381,7 +381,7 @@ function EarthShapeExt(
 	// const earthShapeIndexed = BufferGeometryUtils.mergeVertices(earthShape, 0);
 
 	// const earthShapeNotIndex = earthShapeIndexed.toNonIndexed();
-	earthShape.computeVertexNormals();
+	earthShapeIndexed.computeVertexNormals();
 
 	// earthShape.setIndex(new THREE.BufferAttribute(indices, 1));
 	// console.log(indices);
@@ -499,7 +499,7 @@ function EarthShapeExt(
 				// scale={[equatDiameter, polarDiameter, equatDiameter]}
 			> */}
 
-			<mesh geometry={earthShape} position={[0, 0, 0]}>
+			<mesh geometry={earthShapeIndexed} position={[0, 0, 0]}>
 				<MeshRefractionMaterial
 					// ref={materialRef}
 					envMap={env}
