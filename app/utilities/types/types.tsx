@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import * as THREE from "three";
 
 export type FormData = {
 	search: string;
@@ -95,4 +96,39 @@ export interface DataComposition {
 
 export type ContinentInfo = {
 	continent: [number, number][];
+};
+
+export type StructureData = {
+	geom: THREE.BufferGeometry;
+	// material: THREE.LineBasicMaterial;
+};
+
+export type FeatureCollection = {
+	type: string;
+	features: {
+		type: string;
+		properties: {
+			name: string;
+			isoa3: string;
+			continent: string;
+			region: string;
+			subregion: string;
+			regionwb: string;
+		};
+		geometry: {
+			type: string;
+			coordinates: [number, number][][];
+		};
+	}[];
+};
+
+export type LandFeature = {
+	type: string;
+	features: {
+		type: string;
+		geometry: {
+			type: string;
+			coordinates: [number, number][][];
+		};
+	};
 };

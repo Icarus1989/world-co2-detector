@@ -5,12 +5,20 @@ import TextInputTemplate from "../TextInputTemplate/TextInputTemplate";
 import CanvasElement from "../GlobeComponents/CanvasComponent";
 import styles from "./CanvasContainer.module.css";
 
+import * as THREE from "three";
+
 import type { ContinentInfo } from "@/app/utilities/types/types";
 
 export function CanvasContainer({
-	analyzeCoastLineData
+	analyzeCoastLineData,
+	analyzeCoastLandData,
+	analyzeLandsData,
+	analyzeRiversData
 }: {
 	analyzeCoastLineData: () => Promise<ContinentInfo[]>;
+	analyzeCoastLandData: () => Promise<any>;
+	analyzeLandsData: () => Promise<string>;
+	analyzeRiversData: () => Promise<any>;
 }) {
 	return (
 		<div className={styles["container"]}>
@@ -18,7 +26,12 @@ export function CanvasContainer({
 			{/* <TextInputTemplate fieldName="name" labels={["name"]} />
 			<TextInputTemplate fieldName="coords" labels={["lat", "lon"]} />
 			<DateInputComponent /> */}
-			<CanvasElement analyzeCoastLineData={analyzeCoastLineData} />
+			<CanvasElement
+				analyzeCoastLineData={analyzeCoastLineData}
+				analyzeCoastLandData={analyzeCoastLandData}
+				analyzeLandsData={analyzeLandsData}
+				analyzeRiversData={analyzeRiversData}
+			/>
 		</div>
 	);
 }
