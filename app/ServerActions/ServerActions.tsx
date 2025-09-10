@@ -1,5 +1,5 @@
 import jsonData from "@/public/coastlines/ne_10m_coastline.json";
-import jsonRiversData from "@/public/geoData/riversOpt.json";
+// import jsonRiversData from "@/public/geoData/riversOpt.json";
 import landData from "@/public/geoData/ne_110m_land.json";
 import testJson from "@/public/geoData/geoDataFromGeo.json";
 import boundaryJSON from "@/public/geoData/boundaryLines.json";
@@ -203,14 +203,14 @@ export async function analyzeLandData() {
 	return data;
 }
 
-export async function analyzeRiversData() {
-	"use server";
+// export async function analyzeRiversData() {
+// 	"use server";
 
-	const data: any = jsonRiversData;
-	return data;
-	// una volta creata funzione lato client spostare più elaborazioni
-	// dati possibili qui nel backend
-}
+// 	const data: any = jsonRiversData;
+// 	return data;
+// 	// una volta creata funzione lato client spostare più elaborazioni
+// 	// dati possibili qui nel backend
+// }
 
 export async function analyzeLandsData() {
 	"use server";
