@@ -121,18 +121,7 @@ function NewEarthWaterMesh({
 				fog={true}
 				reflectivity={0.23}
 				sheen={0.1}
-			>
-				{/* <GradientTexture
-					// rotation={THREE.MathUtils.degToRad(23.5)}
-					stops={[0, 0.6]}
-					colors={["#0234bc", "#2980D6"]}
-					size={2048} // Size (height) is optional, default = 1024
-					width={2048}
-					type={GradientType.Linear}
-					// rotation={THREE.MathUtils.degToRad(-90)}
-					// size={100}
-				/> */}
-			</meshPhysicalMaterial>
+			/>
 
 			{/* </AnimatedDistortMaterial> */}
 		</mesh>
@@ -620,15 +609,12 @@ export default function CanvasElement({
 					const radius = 0.0223;
 					// diametro *
 
-					// console.log(arr.length > 1000 ? "0.0323" : "0.0123");
-
 					// const radius: number =
 					// 	arr.length > 223 ? 0.0263 : arr.length > 100 ? 0.0235 : 0.0203;
 					// diametro *
 
 					const curveTop = new THREE.CatmullRomCurve3(vect3Arr);
 					curveTop.curveType = "catmullrom";
-					// curveTop.closed = true;
 					// tubegeometry = new THREE.TubeGeometry(path, tubolarsegments, radius, radialsegments)
 					const geometry = new THREE.TubeGeometry(
 						curveTop,
@@ -705,9 +691,6 @@ export default function CanvasElement({
 			try {
 				const data: any = await analyzeLandsData();
 				const landsData: LandFeature[] = await data;
-
-				// ---> Utilizzare questo principio per bordature dorate <---
-
 				const landPointsArraysMax = await landsData.map((elem: any) => {
 					return drawThreeGeo(elem, 2.35, "sphere", {
 						color: 0xffffff
@@ -722,25 +705,12 @@ export default function CanvasElement({
 					return pointsArr;
 				});
 
-				// const rakuBlackTexture = new THREE.TextureLoader().load(
-				// 	rakuBlackImg.src
-				// );
-
-				// const rakuBlackNormMap = new THREE.TextureLoader().load(
-				// 	rakuBlackNormal.src
-				// );
-
 				const geometries = xyxPointsArrays.map((arr) => {
 					const newVertices: number[] = [];
 
 					arr.map((item) => {
 						newVertices.push(item[0], item[1], item[2]);
 					});
-					// const vect3ArrNorm = vect3Arr.map((elem) => {
-					// 	return elem.subVectors(
-					// 		new THREE.Vector3(0, 0, 0),
-					// 		new THREE.Vector3(0, 0, 0)
-					// 	);
 
 					const data = Earcut.triangulate(newVertices, undefined, 3);
 
@@ -787,25 +757,20 @@ export default function CanvasElement({
 
 					geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 3));
 
-					// geometry.toNonIndexed();
 					return geometry;
 				});
-
-				// const texture = useLoader(THREE.TextureLoader, blackCeramic.src);
 
 				const lacherMaterial = new THREE.MeshPhysicalMaterial({
 					color: 0x011235,
 					map: rakuBlackTexture,
 					emissive: 0x011235,
 					emissiveIntensity: 0.75,
-					// iridescence: 1,
-					// normalMap: rakuBlackNormMap,
-					roughness: 0.8, // Adjust for the ceramic's matte or shiny surface
-					metalness: 0.01, // Slight metalness for a hint of shine
-					ior: 1.5, // Index of Refraction, affects how light interacts with the surface
-					transmission: 0.1, // Slight transparency for subtle translucency
-					opacity: 1, // Adjust for overall opacity
-					clearcoat: 0.5, // Clearcoat for a subtle glossy effect
+					roughness: 0.8,
+					metalness: 0.01,
+					ior: 1.5,
+					transmission: 0.1,
+					opacity: 1,
+					clearcoat: 0.5,
 					clearcoatRoughness: 0.3,
 					depthTest: true,
 					depthWrite: true,
