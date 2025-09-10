@@ -1,13 +1,13 @@
-import DateInputComponent from "../DateInputComponent/DateInputComponent";
-import SvgTemplate from "../SvgTemplates/SvgComponents/SvgMagnifierComponent";
-import TextInputTemplate from "../TextInputTemplate/TextInputTemplate";
+// import DateInputComponent from "../DateInputComponent/DateInputComponent";
+// import SvgTemplate from "../SvgTemplates/SvgComponents/SvgMagnifierComponent";
+// import TextInputTemplate from "../TextInputTemplate/TextInputTemplate";
 
 import CanvasElement from "../GlobeComponents/CanvasComponent";
 import styles from "./CanvasContainer.module.css";
 
-import * as THREE from "three";
+// import * as THREE from "three";
 
-import type { ContinentInfo } from "@/app/utilities/types/types";
+// import type { ContinentInfo } from "@/app/utilities/types/types";
 
 export function CanvasContainer({
 	// analyzeCoastLineData,
@@ -15,7 +15,7 @@ export function CanvasContainer({
 	analyzeLandsData,
 	analyzeBoundaryLines,
 	analyzeInternalBound,
-	analyzeRiversData,
+	// analyzeRiversData,
 	analyzeBreakLines
 }: // loadEXR
 {
@@ -24,7 +24,7 @@ export function CanvasContainer({
 	analyzeLandsData: () => Promise<any>;
 	analyzeBoundaryLines: () => Promise<any>;
 	analyzeInternalBound: () => Promise<any>;
-	analyzeRiversData: () => Promise<any>;
+	// analyzeRiversData: () => Promise<any>;
 	analyzeBreakLines: () => Promise<any>;
 	// loadEXR: () => Promise<THREE.TextureJSON>;
 }) {
@@ -40,7 +40,7 @@ export function CanvasContainer({
 				analyzeLandsData={analyzeLandsData}
 				analyzeBoundaryLines={analyzeBoundaryLines}
 				analyzeInternalBound={analyzeInternalBound}
-				analyzeRiversData={analyzeRiversData}
+				// analyzeRiversData={analyzeRiversData}
 				analyzeBreakLines={analyzeBreakLines}
 
 				// loadEXR={loadEXR}

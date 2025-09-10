@@ -1,7 +1,7 @@
-import jsonData from "@/public/coastlines/ne_10m_coastline.json";
+// import jsonData from "@/public/coastlines/ne_10m_coastline.json";
 // import jsonRiversData from "@/public/geoData/riversOpt.json";
-import landData from "@/public/geoData/ne_110m_land.json";
-import testJson from "@/public/geoData/geoDataFromGeo.json";
+// import landData from "@/public/geoData/ne_110m_land.json";
+// import testJson from "@/public/geoData/geoDataFromGeo.json";
 import boundaryJSON from "@/public/geoData/boundaryLines.json";
 import countriesJSON from "@/public/geoData/geoDataCountries.json";
 import breaksDataJSON from "@/public/geoData/earthBreaks.json";
@@ -10,8 +10,8 @@ import coastLinesJSON from "@/public/geoData/coastline50.json";
 // import exrFile from "@/public/textures/"
 
 // libraries
-import * as THREE from "three";
-import { EXRLoader } from "three/addons/loaders/EXRLoader.js";
+// import * as THREE from "three";
+// import { EXRLoader } from "three/addons/loaders/EXRLoader.js";
 
 // import { Earcut } from "three/src/extras/Earcut.js";
 // import { drawThreeGeo } from "@/app/utilities/libraries/threeGeoJSON";
@@ -82,118 +82,118 @@ export async function analyzeInternalBound() {
 	return data;
 }
 
-export async function analyzeCoastLineData() {
-	"use server";
+// export async function analyzeCoastLineData() {
+// 	"use server";
 
-	const data: any = jsonData;
-	console.log("Here");
+// 	const data: any = jsonData;
+// 	console.log("Here");
 
-	// type ContinentInfo = {
-	// 	continent: [number, number][];
-	// };
+// 	// type ContinentInfo = {
+// 	// 	continent: [number, number][];
+// 	// };
 
-	const list: ContinentInfo[] = [];
+// 	const list: ContinentInfo[] = [];
 
-	// const filterData = data["features"].map((elem: any, index: number) => {
-	// 	if (elem["geometry"]["coordinates"].length > 800) {
-	// 		// console.log(elem["geometry"]["coordinates"]);
-	// 		const value: [number, number][] = elem["geometry"]["coordinates"]
-	// 			.filter((couple: [number, number], index: number) => {
-	// 				if (index % 2 === 0) {
-	// 					return false;
-	// 				} else {
-	// 					return true;
-	// 				}
-	// 			})
-	// 			.filter((couple: [number, number], index: number) => {
-	// 				if (index % 2 === 0) {
-	// 					return false;
-	// 				} else {
-	// 					return true;
-	// 				}
-	// 			})
-	// 			.filter((couple: [number, number], index: number) => {
-	// 				if (index % 2 === 0) {
-	// 					return false;
-	// 				} else {
-	// 					return true;
-	// 				}
-	// 			})
-	// 			.filter((couple: [number, number], index: number) => {
-	// 				if (index % 2 === 0) {
-	// 					return false;
-	// 				} else {
-	// 					return true;
-	// 				}
-	// 			});
-	// 		// .filter((couple: [number, number], index: number) => {
-	// 		// 	if (index % 2 === 0) {
-	// 		// 		return false;
-	// 		// 	} else {
-	// 		// 		return true;
-	// 		// 	}
-	// 		// });
-	// 		// forse levare un filter
-	// 		list.push({ continent: value });
-	// 	}
-	// });
+// 	// const filterData = data["features"].map((elem: any, index: number) => {
+// 	// 	if (elem["geometry"]["coordinates"].length > 800) {
+// 	// 		// console.log(elem["geometry"]["coordinates"]);
+// 	// 		const value: [number, number][] = elem["geometry"]["coordinates"]
+// 	// 			.filter((couple: [number, number], index: number) => {
+// 	// 				if (index % 2 === 0) {
+// 	// 					return false;
+// 	// 				} else {
+// 	// 					return true;
+// 	// 				}
+// 	// 			})
+// 	// 			.filter((couple: [number, number], index: number) => {
+// 	// 				if (index % 2 === 0) {
+// 	// 					return false;
+// 	// 				} else {
+// 	// 					return true;
+// 	// 				}
+// 	// 			})
+// 	// 			.filter((couple: [number, number], index: number) => {
+// 	// 				if (index % 2 === 0) {
+// 	// 					return false;
+// 	// 				} else {
+// 	// 					return true;
+// 	// 				}
+// 	// 			})
+// 	// 			.filter((couple: [number, number], index: number) => {
+// 	// 				if (index % 2 === 0) {
+// 	// 					return false;
+// 	// 				} else {
+// 	// 					return true;
+// 	// 				}
+// 	// 			});
+// 	// 		// .filter((couple: [number, number], index: number) => {
+// 	// 		// 	if (index % 2 === 0) {
+// 	// 		// 		return false;
+// 	// 		// 	} else {
+// 	// 		// 		return true;
+// 	// 		// 	}
+// 	// 		// });
+// 	// 		// forse levare un filter
+// 	// 		list.push({ continent: value });
+// 	// 	}
+// 	// });
 
-	const filterData = data["features"].filter((elem: any, index: number) => {
-		if (elem["geometry"]["coordinates"].length > 80) {
-			return true;
+// 	const filterData = data["features"].filter((elem: any, index: number) => {
+// 		if (elem["geometry"]["coordinates"].length > 80) {
+// 			return true;
 
-			// console.log(elem["geometry"]["coordinates"]);
-			// const value: [number, number][] = elem["geometry"]["coordinates"]
-			// 	.filter((couple: [number, number], index: number) => {
-			// 		if (index % 2 === 0) {
-			// 			return false;
-			// 		} else {
-			// 			return true;
-			// 		}
-			// 	})
-			// 	.filter((couple: [number, number], index: number) => {
-			// 		if (index % 2 === 0) {
-			// 			return false;
-			// 		} else {
-			// 			return true;
-			// 		}
-			// 	})
-			// 	.filter((couple: [number, number], index: number) => {
-			// 		if (index % 2 === 0) {
-			// 			return false;
-			// 		} else {
-			// 			return true;
-			// 		}
-			// 	})
-			// 	.filter((couple: [number, number], index: number) => {
-			// 		if (index % 2 === 0) {
-			// 			return false;
-			// 		} else {
-			// 			return true;
-			// 		}
-			// 	});
-			// // .filter((couple: [number, number], index: number) => {
-			// // 	if (index % 2 === 0) {
-			// // 		return false;
-			// // 	} else {
-			// // 		return true;
-			// // 	}
-			// // });
-			// // forse levare un filter
-			// list.push({ continent: value });
-		} else {
-			return false;
-		}
-	});
-	console.log(list.length);
-	// 10 continenti
-	// list
-	// 	.sort((elemA: any, elemB: any) => {
-	// 		return elemA["coordinates"].length - elemB["coordinates"].length;
-	// 	})
-	// 	.map((elem) => console.log(elem["coordinates"]));
-	return filterData;
-}
+// 			// console.log(elem["geometry"]["coordinates"]);
+// 			// const value: [number, number][] = elem["geometry"]["coordinates"]
+// 			// 	.filter((couple: [number, number], index: number) => {
+// 			// 		if (index % 2 === 0) {
+// 			// 			return false;
+// 			// 		} else {
+// 			// 			return true;
+// 			// 		}
+// 			// 	})
+// 			// 	.filter((couple: [number, number], index: number) => {
+// 			// 		if (index % 2 === 0) {
+// 			// 			return false;
+// 			// 		} else {
+// 			// 			return true;
+// 			// 		}
+// 			// 	})
+// 			// 	.filter((couple: [number, number], index: number) => {
+// 			// 		if (index % 2 === 0) {
+// 			// 			return false;
+// 			// 		} else {
+// 			// 			return true;
+// 			// 		}
+// 			// 	})
+// 			// 	.filter((couple: [number, number], index: number) => {
+// 			// 		if (index % 2 === 0) {
+// 			// 			return false;
+// 			// 		} else {
+// 			// 			return true;
+// 			// 		}
+// 			// 	});
+// 			// // .filter((couple: [number, number], index: number) => {
+// 			// // 	if (index % 2 === 0) {
+// 			// // 		return false;
+// 			// // 	} else {
+// 			// // 		return true;
+// 			// // 	}
+// 			// // });
+// 			// // forse levare un filter
+// 			// list.push({ continent: value });
+// 		} else {
+// 			return false;
+// 		}
+// 	});
+// 	console.log(list.length);
+// 	// 10 continenti
+// 	// list
+// 	// 	.sort((elemA: any, elemB: any) => {
+// 	// 		return elemA["coordinates"].length - elemB["coordinates"].length;
+// 	// 	})
+// 	// 	.map((elem) => console.log(elem["coordinates"]));
+// 	return filterData;
+// }
 
 export async function analyzeLandData() {
 	"use server";

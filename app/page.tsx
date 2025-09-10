@@ -8,13 +8,13 @@ import { MainPrimary } from "./components/MainPrimary/MainPrimary";
 
 import {
 	analyzeLandsData,
-	analyzeRiversData,
+	// analyzeRiversData,
 	analyzeInternalBound,
 	analyzeBoundaryLines,
 	analyzeBreakLines
 	// loadEXR
 } from "./ServerActions/ServerActions";
-import coastLineData from "@/public/coastlines/ne_10m_coastline.json";
+// import coastLineData from "@/public/coastlines/ne_10m_coastline.json";
 
 export default function Home() {
 	// analyzeCoastLineData(coastLineData);
@@ -27,7 +27,7 @@ export default function Home() {
 				analyzeLandsData={analyzeLandsData}
 				analyzeBoundaryLines={analyzeBoundaryLines}
 				analyzeInternalBound={analyzeInternalBound}
-				analyzeRiversData={analyzeRiversData}
+				// analyzeRiversData={analyzeRiversData}
 				analyzeBreakLines={analyzeBreakLines}
 				// loadEXR={loadEXR}
 			/>
