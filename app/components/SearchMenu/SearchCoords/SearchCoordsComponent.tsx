@@ -74,7 +74,7 @@ export default function SearchCoordsComponent(
 				<TextInputTemplate
 					fieldName="coords"
 					labels={["lat", "lon"]}
-					formData={props.formData}
+					// formData={props.formData}
 					handleChange={(event: ChangeEvent<HTMLInputElement>) => {
 						return props.handleChange(event);
 					}}

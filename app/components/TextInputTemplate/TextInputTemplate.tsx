@@ -32,17 +32,13 @@ import CoordsInputComponent from "../CoordsInputComponent/CoordsInputComponent";
 export default function TextInputTemplate({
 	fieldName,
 	labels,
-	formData,
 	handleChange,
-	handleSubmit,
 	animationComp,
 	setAnimationComp
 }: {
 	fieldName: string;
 	labels: string[]; //lat lon | name
-	formData: FormData;
 	handleChange: any;
-	handleSubmit: any;
 	animationComp: AnimationMapping;
 	setAnimationComp: Dispatch<SetStateAction<AnimationMapping>>; // riattivare
 }) {

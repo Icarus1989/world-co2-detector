@@ -7,10 +7,12 @@ import SearchContainer from "./components/SearchContainer/SearchContainer";
 import { MainPrimary } from "./components/MainPrimary/MainPrimary";
 
 import {
-	analyzeCoastLineData,
-	analyzeLandData,
 	analyzeLandsData,
-	analyzeRiversData
+	analyzeRiversData,
+	analyzeInternalBound,
+	analyzeBoundaryLines,
+	analyzeBreakLines
+	// loadEXR
 } from "./ServerActions/ServerActions";
 import coastLineData from "@/public/coastlines/ne_10m_coastline.json";
 
@@ -20,10 +22,14 @@ export default function Home() {
 		<MainPrimary>
 			<Navbar />
 			<CanvasContainer
-				analyzeCoastLineData={analyzeCoastLineData}
-				analyzeCoastLandData={analyzeLandData}
+				// analyzeCoastLineData={analyzeCoastLineData}
+				// analyzeCoastLandData={analyzeLandData}
 				analyzeLandsData={analyzeLandsData}
+				analyzeBoundaryLines={analyzeBoundaryLines}
+				analyzeInternalBound={analyzeInternalBound}
 				analyzeRiversData={analyzeRiversData}
+				analyzeBreakLines={analyzeBreakLines}
+				// loadEXR={loadEXR}
 			/>
 			{/* <SearchMenu /> */}
 			<SearchContainer />

@@ -2,12 +2,19 @@ import jsonData from "@/public/coastlines/ne_10m_coastline.json";
 import jsonRiversData from "@/public/geoData/riversOpt.json";
 import landData from "@/public/geoData/ne_110m_land.json";
 import testJson from "@/public/geoData/geoDataFromGeo.json";
+import boundaryJSON from "@/public/geoData/boundaryLines.json";
 import countriesJSON from "@/public/geoData/geoDataCountries.json";
+import breaksDataJSON from "@/public/geoData/earthBreaks.json";
+
+import coastLinesJSON from "@/public/geoData/coastline50.json";
+// import exrFile from "@/public/textures/"
 
 // libraries
 import * as THREE from "three";
-import { Earcut } from "three/src/extras/Earcut.js";
-import { drawThreeGeo } from "@/app/utilities/libraries/threeGeoJSON";
+import { EXRLoader } from "three/addons/loaders/EXRLoader.js";
+
+// import { Earcut } from "three/src/extras/Earcut.js";
+// import { drawThreeGeo } from "@/app/utilities/libraries/threeGeoJSON";
 // libraries
 
 // types
@@ -15,6 +22,7 @@ import { LandFeature } from "../utilities/types/types";
 // types
 
 import type { ContinentInfo } from "../utilities/types/types";
+import { features } from "process";
 
 async function getOpenAQData() {
 	const apiKey = process.env.OPENAQ_API_KEY;
@@ -42,6 +50,36 @@ async function getLuchtmeetnetData() {
 	// 	.catch(function (error) {
 	// 		console.log(error);
 	// 	});
+}
+
+export async function analyzeBreakLines() {
+	"use server";
+
+	const data = breaksDataJSON;
+
+	return data;
+}
+
+export async function analyzeBoundaryLines() {
+	"use server";
+
+	const data = coastLinesJSON;
+
+	const filteredData = data["features"].filter((elem: any) => {
+		if (elem["geometry"]["coordinates"].length > 50) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+	return { type: "FeatureCollection", features: filteredData };
+}
+
+export async function analyzeInternalBound() {
+	"use server";
+
+	const data = boundaryJSON;
+	return data;
 }
 
 export async function analyzeCoastLineData() {
@@ -365,3 +403,28 @@ export async function analyzeLandsData() {
 	// });
 	//
 }
+
+// export async function loadEXR(): Promise<THREE.TextureJSON> {
+// 	"use server";
+// 	// const data = await fetch("@/public/textures/NightSky.exr");
+// 	// console.log(data);
+// 	console.log("start exrloader");
+// 	let data;
+// 	const dataTexture: THREE.DataTexture = await new EXRLoader().loadAsync(
+// 		"@/public/textures/NightSky2K.exr",
+// 		(texture) => {
+// 			console.log(texture);
+// 			// console.log(texData);
+// 			if (texture) {
+// 				return texture;
+// 			}
+// 		}
+// 		// (event) => {
+// 		// 	// onProgress
+// 		// 	console.log(event);
+// 		// }
+// 	);
+// 	return dataTexture.toJSON();
+// }
+
+// Inserire i try...catch dove mancanti

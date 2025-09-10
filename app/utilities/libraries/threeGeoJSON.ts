@@ -327,7 +327,7 @@ export function drawThreeGeo(
 		options: any,
 		index: number
 	) {
-		const line_geom = new THREE.BufferGeometry();
+		// const line_geom = new THREE.BufferGeometry();
 		const arr = createVertexForEachPoint(
 			// line_geom,
 			x_values,
