@@ -1,0 +1,1068 @@
+.backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+
+	display: grid;
+	place-items: center;
+
+	width: 100dvw;
+	height: 100dvh;
+
+	overflow: hidden;
+	padding: 18px;
+
+	background: radial-gradient(
+			circle at 50% 0%,
+			rgba(58, 93, 180, 0.2),
+			transparent 42%
+		),
+		linear-gradient(180deg, rgba(2, 3, 41, 0.2), rgba(2, 3, 20, 0.82));
+	/* backdrop-filter: blur(7px); */
+}
+
+/* .modal {
+	position: relative;
+	z-index: 3;
+
+	display: flex;
+	flex-direction: column;
+
+	width: min(94dvw, 760px);
+	height: auto;
+	max-height: 88dvh;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 22px;
+
+	color: white;
+	background: linear-gradient(
+		180deg,
+		rgba(11, 20, 62, 0.94),
+		rgba(3, 7, 31, 0.96)
+	);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 32px;
+	box-shadow: 0 28px 90px rgba(0, 0, 0, 0.52);
+} */
+
+.modal {
+	position: relative;
+	z-index: 3;
+
+	display: flex;
+	flex-direction: column;
+
+	width: min(94dvw, 760px);
+	/* height: auto;
+	max-height: 88dvh; */
+
+	height: min(88dvh, 840px);
+	max-height: 88dvh;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 22px;
+
+	color: white;
+	background: linear-gradient(
+		180deg,
+		rgba(11, 20, 62, 0.62),
+		rgba(3, 7, 31, 0.72)
+	);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 32px;
+	box-shadow: 0 28px 90px rgba(0, 0, 0, 0.52);
+	/* backdrop-filter: blur(4px); */
+	isolation: isolate;
+}
+
+/* .backdrop {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 90%;
+	inset: 0;
+	z-index: 0;
+	display: grid;
+	place-items: center center;
+	padding: 18px;
+	background: radial-gradient(
+			circle at 50% 0%,
+			rgb(58 93 180 / 20%),
+			transparent 42%
+		),
+		linear-gradient(180deg, rgb(2 3 41 / 20%), rgb(2 3 20 / 82%));
+	backdrop-filter: blur(7px);
+}
+
+.modal {
+	width: min(94vw, 760px);
+	height: 100%;
+
+	overflow: auto;
+	border: 1px solid rgb(255 255 255 / 14%);
+	border-radius: 32px;
+	padding: 22px;
+	color: white;
+	box-shadow: 0 28px 90px rgb(0 0 0 / 52%);
+	position: relative;
+	z-index: 3;
+} */
+
+/* <-- lavorare qui per rifinitura  */
+
+.header,
+.tabs,
+.mainCard,
+.infoGrid,
+.tabPanel,
+.note,
+.errorNote {
+	position: relative;
+	z-index: 2;
+}
+
+.header {
+	position: relative;
+	z-index: 10;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 18px;
+
+	width: 100%;
+	height: auto;
+
+	margin: 0 0 18px 0;
+}
+
+.headerTitle {
+	width: 100%;
+	height: auto;
+
+	margin: 0;
+
+	font-size: clamp(1.45rem, 5dvw, 2.4rem);
+	line-height: 1;
+}
+
+.eyebrow {
+	width: 100%;
+	height: auto;
+
+	margin: 0 0 8px 0;
+
+	color: rgba(130, 200, 255, 1);
+	font-size: 0.74rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.closeBtn {
+	display: grid;
+	place-items: center;
+
+	width: auto;
+	height: auto;
+
+	padding: 9px 13px;
+
+	color: white;
+	background: rgba(255, 255, 255, 0.12);
+	border: 0 solid transparent;
+	border-radius: 999px;
+
+	font-weight: 700;
+
+	cursor: pointer;
+}
+
+.tabs {
+	position: relative;
+	z-index: 2;
+
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 6px;
+
+	width: 100%;
+	height: auto;
+	min-height: 58px;
+
+	overflow: visible;
+	padding: 6px;
+	margin: 0 0 16px 0;
+
+	background: rgba(10, 14, 26, 0.72);
+	border-radius: 999px;
+	backdrop-filter: blur(16px);
+}
+
+.tab,
+.activeTab {
+	-webkit-appearance: none;
+	appearance: none;
+
+	display: grid;
+	place-items: center;
+
+	width: 100%;
+	height: 46px;
+	min-width: 0;
+
+	overflow: hidden;
+	padding: 0 12px;
+
+	border: 0 solid transparent;
+	border-radius: 999px;
+	outline: none;
+
+	font-size: 0.94rem;
+	font-weight: 800;
+	line-height: 1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	cursor: pointer;
+}
+
+.tab {
+	color: white;
+	background: transparent;
+}
+
+.activeTab {
+	color: rgba(4, 8, 30, 1);
+	background: linear-gradient(
+		135deg,
+		rgba(79, 140, 255, 1),
+		rgba(125, 249, 255, 1)
+	);
+}
+
+.tab:focus-visible,
+.activeTab:focus-visible {
+	box-shadow: inset 0 0 0 2px rgba(4, 8, 30, 0.82),
+		0 0 0 2px rgba(125, 249, 255, 0.42);
+}
+
+.mainCard {
+	position: relative;
+	z-index: 5;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 18px;
+
+	width: 100%;
+	height: auto;
+
+	padding: 22px;
+
+	/* background: radial-gradient(
+			circle at 18% 20%,
+			rgba(125, 249, 255, 0.24),
+			transparent 34%
+		),
+		linear-gradient(135deg, rgba(50, 95, 190, 0.72), rgba(93, 64, 180, 0.42)); */
+	background: radial-gradient(
+			circle at 18% 20%,
+			rgba(125, 249, 255, 0.28),
+			transparent 34%
+		),
+		linear-gradient(135deg, rgba(54, 110, 205, 0.82), rgba(65, 51, 148, 0.78));
+	backdrop-filter: blur(16px);
+	border: 1px solid rgba(125, 249, 255, 0.22);
+	border-radius: 26px;
+	margin-top: 12px;
+}
+
+.metricLabel {
+	display: block;
+
+	width: 100%;
+	height: auto;
+
+	color: rgba(230, 240, 255, 0.78);
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+
+.metricValue {
+	display: inline-block;
+
+	width: auto;
+	height: auto;
+
+	margin: 6px 4px 2px 4px;
+
+	color: white;
+	font-size: clamp(3rem, 13dvw, 5.6rem);
+	font-weight: 800;
+	line-height: 1;
+	/* letter-spacing: -0.06em; */
+}
+
+.metricUnit {
+	/* display: block; */
+	display: flex;
+	/* align-self: end; */
+	justify-content: flex-end;
+
+	width: 90%;
+	/* width: 100%; */
+	height: auto;
+
+	color: rgba(230, 240, 255, 0.78);
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.statusBadge {
+	align-self: flex-start;
+
+	width: auto;
+	height: auto;
+
+	padding: 8px 12px;
+
+	color: rgba(220, 235, 255, 1);
+	background: rgba(0, 0, 0, 0.22);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+
+	font-size: 0.8rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	white-space: nowrap;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* .infoGrid {
+	position: relative;
+	z-index: 5;
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+} */
+.infoGrid {
+	position: relative;
+	z-index: 5;
+
+	display: grid;
+	grid-template-columns: 0.9fr 1.2fr 1.1fr;
+	gap: 12px;
+
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+}
+
+.infoCard {
+	position: relative;
+	z-index: 5;
+
+	display: grid;
+	gap: 7px;
+
+	width: 100%;
+	min-height: 88px;
+
+	padding: 15px;
+
+	/* background: rgba(255, 255, 255, 0.07); */
+
+	/* background: rgba(8, 14, 32, 0.68); */
+	/* backdrop-filter: blur(14px); */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+}
+
+.infoCard,
+.tabPanel,
+.container {
+	/* background: rgba(8, 14, 32, 0.72); */
+	background: #ffffff0f;
+	/* backdrop-filter: blur(16px); */
+}
+
+.infoCardTitle {
+	width: 100%;
+	height: auto;
+
+	color: rgba(220, 230, 255, 0.88);
+	font-size: 0.78rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.infoCardText {
+	width: 100%;
+	height: auto;
+
+	color: white;
+	font-size: 0.95rem;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.compactCard {
+	min-height: 72px;
+
+	padding: 14px 15px;
+}
+
+.particlesCard {
+	min-height: 92px;
+}
+
+.sourceOverviewCard {
+	min-height: 92px;
+}
+
+.inlineMetrics {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+
+	width: 100%;
+	height: auto;
+}
+
+.miniMetric {
+	display: grid;
+	gap: 4px;
+
+	width: 100%;
+	height: auto;
+
+	padding: 10px 12px;
+
+	background: #080e20b8;
+	/* background: rgba(255, 255, 255, 0.06); */
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+}
+
+.miniMetricLabel {
+	width: 100%;
+	height: auto;
+
+	color: rgba(220, 230, 255, 0.62);
+	font-size: 0.74rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.miniMetricText {
+	width: 100%;
+	height: auto;
+
+	color: white;
+	font-size: 0.95rem;
+	font-weight: 900;
+	line-height: 1.15;
+}
+
+.sourceRows {
+	display: grid;
+	gap: 8px;
+
+	width: 100%;
+	height: auto;
+}
+
+.sourceRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+
+	width: 100%;
+	height: auto;
+
+	padding: 8px 10px;
+
+	/* background: rgba(255, 255, 255, 0.05); */
+	background: #080e20b8;
+
+	border-radius: 14px;
+}
+
+.sourceLabel {
+	color: rgba(220, 230, 255, 0.62);
+	font-size: 0.76rem;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.sourceValue {
+	color: white;
+	font-size: 0.9rem;
+	font-weight: 900;
+	text-align: right;
+}
+
+.tabPanel {
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+	padding: 18px;
+
+	/* background: rgba(255, 255, 255, 0.06); */
+	/* background: rgba(8, 14, 32, 0.68); */
+	/* backdrop-filter: blur(14px); */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+}
+
+.tabTitle {
+	width: 100%;
+	height: auto;
+
+	margin: 0 0 8px 0;
+
+	color: white;
+	font-size: 1.12rem;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+.tabPanel p {
+	width: 100%;
+	height: auto;
+
+	/* margin: 0; */
+
+	color: rgba(230, 240, 255, 0.7);
+	line-height: 1.5;
+}
+
+.note {
+	width: 100%;
+	height: auto;
+
+	margin: 14px 2px 0 2px;
+
+	color: rgba(230, 240, 255, 0.58);
+	font-size: 0.86rem;
+	line-height: 1.45;
+}
+
+.errorNote {
+	width: 100%;
+	height: auto;
+
+	margin: 14px 2px 14px 2px;
+
+	color: rgba(255, 140, 140, 1);
+	font-size: 0.9rem;
+	line-height: 1.45;
+}
+
+.pollutantGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+}
+
+.pollutantCard {
+	display: grid;
+	gap: 8px;
+
+	width: 100%;
+	height: auto;
+
+	padding: 15px;
+
+	/* background: rgba(255, 255, 255, 0.07); */
+	backdrop-filter: blur(16px);
+	background: #080e20b8;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+}
+
+.pollutantCardText {
+	width: 100%;
+	height: auto;
+
+	color: rgba(125, 249, 255, 1);
+	font-size: 0.78rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.topValue {
+	width: 100%;
+	height: auto;
+
+	margin: 0;
+
+	color: white;
+	font-size: 1.15rem;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+.bottomValue {
+	width: 100%;
+	height: auto;
+
+	margin: 0;
+
+	color: rgba(230, 240, 255, 0.62);
+	font-size: 0.86rem;
+	line-height: 1.4;
+}
+
+.sourceList {
+	display: grid;
+	gap: 12px;
+
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+}
+
+.sourceDescription {
+	width: 100%;
+	height: auto;
+
+	padding: 15px;
+
+	/* background: rgba(255, 255, 255, 0.06); */
+	backdrop-filter: blur(16px);
+	background: #080e20b8;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+	/* margin-bottom: 1%; */
+}
+
+.sourceTitle {
+	display: block;
+
+	width: 100%;
+	height: auto;
+
+	margin: 0 0 6px 0;
+
+	color: white;
+	font-weight: 800;
+}
+
+.sourceText {
+	width: 100%;
+	height: auto;
+
+	margin: 0;
+
+	color: rgba(230, 240, 255, 0.68);
+	line-height: 1.45;
+}
+
+.chartSection {
+	width: 100%;
+	height: auto;
+
+	margin: 14px 0 0 0;
+	padding: 16px;
+
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+}
+
+.sectionTitle {
+	width: 100%;
+	height: auto;
+
+	margin: 0 0 14px 0;
+}
+
+.chart {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	align-items: flex-end;
+	gap: 10px;
+
+	width: 100%;
+	min-height: 170px;
+}
+
+.chartItem {
+	display: grid;
+	grid-template-rows: 120px auto auto;
+	gap: 7px;
+
+	width: 100%;
+	height: auto;
+
+	text-align: center;
+}
+
+.barTrack {
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+
+	width: 100%;
+	height: 100%;
+
+	overflow: hidden;
+
+	background: rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+}
+
+.bar {
+	width: 100%;
+	height: auto;
+
+	background: linear-gradient(
+		180deg,
+		rgba(125, 249, 255, 1),
+		rgba(95, 140, 255, 1)
+	);
+	border-radius: 999px;
+	box-shadow: 0 0 22px rgba(125, 249, 255, 0.26);
+}
+
+.dateLabel {
+	width: 100%;
+	height: auto;
+
+	color: rgba(230, 240, 255, 0.72);
+	font-size: 0.76rem;
+	font-weight: 700;
+}
+
+.valueLabel {
+	width: 100%;
+	height: auto;
+
+	margin: 0;
+
+	color: white;
+	font-size: 0.78rem;
+	font-weight: 800;
+}
+
+.tabContent {
+	position: relative;
+	z-index: 2;
+
+	display: block;
+
+	width: 100%;
+	min-height: 560px;
+
+	overflow: visible;
+}
+
+/* Mobile portrait */
+@media only screen and (max-width: 640px) and (orientation: portrait) {
+	.backdrop {
+		place-items: end center;
+
+		padding: 10px;
+	}
+
+	.modal {
+		width: 100%;
+		max-height: 88dvh;
+
+		padding: 18px;
+
+		border-radius: 28px;
+	}
+
+	.header {
+		gap: 14px;
+
+		margin: 0 0 14px 0;
+	}
+
+	.headerTitle {
+		font-size: 1.55rem;
+		line-height: 1.05;
+	}
+
+	.eyebrow {
+		font-size: 0.66rem;
+	}
+
+	.closeBtn {
+		padding: 8px 11px;
+
+		font-size: 0.82rem;
+	}
+
+	.tabs {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 5px;
+
+		min-height: 52px;
+
+		overflow: visible;
+		padding: 5px;
+		margin: 0 0 14px 0;
+
+		border-radius: 24px;
+	}
+
+	.tab,
+	.activeTab {
+		height: 40px;
+
+		padding: 0 7px;
+
+		font-size: 0.76rem;
+	}
+
+	.mainCard {
+		flex-direction: column;
+		gap: 12px;
+
+		padding: 18px;
+	}
+
+	.metricValue {
+		font-size: 3.6rem;
+	}
+
+	.statusBadge {
+		align-self: flex-start;
+
+		font-size: 0.74rem;
+	}
+
+	/* .infoGrid {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	} */
+	.infoGrid {
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+
+	.inlineMetrics {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.compactCard,
+	.particlesCard,
+	.sourceOverviewCard {
+		min-height: auto;
+	}
+
+	.pollutantGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.tabPanel {
+		padding: 15px;
+	}
+
+	.chart {
+		grid-template-columns: repeat(6, minmax(34px, 1fr));
+		gap: 7px;
+
+		overflow-x: auto;
+	}
+
+	.chartItem {
+		grid-template-rows: 100px auto auto;
+	}
+
+	.tabContent {
+		min-height: 560px;
+	}
+}
+
+/* Small landscape */
+@media only screen and (min-height: 280px) and (max-height: 480px) and (orientation: landscape) {
+	.backdrop {
+		padding: 10px;
+	}
+
+	.modal {
+		width: min(94dvw, 920px);
+		max-height: 92dvh;
+
+		padding: 16px;
+
+		border-radius: 24px;
+	}
+
+	.header {
+		margin: 0 0 10px 0;
+	}
+
+	.headerTitle {
+		font-size: 5dvh;
+	}
+
+	.eyebrow {
+		margin: 0 0 4px 0;
+
+		font-size: 2.2dvh;
+	}
+
+	.closeBtn {
+		padding: 7px 11px;
+
+		font-size: 2.6dvh;
+	}
+
+	.tabs {
+		min-height: 48px;
+
+		overflow: visible;
+		padding: 5px;
+		margin: 0 0 10px 0;
+	}
+
+	.tab,
+	.activeTab {
+		height: 38px;
+
+		padding: 0 10px;
+
+		font-size: 2.5dvh;
+	}
+
+	.mainCard {
+		padding: 14px;
+	}
+
+	.metricValue {
+		font-size: 10dvh;
+	}
+
+	.infoGrid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 8px;
+	}
+
+	.infoCard {
+		min-height: 72px;
+
+		padding: 10px;
+	}
+
+	.infoCardTitle {
+		font-size: 2.1dvh;
+	}
+
+	.infoCardText {
+		font-size: 2.5dvh;
+	}
+
+	.pollutantGrid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+	}
+
+	.tabPanel {
+		padding: 12px;
+	}
+
+	.tabContent {
+		min-height: 330px;
+	}
+}
+
+/* Tablet / small desktop landscape */
+@media only screen and (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+	.modal {
+		width: min(90dvw, 860px);
+		max-height: 88dvh;
+
+		padding: 24px;
+	}
+
+	.headerTitle {
+		font-size: 2.2rem;
+	}
+
+	.metricValue {
+		font-size: 5rem;
+	}
+
+	.infoGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.pollutantGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Desktop */
+@media only screen and (min-width: 1200px) and (min-height: 481px) {
+	.modal {
+		width: min(82dvw, 900px);
+		max-height: 86dvh;
+
+		padding: 28px;
+	}
+
+	.headerTitle {
+		font-size: 2.4rem;
+	}
+
+	.metricValue {
+		font-size: 5.6rem;
+	}
+
+	.infoGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.pollutantGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.tabPanel {
+		padding: 22px;
+	}
+
+	.tabContent {
+		min-height: 590px;
+	}
+
+	.tabs {
+		min-height: 60px;
+	}
+
+	.tab,
+	.activeTab {
+		height: 48px;
+
+		font-size: 1rem;
+	}
+}

@@ -1,5 +1,8 @@
 "use client";
 
+// PROBABILMENTE DA ELIMINARE
+// effettuare check
+
 import * as THREE from "three";
 import { Canvas, useFrame, ThreeElements, useLoader } from "@react-three/fiber";
 

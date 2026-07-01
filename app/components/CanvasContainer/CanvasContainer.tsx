@@ -2,6 +2,7 @@
 // import SvgTemplate from "../SvgTemplates/SvgComponents/SvgMagnifierComponent";
 // import TextInputTemplate from "../TextInputTemplate/TextInputTemplate";
 
+import { CanvasContainerProps } from "@/app/utilities/types/types";
 import CanvasElement from "../GlobeComponents/CanvasComponent";
 import styles from "./CanvasContainer.module.css";
 
@@ -9,31 +10,51 @@ import styles from "./CanvasContainer.module.css";
 
 // import type { ContinentInfo } from "@/app/utilities/types/types";
 
+// export function CanvasContainer({
+// 	analyzeLandsData,
+// 	analyzeBoundaryLines,
+// 	analyzeInternalBound,
+// 	analyzeBreakLines
+// }: // loadEXR
+// {
+// 	analyzeLandsData: () => Promise<any>;
+// 	analyzeBoundaryLines: () => Promise<any>;
+// 	analyzeInternalBound: () => Promise<any>;
+// 	analyzeBreakLines: () => Promise<any>;
+// }) {
+// 	return (
+// 		<div className={styles["container"]}>
+// 			{/* <SvgTemplate svgWidth={500} svgHeight={100} /> */}
+// 			{/* <TextInputTemplate fieldName="name" labels={["name"]} />
+// 			<TextInputTemplate fieldName="coords" labels={["lat", "lon"]} />
+// 			<DateInputComponent /> */}
+// 			<CanvasElement
+// 				analyzeLandsData={analyzeLandsData}
+// 				analyzeBoundaryLines={analyzeBoundaryLines}
+// 				analyzeInternalBound={analyzeInternalBound}
+// 				analyzeBreakLines={analyzeBreakLines}
+
+// 				// loadEXR={loadEXR}
+// 			/>
+// 		</div>
+// 	);123456789=
+// }
+
 export function CanvasContainer({
 	analyzeLandsData,
 	analyzeBoundaryLines,
 	analyzeInternalBound,
-	analyzeBreakLines
-}: // loadEXR
-{
-	analyzeLandsData: () => Promise<any>;
-	analyzeBoundaryLines: () => Promise<any>;
-	analyzeInternalBound: () => Promise<any>;
-	analyzeBreakLines: () => Promise<any>;
-}) {
+	analyzeBreakLines,
+	globeTarget
+}: CanvasContainerProps) {
 	return (
 		<div className={styles["container"]}>
-			{/* <SvgTemplate svgWidth={500} svgHeight={100} /> */}
-			{/* <TextInputTemplate fieldName="name" labels={["name"]} />
-			<TextInputTemplate fieldName="coords" labels={["lat", "lon"]} />
-			<DateInputComponent /> */}
 			<CanvasElement
 				analyzeLandsData={analyzeLandsData}
 				analyzeBoundaryLines={analyzeBoundaryLines}
 				analyzeInternalBound={analyzeInternalBound}
 				analyzeBreakLines={analyzeBreakLines}
-
-				// loadEXR={loadEXR}
+				globeTarget={globeTarget}
 			/>
 		</div>
 	);

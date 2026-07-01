@@ -3,6 +3,7 @@
 	height: 100dvh;
 	/* background: linear-gradient(#1b2079c4 30%, #020329f7 70%); */
 	/* background: linear-gradient(#1d0e49 40%, #030422f7 70%); */
-	background: linear-gradient(#030422f7 40%, #150b34 65%, #1b2079eb 98%);
+	/* background: linear-gradient(#030422f7 40%, #150b34 65%, #1b2079eb 98%); */
+	background: linear-gradient(#030422f7 23%, #150b34 74%, #1b2079eb 98%);
 	overflow: hidden;
 }
