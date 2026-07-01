@@ -1,7 +1,7 @@
-import { Navbar } from "./components/Navbar/Navbar";
-import { CanvasContainer } from "./components/CanvasContainer/CanvasContainer";
-import SearchContainer from "./components/SearchContainer/SearchContainer";
-import { MainPrimary } from "./components/MainPrimary/MainPrimary";
+// import { Navbar } from "./components/Navbar/Navbar";
+// import { CanvasContainer } from "./components/CanvasContainer/CanvasContainer";
+// import SearchContainer from "./components/SearchContainer/SearchContainer";
+// import { MainPrimary } from "./components/MainPrimary/MainPrimary";
 
 import { geocodePlaceAction } from "./ServerActions/mbxGeocodingActions";
 import {
