@@ -350,7 +350,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px) and (min-height: 481px) {
+/* @media only screen and (min-width: 1200px) and (min-height: 481px) {
 	.panel {
 		bottom: 32px;
 		width: min(46dvw, 560px);
@@ -374,6 +374,77 @@
 	.submitBtn {
 		padding: 15px 18px;
 	}
+} */
+
+@media only screen and (min-width: 1200px) and (min-height: 481px) {
+	.panel {
+		bottom: 44px;
+		width: min(42dvw, 660px);
+		max-height: 82dvh;
+		padding: 28px;
+		border-radius: 30px;
+	}
+
+	.header {
+		margin: 0 0 22px 0;
+	}
+
+	.headerTitle {
+		font-size: 2.15rem;
+	}
+
+	.eyebrow {
+		font-size: 0.82rem;
+	}
+
+	.closeBtn {
+		padding: 9px 14px;
+		font-size: 0.95rem;
+	}
+
+	.tabs {
+		gap: 10px;
+		padding: 5px;
+		margin: 0 0 22px 0;
+	}
+
+	.tab,
+	.activeTab {
+		padding: 13px 16px;
+
+		font-size: 1rem;
+	}
+
+	.fields {
+		gap: 16px;
+	}
+
+	.field span {
+		font-size: 0.9rem;
+	}
+
+	.field input,
+	.field select {
+		padding: 14px 16px;
+
+		font-size: 1.05rem;
+	}
+
+	.submitBtn {
+		margin: 22px 0 0 0;
+		padding: 16px 18px;
+		font-size: 1.05rem;
+	}
 }
 
-/* pulito manca ultimo check */
+@media only screen and (min-width: 1600px) and (min-height: 850px) {
+	.panel {
+		bottom: 56px;
+		width: min(36dvw, 700px);
+		padding: 30px;
+	}
+
+	.headerTitle {
+		font-size: 2.25rem;
+	}
+}

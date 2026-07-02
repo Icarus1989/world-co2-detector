@@ -258,6 +258,29 @@
 }
 
 .contactBox {
+	display: grid;
+	grid-template-columns: 1fr 38px;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+	height: auto;
+	padding: 18px 16px;
+	color: white;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.08),
+		rgba(255, 255, 255, 0.03)
+	);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+	box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.22),
+		0 10px 28px rgba(0, 0, 0, 0.18);
+	text-decoration: none;
+	transition: transform 0.18s ease, border-color 0.18s ease,
+		box-shadow 0.18s ease;
+}
+
+/* .contactBox {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -278,7 +301,7 @@
 	text-decoration: none;
 	margin-top: 2%;
 	margin-bottom: 2%;
-}
+} */
 
 .contactBox:hover {
 	transform: translateY(-1px);
@@ -287,11 +310,22 @@
 		0 0 24px rgba(125, 249, 255, 0.14), 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
-.contactBox strong {
+/* .contactBox strong {
 	color: white;
 	font-size: 0.95rem;
 	font-weight: 900;
 	margin-left: 5%;
+} */
+
+.contactBox strong {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	color: white;
+	font-size: 0.95rem;
+	font-weight: 900;
+	text-align: left;
 }
 
 .contactBox span {
@@ -299,7 +333,7 @@
 	font-size: 0.86rem;
 }
 
-.contactIcon {
+/* .contactIcon {
 	display: grid;
 	place-items: center;
 	flex: 0 0 auto;
@@ -318,6 +352,25 @@
 	box-shadow: 0 0 18px rgba(125, 249, 255, 0.12),
 		inset 0 0 12px rgba(255, 255, 255, 0.06);
 	margin-right: 50%;
+} */
+
+.contactIcon {
+	display: grid;
+	place-items: center;
+	width: 38px;
+	height: 38px;
+	margin: 0;
+	color: rgba(125, 249, 255, 1);
+	background: radial-gradient(
+		circle at 35% 25%,
+		rgba(255, 255, 255, 0.32),
+		rgba(125, 249, 255, 0.12) 36%,
+		rgba(79, 140, 255, 0.08) 100%
+	);
+	border: 1px solid rgba(125, 249, 255, 0.24);
+	border-radius: 999px;
+	box-shadow: 0 0 18px rgba(125, 249, 255, 0.12),
+		inset 0 0 12px rgba(255, 255, 255, 0.06);
 }
 
 .contactIcon svg {
@@ -370,6 +423,54 @@
 	.contactGrid {
 		grid-template-columns: 1fr;
 	}
+
+	.contactBox {
+		grid-template-columns: 1fr 36px;
+		padding: 16px;
+	}
+
+	.contactIcon {
+		width: 36px;
+		height: 36px;
+	}
+}
+
+@media only screen and (max-width: 390px) and (orientation: portrait) {
+	.settingsPanel {
+		height: 43dvh;
+
+		padding: 22px 0 24px 18px;
+	}
+
+	.settingsCard {
+		height: 9.2dvh;
+	}
+
+	.settingsActions {
+		gap: 13px;
+	}
+
+	.panelTitle {
+		font-size: 1.32rem;
+	}
+
+	.settingsCard span {
+		font-size: 1.02rem;
+	}
+
+	.settingsCard small {
+		font-size: 0.74rem;
+	}
+}
+
+@media only screen and (max-width: 380px) and (max-height: 740px) and (orientation: portrait) {
+	.settingsPanel {
+		height: 46dvh;
+	}
+
+	.settingsCard {
+		height: 9.6dvh;
+	}
 }
 
 @media only screen and (min-height: 280px) and (max-height: 480px) and (orientation: landscape) {
@@ -411,7 +512,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px) and (min-height: 481px) {
+/* @media only screen and (min-width: 1200px) and (min-height: 481px) {
 	.settingsBtn {
 		width: 54px;
 		height: 54px;
@@ -430,6 +531,50 @@
 	.settingsCard {
 		height: 80px;
 	}
+} */
+
+@media only screen and (min-width: 1200px) and (min-height: 481px) {
+	.settingsBtn {
+		top: 28px;
+		right: 28px;
+		width: 62px;
+		height: 62px;
+	}
+
+	.settingsBtn > svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	.settingsPanel {
+		width: min(30dvw, 460px);
+		height: min(40dvh, 380px);
+	}
+
+	.settingsCard {
+		height: 84px;
+	}
 }
 
-/* pulito manca ultimo check */
+@media only screen and (min-width: 1600px) and (min-height: 850px) {
+	.settingsBtn {
+		top: 34px;
+		right: 34px;
+		width: 68px;
+		height: 68px;
+	}
+
+	.settingsBtn > svg {
+		width: 36px;
+		height: 36px;
+	}
+
+	.settingsPanel {
+		width: min(26dvw, 480px);
+		height: min(38dvh, 390px);
+	}
+
+	.settingsCard {
+		height: 88px;
+	}
+}

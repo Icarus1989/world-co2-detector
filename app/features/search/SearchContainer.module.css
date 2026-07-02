@@ -94,7 +94,7 @@
 	}
 }
 
-@media only screen and (min-width: 1200px) and (min-height: 481px) {
+/* @media only screen and (min-width: 1200px) and (min-height: 481px) {
 	.searchContainer {
 		height: 56dvh;
 	}
@@ -106,5 +106,32 @@
 	.openBtn {
 		width: 74px;
 		height: 74px;
+	}
+} */
+
+@media only screen and (min-width: 1200px) and (min-height: 481px) {
+	.searchContainer {
+		height: 52dvh;
+	}
+
+	.openBtnSection {
+		height: 13dvh;
+		margin: 0 0 5dvh 0;
+	}
+
+	.openBtn {
+		width: 84px;
+		height: 84px;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (min-height: 850px) {
+	.searchContainer {
+		height: 50dvh;
+	}
+
+	.openBtn {
+		width: 92px;
+		height: 92px;
 	}
 }

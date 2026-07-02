@@ -1,4 +1,5 @@
 .mainContainer {
+	position: relative;
 	width: 100dvw;
 	height: 100dvh;
 	background: linear-gradient(#030422f7 23%, #150b34 74%, #1b2079eb 98%);

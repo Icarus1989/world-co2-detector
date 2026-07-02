@@ -26,7 +26,6 @@ function decodeApiError(error: unknown) {
 }
 
 function selectMBXToken() {
-	console.log("Errore lettura env");
 	return (
 		process.env.MAPBOX_ACCESS_TOKEN ?? process.env.NEXT_PUBLIC_MAPBOX_TOKEN
 	);

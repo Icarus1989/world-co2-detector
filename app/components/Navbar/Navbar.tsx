@@ -225,7 +225,7 @@ export function Navbar() {
 									<div className={styles["contactGrid"]}>
 										<a
 											className={styles["contactBox"]}
-											href="https://www.linkedin.com/"
+											href="https://www.linkedin.com/in/alex-valente-018586156/"
 											target="_blank"
 											rel="noreferrer"
 											aria-label="Open LinkedIn profile"
@@ -239,7 +239,7 @@ export function Navbar() {
 
 										<a
 											className={styles["contactBox"]}
-											href="https://github.com/"
+											href="https://github.com/Icarus1989"
 											target="_blank"
 											rel="noreferrer"
 											aria-label="Open GitHub profile"

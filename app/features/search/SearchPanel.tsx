@@ -157,7 +157,7 @@ export default function SearchPanel({
 
 				onSearchSubmit({
 					mode: "country",
-					label: selectedCountry.labelKey,
+					label: `${t(selectedCountry.labelKey)}`,
 					countryCode: selectedCountry.code,
 					latitude: selectedCountry.latitude,
 					longitude: selectedCountry.longitude,
