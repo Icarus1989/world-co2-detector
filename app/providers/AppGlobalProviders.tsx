@@ -13,4 +13,4 @@ export function AppGlobalProviders({ children }: { children: ReactNode }) {
 	);
 }
 
-// continuare aggiornamento in layout.tsx
+// pulito manca ultimo check

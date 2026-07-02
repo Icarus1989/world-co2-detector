@@ -168,7 +168,6 @@ export default function ResultsModal({
 					})}
 				</nav>
 
-				{/* ----------- */}
 				<section className={styles["tabContent"]}>
 					{state.activeResultTab === "overview" && (
 						<>
@@ -204,88 +203,6 @@ export default function ResultsModal({
 										: t("results.noData")}
 								</div>
 							</section>
-
-							{/* <section className={styles["infoGrid"]}>
-								<div className={styles["infoCard"]}>
-									<span className={styles["infoCardTitle"]}>
-										{t("results.period")}
-									</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{target.startDate} &#8594; {target.endDate}
-									</p>
-								</div>
-
-								<div className={styles["infoCard"]}>
-									<span className={styles["infoCardTitle"]}>
-										{t("results.primarySource")}
-									</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{aqDataset?.primarySource ?? "Open-meteo"}
-									</p>
-								</div>
-
-								<div className={styles["infoCard"]}>
-									<span className={styles["infoCardTitle"]}>Parametro</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										CO - Monossido di carbonio
-									</p>
-								</div>
-
-								<div className={styles["infoCard"]}>
-									<span className={styles["infoCardTitle"]}>Sorgente Dati</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{aqDataset?.primarySource ?? "Open-Meteo"}
-									</p>
-								</div>
-
-								<div className={styles.infoCard}>
-									<span>Fonte primaria</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{aqDataset?.primarySource ?? "Open-Meteo"}
-									</p>
-								</div>
-
-								<div className={styles.infoCard}>
-									<span>PM2.5 medio</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{pm25Summary?.value !== null &&
-										pm25Summary?.value !== undefined
-											? `${pm25Summary.value.toFixed(2)} ${pm25Summary.unit}`
-											: "N/D"}
-									</p>
-								</div>
-
-								<div className={styles.infoCard}>
-									<span>PM10 medio</span>
-									<p
-										className={styles["infoCardText"]}
-										style={{ fontWeight: 700 }}
-									>
-										{pm10Summary?.value !== null &&
-										pm10Summary?.value !== undefined
-											? `${pm10Summary.value.toFixed(2)} ${pm10Summary.unit}`
-											: "N/D"}
-									</p>
-								</div>
-							</section> */}
 
 							<section className={styles["infoGrid"]}>
 								<article
@@ -362,8 +279,6 @@ export default function ResultsModal({
 						</>
 					)}
 
-					{/* ----------- */}
-
 					{state.activeResultTab === "pollutants" && (
 						<section className={styles["tabPanel"]}>
 							<h3 className={styles["tabTitle"]}>Inquinanti totali rilevati</h3>
@@ -405,62 +320,6 @@ export default function ResultsModal({
 
 					{state.activeResultTab === "trend" && (
 						<section className={styles["chartSection"]}>
-							{/* <div className={styles["sectionTitle"]}>
-								<h3 className={styles["tabTitle"]}>Variazioni ultimi 6 mesi</h3>
-							</div>
-
-							{isLoadingAQ && <p>Caricamento trend...</p>}
-
-							{state.activeResultTab === "trend" && (
-								<ResultsTrendTab
-									target={target}
-									getSixMonthsAQTrendAction={getSixMonthsAQTrendAction}
-								/>
-							)}
-
-							{isLoadingAQ && aqDataset && (
-								<div className={styles["chart"]}>
-									{aqDataset.trend.slice(-12).map((point) => {
-										const chartValues = aqDataset.trend
-											.map((item) => {
-												return item.co;
-											})
-											.filter(
-												(value): value is number => typeof value === "number"
-											);
-
-										const maxChartValue = Math.max(...chartValues, 1);
-										const height = `${Math.max(
-											((point.co ?? 0) / maxChartValue) * 100,
-											8
-										)}%`;
-
-										return (
-											<div key={point.date} className={styles["chartItem"]}>
-												<div className={styles["barTrack"]}>
-													<div
-														className={styles["bar"]}
-														style={{ height: height }}
-													/>
-												</div>
-
-												<span className={styles["dateLabel"]}>
-													{new Date(point.date).toLocaleDateString("it-IT", {
-														day: "2-digit",
-														month: "2-digit"
-													})}
-												</span>
-
-												<p className={styles["valueLabel"]}>
-													{" "}
-													{point.co !== null ? point.co.toFixed(1) : "-"}
-												</p>
-											</div>
-										);
-									})}
-								</div>
-							)} */}
-
 							{state.activeResultTab === "trend" && (
 								<ResultsTrendTab
 									target={target}
@@ -479,10 +338,6 @@ export default function ResultsModal({
 									<p className={styles["sourceTitle"]}>
 										Open-Meteo Air Quality
 									</p>
-									{/* <p className={styles["sourceText"]}>
-										Fonte primaria per serie temporali CO, PM2.5, PM10, NO₂, O₃,
-										SO₂ e AQI.
-									</p> */}
 									<p className={styles["sourceText"]}>
 										Fonte primaria per serie temporali.
 									</p>
@@ -508,3 +363,5 @@ export default function ResultsModal({
 		</motion.section>
 	);
 }
+
+// pulito manca ultimo check

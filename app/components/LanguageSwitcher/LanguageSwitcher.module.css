@@ -1,47 +1,11 @@
-/* .switcher {
-	display: inline-flex;
-	gap: 4px;
-	padding: 4px;
-	border: 1px solid rgb(255 255 255 / 12%);
-	border-radius: 999px;
-	background: rgb(255 255 255 / 8%);
-	backdrop-filter: blur(14px);
-}
-
-.btn {
-	background: transparent;
-	border: 0;
-	border-radius: 999px;
-	padding: 7px 10px;
-	color: white;
-	font-size: 0.78rem;
-	font-weight: 900;
-	cursor: pointer;
-}
-
-.activeButton {
-	border: 0;
-	border-radius: 999px;
-	padding: 7px 10px;
-	color: white;
-	font-size: 0.78rem;
-	font-weight: 900;
-	cursor: pointer;
-	background: linear-gradient(135deg, #7df9ff, #4f8cff);
-	color: rgb(4 8 30);
-} */
-
 .switcher {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 12px;
-
 	width: 100%;
 	height: auto;
-
 	padding: 12px;
-
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 999px;
@@ -53,18 +17,13 @@
 	display: grid;
 	place-items: center;
 	flex: 0 0 auto;
-
 	width: 52px;
 	height: 52px;
-
 	padding: 0;
-
 	border-radius: 999px;
-
 	font-size: 0.88rem;
 	font-weight: 900;
 	letter-spacing: 0.03em;
-
 	cursor: pointer;
 	transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
 		color 0.18s ease, border-color 0.18s ease;
@@ -106,12 +65,10 @@
 		0 0 28px rgba(125, 249, 255, 0.34);
 }
 
-/* Mobile portrait */
 @media only screen and (max-width: 640px) and (orientation: portrait) {
 	.switcher {
 		justify-content: space-between;
 		gap: 8px;
-
 		padding: 10px;
 	}
 
@@ -119,16 +76,13 @@
 	.activeBtn {
 		width: 46px;
 		height: 46px;
-
 		font-size: 0.8rem;
 	}
 }
 
-/* Small landscape */
 @media only screen and (min-height: 280px) and (max-height: 480px) and (orientation: landscape) {
 	.switcher {
 		width: auto;
-
 		padding: 8px;
 	}
 
@@ -136,7 +90,8 @@
 	.activeBtn {
 		width: 11dvh;
 		height: 11dvh;
-
 		font-size: 2.6dvh;
 	}
 }
+
+/* pulito manca ultimo check */

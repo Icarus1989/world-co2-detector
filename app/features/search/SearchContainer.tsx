@@ -3,7 +3,6 @@ import {
 	SearchTargetType
 } from "@/app/utilities/types/types";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import MagnifierIcon from "@/app/components/SvgTemplates/SvgIcons/SvgMagnifierIcon";
@@ -39,25 +38,11 @@ export default function SearchContainer({
 }: SearchContainerProps) {
 	const { state, openSearchOverlay, closeOverlay } = useAppData();
 
-	// const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 	const isSearchOpen = state.activeOverlay === "search";
 	const { t } = useTranslation();
 
-	// function openSearchModal() {
-	// 	setIsSearchOpen(() => {
-	// 		return true;
-	// 	});
-	// }
-
-	// function closeSearchModal() {
-	// 	setIsSearchOpen(() => {
-	// 		return false;
-	// 	});
-	// }
-
 	function handleSearchModalSubmit(target: SearchTargetType) {
 		onSearchSubmit(target);
-		// closeSearchModal();
 		closeOverlay();
 	}
 
@@ -67,7 +52,6 @@ export default function SearchContainer({
 				{isSearchOpen ? (
 					<SearchPanel
 						key="search-panel"
-						// onClose={closeSearchModal}
 						onClose={closeOverlay}
 						onSearchSubmit={handleSearchModalSubmit}
 						geocodePlaceAction={geocodePlaceAction}
@@ -87,7 +71,6 @@ export default function SearchContainer({
 							aria-label={t("search.open")}
 							title={t("search.open")}
 							whileTap={{ scale: 0.94 }}
-							// onClick={openSearchModal}
 							onClick={openSearchOverlay}
 						>
 							<MagnifierIcon />

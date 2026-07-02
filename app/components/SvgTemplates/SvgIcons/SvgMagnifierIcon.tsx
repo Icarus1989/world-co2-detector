@@ -1,9 +1,6 @@
 "use client";
 
-import PathMagnifierTop from "../PathComponents/PathMagnifierTop";
-import PathMagnifierBottom from "../PathComponents/PathMagnifierBottom";
 import { useState } from "react";
-import DefsWindRose from "../DefsComponents/DefsWindRose";
 
 export default function MagnifierIcon() {
 	const [dimensions, setDimensions] = useState({ boxWidth: 32, boxHeight: 32 });

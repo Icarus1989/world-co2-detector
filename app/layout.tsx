@@ -29,7 +29,6 @@ Readonly<{
 	return (
 		<html lang="it">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				{/* {menu} */}
 				<AppGlobalProviders>{children}</AppGlobalProviders>
 			</body>
 		</html>

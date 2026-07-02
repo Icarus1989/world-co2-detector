@@ -65,14 +65,6 @@ function CloseIcon() {
 
 function SettingsIcon() {
 	return (
-		// <svg
-		// 	xmlns="http://www.w3.org/2000/svg"
-		// 	viewBox="0 0 16 16"
-		// 	aria-hidden="true"
-		// >
-		// 	<path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z" />
-		// </svg>
-
 		<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			{" "}
 			<path
@@ -94,8 +86,6 @@ function SettingsIcon() {
 		</svg>
 	);
 }
-
-// <--- cambiare in icon ingranaggio sfumato
 
 function LinkedinIcon() {
 	return (
@@ -123,17 +113,10 @@ function GithubIcon() {
 
 export function Navbar() {
 	const { state, openSettingsOverlay, closeOverlay } = useAppData();
-	// const [openMenu, setOpenMenu] = useState<boolean>(false);
 	const openMenu = state.activeOverlay === "settings";
 	const [activeDialog, setActiveDialog] = useState<SettingsDialogType>(null);
 
 	const { t } = useTranslation();
-
-	// function toggleMenu() {
-	// 	setOpenMenu((prevMenuValue) => {
-	// 		return !prevMenuValue;
-	// 	});
-	// }
 
 	function openDialog(settingsDialog: SettingsDialogType) {
 		setActiveDialog(settingsDialog);
@@ -150,7 +133,6 @@ export function Navbar() {
 				className={styles["settingsBtn"]}
 				aria-label={openMenu ? t("settings.closeMenu") : t("settings.openMenu")}
 				aria-expanded={openMenu}
-				// onClick={toggleMenu}
 				onClick={openMenu ? closeOverlay : openSettingsOverlay}
 			>
 				{!openMenu ? <SettingsIcon /> : <CloseIcon />}
@@ -285,3 +267,5 @@ export function Navbar() {
 		</nav>
 	);
 }
+
+// pulito manca ultimo check

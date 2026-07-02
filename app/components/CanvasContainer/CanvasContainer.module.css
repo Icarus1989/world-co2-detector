@@ -2,17 +2,13 @@
 	position: absolute;
 	inset: 0;
 	z-index: 0;
-
 	display: grid;
 	place-items: center;
-
 	width: 100dvw;
 	height: 100dvh;
-
 	overflow: hidden;
 }
 
-/* Mobile portrait */
 @media only screen and (max-width: 640px) and (orientation: portrait) {
 	.container {
 		width: 100dvw;
@@ -20,7 +16,6 @@
 	}
 }
 
-/* Small landscape */
 @media only screen and (min-height: 280px) and (max-height: 480px) and (orientation: landscape) {
 	.container {
 		width: 100dvw;
@@ -28,7 +23,6 @@
 	}
 }
 
-/* Tablet / small desktop landscape */
 @media only screen and (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
 	.container {
 		width: 100dvw;
@@ -36,7 +30,6 @@
 	}
 }
 
-/* Desktop */
 @media only screen and (min-width: 1200px) and (min-height: 481px) {
 	.container {
 		width: 100dvw;
@@ -44,12 +37,4 @@
 	}
 }
 
-/* .container {
-	width: 100dvw;
-	height: 85dvh;
-
-	display: grid;
-	place-items: center;
-	position: absolute;
-	z-index: 0;
-} */
+/* pulito manca ultimo check */

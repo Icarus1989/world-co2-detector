@@ -8,8 +8,6 @@ import {
 } from "../utilities/types/types";
 import { mapboxGLGeocodingClient } from "../lib/connections/axiosClient";
 
-// punto 2
-
 function decodeApiError(error: unknown) {
 	if (error instanceof AxiosError) {
 		return (
@@ -78,15 +76,10 @@ export async function getFeatureCountryCode(feature: MapboxFeature) {
 	return feature.properties?.context?.country?.country_code?.toUpperCase();
 }
 
-// const token = process.env.MAPBOX_ACCESS_TOKEN;
-
 export async function geocodePlaceAction(
 	params: GeocodePlaceActionParams
 ): Promise<GeocodePlaceActionResult> {
 	const token = selectMBXToken();
-	// const token =
-	// 	"pk.eyJ1IjoidGhpc2RvdGFsZXgiLCJhIjoiY2xmN2Zsa2pnMDF5cDNxcW1teWd6M2xscyJ9.xwp_PrnoJj6sZHNRhNmCoA";
-	// const token = String(process.env.NEXT_PUBLIC_MAPBOX_TOKEN);
 	const query = params.query.trim();
 
 	if (!token) {
@@ -117,8 +110,6 @@ export async function geocodePlaceAction(
 				country: params.countryCode || undefined
 			}
 		});
-
-		console.log(data);
 
 		const mbxFeature: MapboxFeature | undefined = data?.features?.[0];
 
@@ -158,5 +149,3 @@ export async function geocodePlaceAction(
 		};
 	}
 }
-
-// riscrivere tutto il file con logica green like me

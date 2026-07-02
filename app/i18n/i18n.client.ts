@@ -13,7 +13,6 @@ if (!i18n.isInitialized) {
 			resources: resources,
 			supportedLngs: ["it", "en", "nl", "de"],
 			fallbackLng: "it",
-			// <--- aggiungere anche qui per supporto altre lingue
 			interpolation: {
 				escapeValue: false
 			}

@@ -8,7 +8,6 @@ import {
 	PollutSummary,
 	SearchTargetType
 } from "@/app/utilities/types/types";
-import { param } from "framer-motion/client";
 
 const pollConfiguration: Record<
 	PollutCode,
@@ -249,3 +248,5 @@ export function mapOpenMeteoResponseToDataset(params: {
 		warnings: params.warnings ?? []
 	};
 }
+
+// pulito manca ultimo check

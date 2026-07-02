@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import mapboxgl, {
-	type SourceSpecification,
 	type LngLatBoundsLike,
 	type Map as MapboxMap
 } from "mapbox-gl";
@@ -55,10 +54,7 @@ export default function ResultsMap({ target }: ResultsMapProps) {
 	const mapRef = useRef<MapboxMap | null>(null);
 
 	useEffect(() => {
-		const token =
-			"pk.eyJ1IjoidGhpc2RvdGFsZXgiLCJhIjoiY2xmN2Zsa2pnMDF5cDNxcW1teWd6M2xscyJ9.xwp_PrnoJj6sZHNRhNmCoA";
-
-		// <--- sostituire
+		const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 		if (!token || !containerRef.current) {
 			return;
@@ -68,12 +64,8 @@ export default function ResultsMap({ target }: ResultsMapProps) {
 
 		const center = findTargetCenter(target);
 
-		// Arrivato punto 5 Problema redirect map
-
 		const map = new mapboxgl.Map({
 			container: containerRef.current,
-			// style: "mapbox://styles/mapbox/satellite-streets-v12",
-			// style: "mapbox://styles/mapbox/navigation-night-v1",
 			style: "mapbox://styles/mapbox/standard-satellite",
 
 			center: center,
@@ -82,7 +74,6 @@ export default function ResultsMap({ target }: ResultsMapProps) {
 			bearing: 0,
 			interactive: false,
 			attributionControl: true
-			// projection: "globe"
 		});
 
 		mapRef.current = map;
@@ -103,11 +94,6 @@ export default function ResultsMap({ target }: ResultsMapProps) {
 			});
 
 			if (target.bbox) {
-				// const source: SourceSpecification = {
-				// 	type: "geojson",
-				// 	data: createBboxGeoJson(target.bbox) as any
-				// };
-
 				map.addSource("target-bbox", {
 					type: "geojson",
 					data: createBboxGeoJson(target.bbox) as GeoJSON.FeatureCollection
@@ -167,11 +153,7 @@ export default function ResultsMap({ target }: ResultsMapProps) {
 		};
 	}, [target]);
 
-	const hasToken = Boolean(
-		"pk.eyJ1IjoidGhpc2RvdGFsZXgiLCJhIjoiY2xmN2Zsa2pnMDF5cDNxcW1teWd6M2xscyJ9.xwp_PrnoJj6sZHNRhNmCoA"
-	);
-
-	// <--- sostituire
+	const hasToken = Boolean(process.env.NEXT_PUBLIC_MAPBOX_TOKEN);
 
 	if (!hasToken) {
 		return (

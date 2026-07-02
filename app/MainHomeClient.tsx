@@ -1,11 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import {
-	GeocodePlaceActionResult,
-	MainHomeClientProps,
-	SearchTargetType
-} from "./utilities/types/types";
+import { MainHomeClientProps, SearchTargetType } from "./utilities/types/types";
 import { MainPrimary } from "./components/MainPrimary/MainPrimary";
 import { Navbar } from "./components/Navbar/Navbar";
 import { CanvasContainer } from "./components/CanvasContainer/CanvasContainer";
@@ -13,11 +8,8 @@ import SearchContainer from "./features/search/SearchContainer";
 import { AnimatePresence } from "framer-motion";
 import ResultsModal from "./features/results/ResultsModal";
 import { useAppData } from "./providers/AppDataProvider";
-// import { geocodePlaceAction } from "./ServerActions/mbxGeocodingActions";
-// import SearchContainer from "./components/SearchContainer/SearchContainer";
 
 export function MainHomeClient(props: MainHomeClientProps) {
-	//
 	const { state, submitSearch, openResults, closeResults } = useAppData();
 
 	const {
@@ -30,22 +22,8 @@ export function MainHomeClient(props: MainHomeClientProps) {
 		getSixMonthsAQTrendAction
 	} = props;
 
-	// const [selectedTarget, setSelectedTarget] = useState<SearchTargetType | null>(
-	// 	null
-	// );
-
-	// const [isResultsOpen, setIsResultsOpen] = useState<boolean>(false);
-
 	function handleSearchSubmit(target: SearchTargetType) {
-		// setSelectedTarget(() => {
-		// 	return target;
-		// });
-
 		submitSearch(target);
-
-		// setIsResultsOpen(() => {
-		// 	return false;
-		// });
 
 		// da sistemare no object window
 		window.setTimeout(() => {
@@ -67,8 +45,6 @@ export function MainHomeClient(props: MainHomeClientProps) {
 				globeTarget={state.selectedTarget}
 			/>
 
-			{/* <SearchContainer onSearchSubmit={handleSearchSubmit} /> */}
-			{/* <SearchContainer onSearchSubmit={handleSearchSubmit} /> */}
 			{!state.isResultsOpen && (
 				<SearchContainer
 					geocodePlaceAction={geocodePlaceAction}
@@ -91,3 +67,5 @@ export function MainHomeClient(props: MainHomeClientProps) {
 		</MainPrimary>
 	);
 }
+
+// da rifinire mnca ultimo check

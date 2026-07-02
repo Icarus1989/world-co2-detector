@@ -27,17 +27,9 @@ import goldOpaqueImgMetalness from "@/public/textures/metalnessTextures/goldMeta
 
 import rakuBlackImg from "@/public/textures/imgTextures/rakuBlack.png";
 import rakuBlackNormal from "@/public/textures/normalsTextures/rakuBlackNormal.png";
-// import rakuBlackRoughness from "@/public/textures/roughnessTexture/rakuBlackRoughness.png";
 import rakuBlackHeight from "@/public/textures/heightTextures/rakuBlackHeight.png";
 import rakuBlackAmbOcc from "@/public/textures/ambientOcclusionTextures/rakuBlackAmbientOccMap.png";
-import {
-	getQuaternionForTarget,
-	getTargetCoordinates,
-	latLonToVector3
-} from "@/app/features/globe/globe.utils";
-
-const equatDiameter = 12756.274 / 10000;
-const polarDiameter = 12713.504 / 10000;
+import { getTargetCoordinates } from "@/app/features/globe/globe.utils";
 
 function NewEarthWaterMesh({
 	width,
@@ -84,8 +76,6 @@ function NewEarthWaterMesh({
 				reflectivity={0.23}
 				sheen={0.1}
 			/>
-
-			{/* </AnimatedDistortMaterial> */}
 		</mesh>
 	);
 }
@@ -100,12 +90,6 @@ type groupedType = {
 		};
 	}[];
 };
-
-interface containerObj {
-	[key: string]: groupedType[];
-}
-
-let indicator = 0;
 
 const baseLandRotation = new THREE.Euler(
 	THREE.MathUtils.degToRad(-25 - 23.5),
@@ -259,8 +243,6 @@ export default function CanvasElement({
 					});
 				});
 
-				// diametro *
-
 				const xyxPointsArraysTop = landPointsArraysMax.map((elem) => {
 					const pointsArr = elem.map((item) => {
 						return [item["geom"]["x"], item["geom"]["y"], item["geom"]["z"]];
@@ -269,7 +251,6 @@ export default function CanvasElement({
 				});
 
 				const radius: number = 0.09423;
-				// diametro *
 
 				const startSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const startMeasures = arr[0];
@@ -383,7 +364,7 @@ export default function CanvasElement({
 				const cleanArr = initialArray[0].slice(1);
 
 				const updateInitial = [...updateFirstElem, ...cleanArr];
-				const updateInitialArray = [updateInitial, ...initialArray.slice(1)];
+				// const updateInitialArray = [updateInitial, ...initialArray.slice(1)];
 
 				const startSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const startMeasures = arr[0];
@@ -396,7 +377,6 @@ export default function CanvasElement({
 						32,
 						16
 					);
-					// diametro *
 
 					startGeometry.translate(
 						startMeasures[0],
@@ -417,7 +397,6 @@ export default function CanvasElement({
 						32,
 						16
 					);
-					// diametro *
 
 					endGeometry.translate(endMeasures[0], endMeasures[1], endMeasures[2]);
 					return endGeometry;
@@ -430,7 +409,6 @@ export default function CanvasElement({
 
 					const radius: number =
 						arr.length > 223 ? 0.0263 : arr.length > 100 ? 0.0235 : 0.0203;
-					// diametro *
 
 					const curveTop = new THREE.CatmullRomCurve3(vect3Arr);
 					curveTop.curveType = "catmullrom";
@@ -548,7 +526,6 @@ export default function CanvasElement({
 						color: 0xffffff
 					});
 				});
-				// diametro *
 
 				const landPointsArraysMin = await filteredBoundary.map((elem: any) => {
 					return drawThreeGeo(elem, 2.3023, "sphere", {
@@ -646,8 +623,6 @@ export default function CanvasElement({
 		const rakuBlackTexture = new THREE.TextureLoader().load(rakuBlackImg.src);
 
 		async function startAnalyzeLand() {
-			const texture = new THREE.TextureLoader().load(rakuBlackNormal.src);
-
 			try {
 				const data: any = await analyzeLandsData();
 				const landsData: LandFeature[] = await data;
@@ -656,7 +631,6 @@ export default function CanvasElement({
 						color: 0xffffff
 					});
 				});
-				// diametro *
 
 				const xyxPointsArrays = landPointsArraysMax.map((elem) => {
 					const pointsArr = elem.map((item) => {
@@ -686,7 +660,6 @@ export default function CanvasElement({
 						...newVertices
 					]);
 					const indicesPart1 = [...data];
-					// const indicesPart2 = data.toReversed();
 					const indicesPart2 = data.reverse();
 					const totalIndeces = [
 						...indicesPart1,
@@ -775,7 +748,7 @@ export default function CanvasElement({
 	function SunLight({ position }: { position: [number, number, number] }) {
 		const dirLightRef = useRef<THREE.DirectionalLight | null>(null!);
 
-		const { gl, camera, scene } = useThree();
+		const { camera } = useThree();
 
 		const dirLight = new THREE.DirectionalLight(0xa0b0f0, 20.23);
 		dirLight.position.set(position[0], position[1], position[2]).normalize();
@@ -792,36 +765,6 @@ export default function CanvasElement({
 			</>
 		);
 	}
-
-	// function TargetMarker({ target }: { target: SearchTargetType | null }) {
-	// 	const coordinates = getTargetCoordinates(target);
-
-	// 	if (!coordinates) {
-	// 		return null;
-	// 	}
-
-	// 	const position = latLonToVector3(
-	// 		coordinates.latitude,
-	// 		coordinates.longitude,
-	// 		2.55
-	// 	);
-
-	// 	return (
-	// 		<mesh position={[position.x, position.y, position.z]}>
-	// 			<sphereGeometry args={[0.055, 32, 32]} />
-	// 			<meshStandardMaterial
-	// 				color="#7df9ff"
-	// 				emissive="#38d9ff"
-	// 				emissiveIntensity={2}
-	// 				roughness={0.25}
-	// 				metalness={0.2}
-	// 			/>
-	// 		</mesh>
-	// 	);
-	// }
-
-	// Arrivato scorsa chat
-	//  punto 6. Rotazione: usa lo stesso punto del marker --->
 
 	return (
 		<Canvas frameloop="demand">
@@ -848,9 +791,6 @@ export default function CanvasElement({
 				internalLines={internalLines}
 				breakLines={breakLines}
 			/>
-
-			{/* <fogExp2 attach="fog" args={[0x000000, 0.000023]} /> */}
-			{/* <NewEarthWaterMesh width={2.78} height={2.78} /> */}
 		</Canvas>
 	);
 }
@@ -903,8 +843,6 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 			.applyEuler(baseLandRotation)
 			.normalize();
 
-		// const fromPoint = new THREE.Vector3(0, 0, 1);
-
 		const fromPoint = camera.position.clone().normalize();
 
 		const nextQuaternion = new THREE.Quaternion().setFromUnitVectors(
@@ -912,27 +850,11 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 			fromPoint
 		);
 
-		// const nextQuaternion = getQuaternionForTarget({
-		// 	target: globeTarget,
-		// 	baseRotation: baseLandRotation
-		// });
-
-		// if (!nextQuaternion) {
-		// 	return;
-		// }
-
 		targetQuaternionRef.current.copy(nextQuaternion);
 		targetScaleRef.current.set(1.08, 1.08, 1.08);
 
 		isAnimatingRef.current = true;
 		invalidate();
-
-		// if (nextQuaternion) {
-		// 	return;
-		// }
-
-		// targetQuaternionRef.current.identity();
-		// targetScaleRef.current.set(1, 1, 1);
 	}, [globeTarget]);
 
 	useFrame(() => {
@@ -976,10 +898,7 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 
 				{boundaryLines !== null &&
 					boundaryLines["baseBound"].map((elem, index) => {
-						return (
-							// <>
-							<primitive key={elem.uuid} object={elem} />
-						);
+						return <primitive key={elem.uuid} object={elem} />;
 					})}
 
 				{internalLines !== null &&
@@ -1049,7 +968,6 @@ function TargetMarker({ target }: { target: SearchTargetType | null }) {
 				<meshStandardMaterial
 					color="#7df9ff"
 					emissive="#38d9ff"
-					// emissiveIntensity={2.4}
 					roughness={0.25}
 					metalness={0.2}
 					depthTest={false}
@@ -1059,205 +977,10 @@ function TargetMarker({ target }: { target: SearchTargetType | null }) {
 
 			<mesh position={[position.x, position.y, position.z]} renderOrder={999}>
 				<sphereGeometry args={[0.05, 32, 32]} />
-				<meshBasicMaterial
-					color="#ff2323"
-					// opacity={0.823}
-					// emissive="#ff2323"
-					// emissiveIntensity={2.3}
-					// roughness={0.75}
-					// metalness={0.1}
-					// depthTest={false}
-					// depthWrite={false}
-				/>
+				<meshBasicMaterial color="#ff2323" />
 			</mesh>
 		</>
 	);
 }
 
-// ---> ELIMINARE CONSOLE.LOG <---
-
-// usare BufferGeometryLoader per avere una callback durante il caricamento
-// per avere una progress bar o spinner
-
-// diametro *
-// 2.75
-// const earthGeometry = new THREE.SphereGeometry(2.75, 64);
-
-// const rakuBlackRoughMap = useTexture(rakuBlackRoughness.src);
-
-// rakuBlackTexture.wrapS = THREE.RepeatWrapping;
-// rakuBlackTexture.wrapT = THREE.RepeatWrapping;
-// rakuBlackTexture.repeat.set(1, 1);
-
-// rotation-x={THREE.MathUtils.degToRad(23.5)}
-// rotation-y={THREE.MathUtils.degToRad(0)}
-
-// ottimo blu --->
-// color={0x23a8e0}
-// emissiveIntensity={0.1}
-// map={rakuBlackTexture}
-// normalMap={rakuBlackNormMap}
-// displacementMap={rakuBlackHeightMap}
-// displacementScale={0}
-// aoMap={rakuBlackAmbOccMap}
-// aoMapIntensity={1}
-// clearcoatMap={rakuBlackNormMap}
-// clearcoatNormalMap={rakuBlackNormMap}
-// alphaTest={1}
-// clearcoat={0.65}
-// clearcoatRoughness={0.203}
-// wireframe={false}
-// roughness={0.523}
-// metalness={0.01}
-// opacity={1}
-// fog={true}
-// // ...colore
-// thickness={10}
-// flatShading={false}
-// ior={1.5}
-// depthTest={true}
-// depthWrite={true}
-// visible={true}
-// transparent={false}
-// alphaHash={true}
-// transmission={0.1}
-// bumpScale={0}
-
-// console.log(totalMeshes);
-
-// diametro *
-
-// 2.842
-
-// const cleanXyxPointsArrays = [
-// 	updateInitialArray,
-// 	...xyxPointsArraysTop.slice(1)
-// ];
-
-// const radius = arr.length > 1000 ? 0.0235 : 0.0203;
-// const radius = arr.length * 0.000203;
-// console.log(arr.length);
-
-// const radius = arr.length > 1000 ? 0.0423 : 0.0223;
-// Test Radius
-
-// diametro *
-
-// const radius: number =
-// 	arr.length > 223 ? 0.0263 : arr.length > 100 ? 0.0235 : 0.0203;
-// diametro *
-// tubegeometry = new THREE.TubeGeometry(path, tubolarsegments, radius, radialsegments)
-
-// const radius = arr.length > 1000 ? 0.0423 : 0.0223;
-// Test Radius
-
-// diametro *
-
-// const timer = Date.now() * 0.00025;
-
-// dirLight.position.set(-2.23, 0, 0);
-
-// dirLightRef.current.position.set(-0.323, 0, 1);
-
-// dirLightRef.current.position.set(0, 0, 0);
-// dirLight.position.set(-0.323, 0, 1).normalize();
-
-// capire questo
-
-{
-	/* sphereGeometry */
-}
-
-// const geometry = mesh.geometry;
-
-// rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-// rotation-z={THREE.MathUtils.degToRad(-100)}
-// rotation-y={THREE.MathUtils.degToRad(0)}
-
-// <>
-
-// <Canvas frameloop="demand">
-
-// autoRotateSpeed={0.23}
-// zoom0={1.5}
-// minZoom={1}
-// maxZoom={2}
-// zoomSpeed={0.23}
-{
-	/* <ambientLight color={0xffffff} intensity={1} /> */
-}
-
-{
-	/* {landCoupleMeshes !== null &&
-				landCoupleMeshes["surfaces"].map((mesh, index) => {
-					const geometry = mesh.geometry;
-
-					return (
-						<primitive
-							key={`${mesh.uuid}${index}`}
-							object={mesh}
-							rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-							rotation-z={THREE.MathUtils.degToRad(-100)}
-							rotation-y={THREE.MathUtils.degToRad(0)}
-						/>
-					);
-				})}
-
-			{boundaryLines !== null &&
-				boundaryLines["visibleBound"].map((elem, index) => {
-					return (
-						// <>
-						<primitive
-							key={elem.uuid}
-							object={elem}
-							rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-							rotation-z={THREE.MathUtils.degToRad(-100)}
-							rotation-y={THREE.MathUtils.degToRad(0)}
-							// scale={[equatDiameter, polarDiameter, equatDiameter]}
-						/>
-					);
-				})}
-
-			{boundaryLines !== null &&
-				boundaryLines["baseBound"].map((elem, index) => {
-					return (
-						// <>
-						<primitive
-							key={elem.uuid}
-							object={elem}
-							rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-							rotation-z={THREE.MathUtils.degToRad(-100)}
-							rotation-y={THREE.MathUtils.degToRad(0)}
-							// scale={[equatDiameter, polarDiameter, equatDiameter]}
-						/>
-					);
-				})}
-
-			{internalLines !== null &&
-				internalLines["bound"].map((elem, index) => {
-					return (
-						// <>
-						<primitive
-							key={elem.uuid}
-							object={elem}
-							rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-							rotation-z={THREE.MathUtils.degToRad(-100)}
-							rotation-y={THREE.MathUtils.degToRad(0)}
-						/>
-					);
-				})}
-
-			{breakLines !== null &&
-				breakLines["bound"].map((elem, index) => {
-					return (
-						// <>
-						<primitive
-							key={elem.uuid}
-							object={elem}
-							rotation-x={THREE.MathUtils.degToRad(-25 - 23.5)}
-							rotation-z={THREE.MathUtils.degToRad(-100)}
-							rotation-y={THREE.MathUtils.degToRad(0)}
-						/>
-					);
-				})} */
-}
+// da finire check

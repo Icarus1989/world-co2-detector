@@ -26,8 +26,6 @@ export type SearchTextProps = {
 	handleSubmit: any;
 	animationComp: AnimationMapping;
 	setAnimationComp: Dispatch<SetStateAction<AnimationMapping>>;
-	// setFormData: Dispatch<SetStateAction<FormData>>;
-	// setSections: Dispatch<SetStateAction<ReactNode[]>>;
 };
 
 export type AnimatonStatus = {
@@ -51,8 +49,6 @@ export type AnimationMapping = {
 export type TextData = {
 	text: string;
 };
-
-// export type CoordKeys = "degrees" | "minutes" | "seconds" | "dir";
 
 export type DegreeKey = "degrees";
 
@@ -78,10 +74,6 @@ export type LonSpecs = {
 	dir: "E" | "W" | null;
 };
 
-// export type CoordsData = {
-// 	coord: number | null;
-// };
-
 export type DateData = {
 	date: Date;
 };
@@ -100,7 +92,6 @@ export type ContinentInfo = {
 
 export type StructureData = {
 	geom: THREE.BufferGeometry;
-	// material: THREE.LineBasicMaterial;
 };
 
 export type FeatureCollection = {
@@ -223,8 +214,6 @@ export type ResultsMapProps = {
 	target: SearchTargetType;
 };
 
-// qui
-
 export type ResultTab = "overview" | "map" | "pollutants" | "trend" | "sources";
 
 export type PollutCode = "co" | "pm25" | "pm10" | "no2" | "o3" | "so2";
@@ -278,7 +267,6 @@ export type MainHomeClientProps = {
 	) => Promise<SixMonthsActionResult>;
 };
 
-// qui
 export type PollutSource = "openaq" | "openmeteo";
 
 export type PollutReading = {

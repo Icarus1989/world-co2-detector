@@ -1,12 +1,8 @@
-// ricorda chiamate API Axios
-
 import {
 	GlobeCoordinates,
 	SearchTargetType
 } from "@/app/utilities/types/types";
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
-
-// Arrivato punto 3. Crea app/features/globe/globe.utils.ts
 
 const countryCoords: Record<string, GlobeCoordinates> = {
 	IT: { latitude: 41.8719, longitude: 12.5674 },

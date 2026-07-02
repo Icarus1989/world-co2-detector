@@ -13,3 +13,5 @@ export function getSixMonthsRange() {
 		endDate: toDateInput(endDate)
 	};
 }
+
+// pulito manca ultimo check

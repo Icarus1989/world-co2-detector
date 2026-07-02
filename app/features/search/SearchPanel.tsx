@@ -9,7 +9,6 @@ import {
 } from "@/app/utilities/types/types";
 
 import { createPlaceSearchTarget, resolveDemoPlace } from "./search.utils";
-// import { geocodePlaceAction } from "@/app/ServerActions/mbxGeocodingActions";
 import { countryOptions, findCountryOptions } from "./searchConstants";
 
 import styles from "./SearchPanel.module.css";
@@ -149,14 +148,6 @@ export default function SearchPanel({
 			}
 
 			if (formState.mode === "country") {
-				// onSearchSubmit({
-				// 	mode: "country",
-				// 	label: formState.countryCode.toUpperCase(),
-				// 	countryCode: formState.countryCode.toUpperCase(),
-				// 	startDate: formState.startDate,
-				// 	endDate: formState.endDate
-				// });
-
 				const selectedCountry = findCountryOptions(formState.countryCode);
 
 				if (!selectedCountry) {
@@ -166,7 +157,6 @@ export default function SearchPanel({
 
 				onSearchSubmit({
 					mode: "country",
-					// label: selectedCountry.label,
 					label: selectedCountry.labelKey,
 					countryCode: selectedCountry.code,
 					latitude: selectedCountry.latitude,
@@ -191,9 +181,6 @@ export default function SearchPanel({
 		<motion.form
 			id="panelForm"
 			className={styles["panel"]}
-			// initial={{ opacity: 0, y: 32, zIndex: 0 }}
-			// animate={{ opacity: 1, y: 0, zIndex: 40 }}
-			// exit={{ opacity: 0, y: 32, zIndex: 0 }}
 			initial={{ opacity: 0, y: 32, scale: 0.96 }}
 			animate={{ opacity: 1, y: 0, scale: 1 }}
 			exit={{ opacity: 0, y: 32, scale: 0.96 }}
@@ -311,8 +298,6 @@ export default function SearchPanel({
 									key={`${singleCountry.code}`}
 									value={singleCountry.code}
 								>
-									{/* {singleCountry.label} */}
-									{/* {singleCountry.labelKey} */}
 									{t(singleCountry.labelKey)}
 								</option>
 							))}

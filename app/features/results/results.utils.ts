@@ -86,3 +86,5 @@ export function formatCoordinates(target: SearchTargetType) {
 
 	return `${target.latitude.toFixed(4)}, ${target.longitude.toFixed(4)}`;
 }
+
+// pulito manca ultimo check

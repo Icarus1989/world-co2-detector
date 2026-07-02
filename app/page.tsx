@@ -1,9 +1,5 @@
-// import { Navbar } from "./components/Navbar/Navbar";
-// import { CanvasContainer } from "./components/CanvasContainer/CanvasContainer";
-// import SearchContainer from "./components/SearchContainer/SearchContainer";
-// import { MainPrimary } from "./components/MainPrimary/MainPrimary";
-
 import { geocodePlaceAction } from "./ServerActions/mbxGeocodingActions";
+
 import {
 	getAirQualityDatasetAction,
 	getSixMonthsAQTrendAction
@@ -15,6 +11,7 @@ import {
 	analyzeBoundaryLines,
 	analyzeBreakLines
 } from "./ServerActions/ServerActions";
+
 import { MainHomeClient } from "./MainHomeClient";
 
 export default function Home() {
@@ -30,3 +27,5 @@ export default function Home() {
 		/>
 	);
 }
+
+// ok manca ultimo check

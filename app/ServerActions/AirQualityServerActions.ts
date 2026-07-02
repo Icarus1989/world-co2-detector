@@ -1,6 +1,5 @@
 "use server";
 
-import { AxiosError } from "axios";
 import {
 	AirQualityActionResult,
 	AirQualityDataset,
@@ -21,9 +20,6 @@ import {
 	openMeteoAirClient
 } from "../lib/connections/axiosClient";
 import { mapOpenMeteoResponseToDataset } from "../features/pollution/pollutionMappers";
-// import { getSixMonthsRange } from "../utilities/format/dateUtilities";
-// import { error } from "console";
-// import { param } from "framer-motion/client";
 
 const openMeteoVariables = [
 	"carbon_monoxide",
@@ -35,8 +31,6 @@ const openMeteoVariables = [
 	"european_aqi",
 	"us_aqi"
 ];
-
-// modificare lista paesi
 
 const countryCoords: Record<string, GlobeCoordinates> = {
 	IT: { latitude: 41.8719, longitude: 12.5674 },
@@ -155,38 +149,6 @@ async function getLocationLatestCount(locationId: number) {
 	}
 }
 
-// async function cleanAPIError(errorObj: unknown) {
-// 	if (errorObj instanceof AxiosError) {
-// 		return (
-// 			errorObj.response?.data?.reason ??
-// 			errorObj.response?.data?.error ??
-// 			errorObj.response?.statusText ??
-// 			errorObj.message
-// 		);
-// 	}
-
-// 	if (errorObj instanceof Error) {
-// 		return errorObj.message;
-// 	}
-// }
-
-// async function cleanAPIError(errorObj: unknown) {
-// 	if (errorObj instanceof AxiosError) {
-// 		return (
-// 			errorObj.response?.data?.reason ??
-// 			errorObj.response?.data?.error ??
-// 			errorObj.response?.statusText ??
-// 			errorObj.message
-// 		);
-// 	}
-
-// 	if (errorObj instanceof Error) {
-// 		return errorObj.message;
-// 	}
-
-// 	return "Errore sconosciuto durante il recupero dei dati qualità aria.";
-// }
-
 function detectRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null;
 }
@@ -261,12 +223,9 @@ async function findStation(station: OpenAqNearbyStation) {
 				: 0
 		};
 	} catch (error) {
-		// console.log(error);
 		return station;
 	}
 }
-
-// const aqAPIKey = `${process.env.OPENAQ_API_KEY}`;
 
 async function getNearbyStationsAQ(params: {
 	latitude: number;
@@ -294,37 +253,6 @@ async function getNearbyStationsAQ(params: {
 		const locations = Array.isArray(stationData.results)
 			? stationData.results
 			: [];
-		// Accept: "application/json",
-		// "Content-Type": "application/json",
-		// const headersOpt = new Headers();
-		// headersOpt.set("Accept", "application/json");
-		// headersOpt.set("Content-Type", "application/json");
-		// headersOpt.set("X-API-Key", aqAPIKey);
-
-		// const completeUrl = `https://api.openaq.org/v3/locations?coordinates=${params.latitude.toFixed(
-		// 	6
-		// )},${params.longitude.toFixed(6)}&radius=15000`;
-
-		// const opts = { headers: headersOpt };
-
-		// const data = await fetch(completeUrl, opts);
-		// const { data } = await openAqClient.get("/locations", {
-		// 	params: {
-		// 		coordinates: `${params.latitude.toFixed(6)},${params.longitude.toFixed(
-		// 			6
-		// 		)}`,
-		// 		radius: 25000,
-		// 		limit: 1000
-		// 	}
-		// });
-
-		// const json = await data.json();
-		// const results = await json.results;
-
-		// // console.log(results[0]["id"]);
-
-		// const locations = Array.isArray(results) ? results : [];
-		// const locations = [];
 
 		const stations: OpenAqNearbyStation[] = locations
 			.map((location: any) => {
@@ -349,15 +277,11 @@ async function getNearbyStationsAQ(params: {
 			})
 		);
 
-		// console.log(stationsWithLatest);
-
 		return {
 			stations: stationsWithLatest,
 			warning: null
 		};
 	} catch (error) {
-		// console.log(cleanAPIError(error));
-
 		return {
 			stations: [],
 			warning: `OpenAQ not available for this area...`
@@ -636,97 +560,6 @@ async function buildOpenAqDataset(params: {
 	};
 }
 
-// export async function getAirQualityDatasetAction(
-// 	target: SearchTargetType
-// ): Promise<AirQualityActionResult> {
-// 	const coordinates = getTargetCoordinates(target);
-
-// 	if (!coordinates) {
-// 		return {
-// 			ok: false,
-// 			error:
-// 				"Coordinate non disponibili, usa una città supportata oppure latitudine e longitudine."
-// 		};
-// 	}
-
-// 	try {
-// 		const openAqRes = await getNearbyStationsAQ(coordinates);
-
-// 		// console.log(openAqRes);
-
-// 		const stations = await openAqRes["stations"];
-
-// 		const firstStationId = stations[0]["id"];
-
-// 		const headersOpt = new Headers();
-// 		headersOpt.set("Accept", "application/json");
-// 		headersOpt.set("Content-Type", "application/json");
-// 		headersOpt.set("X-API-Key", aqAPIKey);
-
-// 		// inserire parametri sottostanti nell'URL --->
-// 		const completeUrlFirstStation = `https://api.openaq.org/v3/locations/${firstStationId}`;
-
-// 		const opts = {
-// 			method: "GET",
-// 			headers: headersOpt
-// 		};
-
-// 		const dataFirstStation = await fetch(completeUrlFirstStation, opts);
-// 		const jsonFirstStation = await dataFirstStation.json();
-// 		console.log("FIRST STATION DATA");
-// 		console.log(jsonFirstStation["results"][0]["sensors"]);
-
-// 		if (stations.length > 1) {
-// 			const secondStationId = stations[1]["id"];
-// 			const completeUrlSecondStation = `https://api.openaq.org/v3/locations/${secondStationId}`;
-// 			const dataSecondStation = await fetch(completeUrlSecondStation, opts);
-
-// 			console.log("SECOND STATION DATA");
-// 			const jsonSecondStation = await dataSecondStation.json();
-// 			console.log(jsonSecondStation["results"][0]["sensors"]);
-// 		}
-
-// 		// console.log(json.results);
-
-// 		// console.log(json.results[0].sensors);
-
-// 		// Ottenuti dati, cambiare url e ottenere tutti quelli necessari
-
-// 		// const { data } = await openAqClient.get("/air-quality", {
-// 		// 	params: {
-// 		// 		latitude: coordinates.latitude,
-// 		// 		longitude: coordinates.longitude,
-// 		// 		start_date: target.startDate,
-// 		// 		end_date: target.endDate,
-// 		// 		hourly: openMeteoVariables.join(","),
-// 		// 		timezone: "auto",
-// 		// 		radius: 12000
-// 		// 	}
-// 		// });
-
-// 		const warnings = openAqRes.warning ? [openAqRes.warning] : [];
-
-// 		return {
-// 			ok: true,
-// 			dataset: mapOpenMeteoResponseToDataset({
-// 				target: target,
-// 				response: json.results[0].sensors,
-// 				fallbackLatitude: coordinates.latitude,
-// 				fallbackLongitude: coordinates.longitude,
-// 				nearbyStations: openAqRes.stations,
-// 				warnings: warnings
-// 			})
-// 		};
-// 	} catch (error) {
-// 		// console.log(error);
-// 		const err = await cleanAPIError(error);
-// 		return {
-// 			ok: false,
-// 			error: err
-// 		};
-// 	}
-// }
-
 export async function getAirQualityDatasetAction(
 	target: SearchTargetType
 ): Promise<AirQualityActionResult> {
@@ -752,13 +585,6 @@ export async function getAirQualityDatasetAction(
 			nearbyStations: nearbyStations
 		});
 
-		// if (!oMDataset) {
-		// 	return {
-		// 		ok: false,
-		// 		error: "openmeteo not available"
-		// 	};
-		// }
-
 		const result: AirQualityActionResult = {
 			ok: true,
 			dataset: {
@@ -771,48 +597,14 @@ export async function getAirQualityDatasetAction(
 
 	try {
 		const openAqResult = await getNearbyStationsAQ(coords);
-		// console.log(openAqResult);
 
 		const warns = openAqResult.warning ? [openAqResult.warning] : [];
-		// console.log(warns);
 
 		if (openAqResult.stations.length === 0) {
 			return openMeteoFallback([
 				...warns,
 				"Nessuna stazione OpenAQ trovata entro il raggio configurato."
 			]);
-			// return {
-			// 	ok: true,
-			// 	dataset: {
-			// 		target: target,
-			// 		latitude: coords.latitude,
-			// 		longitude: coords.longitude,
-			// 		fetchedAt: new Date().toISOString(),
-			// 		primarySource: "openaq",
-			// 		summaries: Object.entries(openAqPolluts).map(([pCode, config]) => {
-			// 			return {
-			// 				code: pCode as PollutCode,
-			// 				label: config.label,
-			// 				value: null,
-			// 				unit: config.defaultUnit,
-			// 				min: null,
-			// 				max: null,
-			// 				sampleCount: 0,
-			// 				source: "openaq" as const
-			// 			};
-			// 		}),
-			// 		indexes: [],
-			// 		trend: [],
-			// 		nearbyStations: [],
-			// 		searchNotes: [
-			// 			"OpenAQ non ha restituito stazioni vicine per l'area selezionata."
-			// 		],
-			// 		warnings: [
-			// 			"Nessuna stazione OpenAQ trovata entro il raggio configurato."
-			// 		]
-			// 	}
-			// };
-			// if(openAqResult.stations.length === 0)
 		}
 
 		const aqDataset = await buildOpenAqDataset({
@@ -822,8 +614,6 @@ export async function getAirQualityDatasetAction(
 			stations: openAqResult.stations,
 			warnings: warns
 		});
-
-		// console.log(aqDataset);
 
 		const missingPollutCodes = getMissingSummaryCodes(aqDataset);
 
@@ -845,11 +635,6 @@ export async function getAirQualityDatasetAction(
 				}
 			};
 		}
-
-		// return {
-		// 	ok: true,
-		// 	dataset: aqDataset
-		// };
 
 		if (missingPollutCodes.length > 0) {
 			const openMeteoDataset = await openMeteoFetchDataset({
@@ -1041,7 +826,6 @@ function aggregateTrendByMonth(params: {
 function hasValidSummaryValue(
 	summary: AirQualityDataset["summaries"][number] | null | undefined
 ) {
-	// return typeof summary?.value === "number" && Number.isFinite(summary.value);
 	return (
 		Boolean(summary) &&
 		typeof summary?.value === "number" &&
@@ -1064,96 +848,6 @@ function mergeDatasets(params: {
 	openMeteoDataset: AirQualityDataset;
 }) {
 	const totalPollutCodes: PollutCode[] = [];
-
-	// const mergedSummaries = params.openAqDataset.summaries.map((aqSummary) => {
-	// 	if (hasValidSummaryValue(aqSummary)) {
-	// 		return aqSummary;
-	// 	}
-
-	// 	const openMeteoSummary = params.openMeteoDataset.summaries.find(
-	// 		(singleSummary) => {
-	// 			return singleSummary.code === aqSummary.code;
-	// 		}
-	// 	);
-
-	// 	if (!hasValidSummaryValue(openMeteoSummary)) {
-	// 		return aqSummary;
-	// 	}
-
-	// 	totalPollutCodes.push(aqSummary.code);
-
-	// 	return {
-	// 		...openMeteoSummary,
-	// 		label: aqSummary.label || openMeteoSummary?.label,
-	// 		source: "openmeteo" as const
-	// 	};
-	// });
-
-	// const mergedSummaries: PollutSummary[] = params.openAqDataset.summaries.map(
-	// 	(aqSingleSummary): PollutSummary => {
-	// 		if (hasValidSummaryValue(aqSingleSummary)) {
-	// 			return aqSingleSummary;
-	// 		}
-
-	// 		const openMeteoSummary = params.openMeteoDataset.summaries.find(
-	// 			(omSingleSummary: PollutSummary) => {
-	// 				return omSingleSummary.code === aqSingleSummary.code;
-	// 			}
-	// 		);
-
-	// 		if (!hasValidSummaryValue(openMeteoSummary)) {
-	// 			return aqSingleSummary;
-	// 		}
-
-	// 		totalPollutCodes.push(aqSingleSummary.code);
-
-	// 		return {
-	// 			code: aqSingleSummary.code,
-	// 			label: aqSingleSummary.label || openMeteoSummary.label,
-	// 			value: openMeteoSummary.value,
-	// 			unit: openMeteoSummary.unit,
-	// 			min: openMeteoSummary.min,
-	// 			max: openMeteoSummary.max,
-	// 			sampleCount: openMeteoSummary.sampleCount,
-	// 			source: "openmeteo"
-	// 		};
-	// 	}
-	// );
-
-	// const mergedSummaries: PollutSummary[] = params.openAqDataset.summaries.map(
-	// 	(aqSingleSummary): PollutSummary => {
-	// 		if (hasValidSummaryValue(aqSingleSummary)) {
-	// 			return aqSingleSummary;
-	// 		}
-
-	// 		const openMeteoSummary = params.openMeteoDataset.summaries.find(
-	// 			(omSingleSummary) => {
-	// 				return omSingleSummary.code === aqSingleSummary.code;
-	// 			}
-	// 		);
-
-	// 		if (!openMeteoSummary) {
-	// 			return aqSingleSummary;
-	// 		}
-
-	// 		if (!hasValidSummaryValue(openMeteoSummary)) {
-	// 			return aqSingleSummary;
-	// 		}
-
-	// 		totalPollutCodes.push(aqSingleSummary.code);
-
-	// 		return {
-	// 			code: aqSingleSummary.code,
-	// 			label: aqSingleSummary.label || openMeteoSummary.label,
-	// 			value: openMeteoSummary.value,
-	// 			unit: openMeteoSummary.unit,
-	// 			min: openMeteoSummary.min,
-	// 			max: openMeteoSummary.max,
-	// 			sampleCount: openMeteoSummary.sampleCount,
-	// 			source: "openmeteo" as const
-	// 		};
-	// 	}
-	// );
 
 	const mergedSummaries: PollutSummary[] = params.openAqDataset.summaries.map(
 		(aqSingleSummary): PollutSummary => {
@@ -1228,46 +922,7 @@ export async function getSixMonthsAQTrendAction(
 		};
 	}
 
-	// const { startDate, endDate } = getSixMonthsRange();
 	const { monthKeys, startDate, endDate } = getSixMonthDateRange(target);
-
-	// try {
-	// 	const { data } = await openMeteoAirClient.get("/air-quality", {
-	// 		params: {
-	// 			latitude: coords.latitude,
-	// 			longitude: coords.longitude,
-	// 			start_date: startDate,
-	// 			end_date: endDate,
-	// 			hourly: openMeteoVariables.join(","),
-	// 			timezone: "auto"
-	// 		}
-	// 	});
-
-	// 	const aqDataset = mapOpenMeteoResponseToDataset({
-	// 		target: {
-	// 			...target,
-	// 			startDate: startDate,
-	// 			endDate: endDate
-	// 		},
-	// 		response: data,
-	// 		fallbackLatitude: coords.latitude,
-	// 		fallbackLongitude: coords.longitude
-	// 	});
-
-	// 	return {
-	// 		ok: true,
-	// 		trend: aqDataset.trend,
-	// 		startDate: startDate,
-	// 		endDate: endDate,
-	// 		source: "openmeteo"
-	// 	};
-	// } catch (error) {
-	// 	const err = await cleanAPIError(error);
-	// 	return {
-	// 		ok: false,
-	// 		error: err
-	// 	};
-	// }
 
 	try {
 		const url = new URL(openMeteoBaseUrl);
@@ -1379,5 +1034,3 @@ function hasSummaryValue(dataset: AirQualityDataset) {
 		);
 	});
 }
-
-// aggiungere fallback openmeteo
