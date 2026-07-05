@@ -176,8 +176,6 @@ export default function ResultsTrendTab({
 								? `${Math.max((singleValue / maxValue) * 100, 6)}%`
 								: "0%";
 
-						console.log(singlePoint.date);
-
 						return (
 							<div
 								key={`${singlePoint.date}-${selectedPollut}`}
@@ -211,5 +209,3 @@ export default function ResultsTrendTab({
 		</section>
 	);
 }
-
-// pulito manca ultimo check

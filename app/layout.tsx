@@ -21,10 +21,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children
-}: // menu
-Readonly<{
+}: Readonly<{
 	children: React.ReactNode;
-	// menu: React.ReactNode;
 }>) {
 	return (
 		<html lang="it">

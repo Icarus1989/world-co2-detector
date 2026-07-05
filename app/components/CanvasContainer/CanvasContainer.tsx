@@ -21,5 +21,3 @@ export function CanvasContainer({
 		</div>
 	);
 }
-
-// pulito manca ultimo check

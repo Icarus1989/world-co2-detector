@@ -12,5 +12,3 @@ export function AppGlobalProviders({ children }: { children: ReactNode }) {
 		</I18nextProvider>
 	);
 }
-
-// pulito manca ultimo check

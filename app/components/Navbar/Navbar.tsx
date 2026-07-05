@@ -167,7 +167,6 @@ export function Navbar() {
 								onClick={() => openDialog("about")}
 							>
 								<span>{t("settings.about")}</span>
-								<small>{t("settings.aboutDescription")}</small>
 							</motion.button>
 
 							<motion.button
@@ -177,7 +176,6 @@ export function Navbar() {
 								onClick={() => openDialog("language")}
 							>
 								<span>{t("settings.language")}</span>
-								<small>IT / EN / NL / DE</small>
 							</motion.button>
 						</div>
 					</motion.section>
@@ -267,5 +265,3 @@ export function Navbar() {
 		</nav>
 	);
 }
-
-// pulito manca ultimo check

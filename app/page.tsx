@@ -27,5 +27,3 @@ export default function Home() {
 		/>
 	);
 }
-
-// ok manca ultimo check

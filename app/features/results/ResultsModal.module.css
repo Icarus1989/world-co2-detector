@@ -859,126 +859,255 @@
 	}
 }
 
-/* @media only screen and (min-width: 1200px) and (min-height: 481px) {
+@media only screen and (min-width: 1024px) and (min-height: 600px) and (orientation: landscape) {
 	.modal {
-		width: min(82dvw, 900px);
-		max-height: 86dvh;
-		padding: 28px;
-	}
-
-	.headerTitle {
-		font-size: 2.4rem;
-	}
-
-	.metricValue {
-		font-size: 5.6rem;
-	}
-
-	.infoGrid {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	.pollutantGrid {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	.tabPanel {
-		padding: 22px;
-	}
-
-	.tabContent {
-		min-height: 590px;
-	}
-
-	.tabs {
-		min-height: 60px;
-	}
-
-	.tab,
-	.activeTab {
-		font-size: 1rem;
-		height: 48px;
-	}
-} */
-
-@media only screen and (min-width: 1200px) and (min-height: 481px) {
-	.modal {
-		width: min(78dvw, 1080px);
-		height: auto;
-		max-height: 84dvh;
-		padding: 30px;
-		border-radius: 34px;
+		width: 82%;
+		height: 86%;
+		padding: 4dvh;
+		border-radius: 5dvh;
 	}
 
 	.header {
-		margin: 0 0 22px 0;
-	}
-
-	.headerTitle {
-		font-size: 2.65rem;
+		margin: 1% 0 2.5% 0;
 	}
 
 	.eyebrow {
-		font-size: 0.82rem;
+		font-size: 1.8dvh;
+		padding: 0 0 2% 0;
+	}
+
+	.headerTitle {
+		font-size: 3dvh;
+		font-weight: 700;
+		line-height: 1;
 	}
 
 	.closeBtn {
-		padding: 10px 16px;
-		font-size: 1rem;
+		padding: 1.2% 2.4%;
+		font-size: 2dvh;
+		border-radius: 999px;
 	}
 
 	.tabs {
-		min-height: 62px;
-
-		margin: 0 0 20px 0;
+		width: 92%;
+		min-height: auto;
+		gap: 1dvh;
+		padding: 1dvh;
+		margin: 0% auto 3% auto;
+		border-radius: 999px;
 	}
 
 	.tab,
 	.activeTab {
-		height: 50px;
-		font-size: 1.04rem;
+		height: auto;
+		min-height: 5.5dvh;
+		padding: 0 2.5dvh;
+		font-size: 2.3dvh;
+		border-radius: 999px;
 	}
 
 	.mainCard {
-		padding: 28px;
-		border-radius: 30px;
+		width: 70%;
+		min-height: 20dvh;
+		padding: 4dvh;
+		border-radius: 5dvh;
+		margin: 0 auto;
+	}
+
+	.chartSection {
+		border-radius: 3.75dvh;
+	}
+
+	.metricLabel {
+		font-size: 3dvh;
 	}
 
 	.metricValue {
-		font-size: 6.4rem;
+		font-size: 6.5dvh;
+		font-weight: 800;
+		line-height: 0.95;
+	}
+
+	.metricUnit,
+	.unit {
+		font-size: 2.3dvh;
+		font-weight: 800;
+	}
+
+	.statusBadge,
+	.badge {
+		padding: 1.75dvh 3dvh;
+		font-size: 2dvh;
+		border-radius: 999px;
 	}
 
 	.infoGrid {
 		grid-template-columns: 0.95fr 1.2fr 1.1fr;
-		gap: 16px;
-		margin: 20px 0 0 0;
+		gap: 2dvh;
+		margin: 3% 0 0 0;
+	}
+
+	.infoCard,
+	.compactCard,
+	.particlesCard,
+	.sourceOverviewCard {
+		min-height: 20.3dvh;
+		padding: 1dvh;
+		border-radius: 2.75dvh;
+	}
+
+	.infoCardTitle {
+		font-size: 2.15dvh;
+		line-height: 1.5;
+		padding: 1dvh 0dvh 0.1dvh 1dvh;
+	}
+
+	.infoCardText {
+		font-size: 2dvh;
+		line-height: 1.25;
+	}
+
+	.inlineMetrics {
+		gap: 2.25dvh;
+	}
+
+	.miniMetric {
+		font-size: 2dvh;
+		padding: 2dvh 1.5dvh 1dvh 1.5dvh;
+		border-radius: 2.75dvh;
+	}
+
+	.miniMetric span {
+		font-size: 2dvh;
+	}
+
+	.miniMetricText {
+		font-size: 2dvh;
+		line-height: 1.4;
+	}
+
+	.sourceRows {
+		gap: 1.5dvh;
+	}
+
+	.sourceRow {
+		padding: 1dvh 1.5dvh;
+		border-radius: 2.5dvh;
+	}
+
+	.sourceLabel {
+		font-size: 1.8dvh;
+	}
+
+	.sourceValue {
+		font-size: 1.8dvh;
 	}
 
 	.pollutantGrid {
 		grid-template-columns: repeat(3, 1fr);
+		gap: 2.75dvh;
+	}
+
+	.pollutantCard {
+		width: 95%;
+		padding: 2dvh 0dvh 2.5dvh 2.5dvh;
+		border-radius: 4.4dvh;
+	}
+
+	.pollutantCardText {
+		width: 100%;
+		height: auto;
+
+		color: #7df9ff;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		width: 100%;
+		height: auto;
+		margin: 1dvh 0 1dvh 0;
+		font-size: 2dvh;
+		font-weight: 900;
 	}
 
 	.tabPanel {
-		padding: 24px;
+		padding: 1.5dvh;
+		border-radius: 3.75dvh;
 	}
 
 	.tabContent {
 		min-height: 0;
 	}
-}
 
-@media only screen and (min-width: 1600px) and (min-height: 850px) {
-	.modal {
-		width: min(72dvw, 1180px);
-		max-height: 82dvh;
-		padding: 34px;
+	.tabTitle {
+		margin: 1dvh 0 1dvh 2dvh;
+
+		font-size: 2.6dvh;
+		font-weight: 700;
 	}
 
-	.headerTitle {
-		font-size: 2.9rem;
+	.topValue {
+		width: 100%;
+		height: auto;
+
+		margin: 0;
+
+		color: white;
+		font-size: 1.8dvh;
+		font-weight: 800;
+		line-height: 1.2;
 	}
 
-	.metricValue {
-		font-size: 7rem;
+	.bottomValue {
+		width: 100%;
+		height: auto;
+		color: rgba(230, 240, 255, 0.62);
+		font-size: 1.8dvh;
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	.sourceList {
+		gap: 2dvh;
+		width: 70%;
+		height: auto;
+		margin: 0.75dvh auto;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.sourceDescription {
+		width: 100%;
+		height: auto;
+		padding: 2dvh 1dvh;
+		margin: 1.25dvh 0;
+		backdrop-filter: blur(2dvh);
+		background: #080e20b8;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 6.25dvh;
+	}
+
+	.sourceTitle {
+		display: block;
+		width: 100%;
+		height: auto;
+		padding: 1dvh 2dvh;
+		margin: 0 0 0.75dvh 0;
+		color: white;
+		font-size: 2.3dvh;
+		font-weight: 700;
+	}
+
+	.sourceText {
+		width: 100%;
+		height: auto;
+		color: rgba(230, 240, 255, 0.68);
+		font-size: 2.13dvh;
+		line-height: 1.45;
+		padding: 1dvh 2dvh;
+		margin: 0;
+	}
+
+	.note {
+		font-size: 1.75dvh;
+		padding: 0 0 0 2.5dvh;
 	}
 }

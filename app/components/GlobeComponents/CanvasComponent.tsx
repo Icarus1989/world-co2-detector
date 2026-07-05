@@ -3,18 +3,13 @@
 import { LandFeature } from "@/app/utilities/types/types";
 
 import { useState, useRef, useEffect, FC, use } from "react";
-
 import * as THREE from "three";
-
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-
 import { Earcut } from "three/src/extras/Earcut.js";
-
 import { drawThreeGeo } from "@/app/utilities/graphicLibraries/threeGeoJSON";
 
 import type {
 	AnimatedGlobeGroupProps,
-	ContinentInfo,
 	SearchTargetType
 } from "@/app/utilities/types/types";
 import { OrbitControls, Stars, useTexture } from "@react-three/drei";
@@ -80,17 +75,6 @@ function NewEarthWaterMesh({
 	);
 }
 
-type groupedType = {
-	grouped: string | "";
-	data: {
-		geom: {
-			x: number;
-			y: number;
-			z: number;
-		};
-	}[];
-};
-
 const baseLandRotation = new THREE.Euler(
 	THREE.MathUtils.degToRad(-25 - 23.5),
 	0,
@@ -123,9 +107,6 @@ export default function CanvasElement({
 	analyzeBreakLines: () => Promise<any>;
 	globeTarget: SearchTargetType | null;
 }) {
-	// NOTA: determinare un type per analyzeCoastLandData
-	// NOTA: sistemare naming funzioni e variabili
-
 	const [landCoupleMeshes, setLandCoupleMeshes] = useState<{
 		surfaces: THREE.Mesh<
 			THREE.BufferGeometry<THREE.NormalBufferAttributes>,
@@ -314,7 +295,6 @@ export default function CanvasElement({
 					setBreakLines(meshesObj);
 				}
 			} catch (error) {
-				console.log("error boundary");
 				console.log(error);
 			}
 		}
@@ -352,19 +332,6 @@ export default function CanvasElement({
 				});
 
 				const initialArray = xyxPointsArraysTop[0];
-
-				const updateFirstElem = initialArray[0].filter((item, index) => {
-					if (index !== 0) {
-						return true;
-					} else {
-						return false;
-					}
-				});
-
-				const cleanArr = initialArray[0].slice(1);
-
-				const updateInitial = [...updateFirstElem, ...cleanArr];
-				// const updateInitialArray = [updateInitial, ...initialArray.slice(1)];
 
 				const startSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const startMeasures = arr[0];
@@ -449,7 +416,6 @@ export default function CanvasElement({
 					setInternalLines(meshesObj);
 				}
 			} catch (error) {
-				console.log("error boundary");
 				console.log(error);
 			}
 		}
@@ -613,7 +579,6 @@ export default function CanvasElement({
 					setBoundaryLines(meshesObj);
 				}
 			} catch (error) {
-				console.log("error boundary");
 				console.log(error);
 			}
 		}
@@ -734,7 +699,6 @@ export default function CanvasElement({
 					setLandCoupleMeshes(coupleMeshes);
 				}
 			} catch (error) {
-				console.log("land error");
 				console.log(error);
 			}
 		}
@@ -801,7 +765,6 @@ function GlobeOrbitControls() {
 	return (
 		<OrbitControls
 			autoRotate={false}
-			// rotateSpeed={0.23}
 			enableDamping={true}
 			dampingFactor={0.04}
 			enableZoom={false}
@@ -961,26 +924,56 @@ function TargetMarker({ target }: { target: SearchTargetType | null }) {
 		return null;
 	}
 
+	const startPoint = new THREE.Vector3(0, 0, 0);
+	const endPoint = new THREE.Vector3(position.x, position.y, position.z);
+
+	const innerRadiusFactor = 0.75;
+	const innerPoint = endPoint.clone().multiplyScalar(innerRadiusFactor);
+
+	const direction = endPoint.clone().sub(innerPoint);
+	const segLength = direction.length();
+
+	if (segLength === 0) {
+		return null;
+	}
+
+	const midPoint = endPoint.clone().add(innerPoint).multiplyScalar(0.5);
+
+	const quaternion = new THREE.Quaternion().setFromUnitVectors(
+		new THREE.Vector3(0, 1, 0),
+		direction.clone().normalize()
+	);
 	return (
 		<>
 			<mesh position={[position.x, position.y, position.z]} renderOrder={999}>
-				<sphereGeometry args={[0.03, 32, 32]} />
+				<sphereGeometry args={[0.0523, 32, 32]} />
 				<meshStandardMaterial
-					color="#7df9ff"
-					emissive="#38d9ff"
+					color="#237640"
+					emissive="#50C878"
+					emissiveIntensity={0.323}
 					roughness={0.25}
-					metalness={0.2}
-					depthTest={false}
-					depthWrite={false}
+					metalness={0.8}
+					depthTest={true}
+					depthWrite={true}
 				/>
 			</mesh>
 
-			<mesh position={[position.x, position.y, position.z]} renderOrder={999}>
-				<sphereGeometry args={[0.05, 32, 32]} />
-				<meshBasicMaterial color="#ff2323" />
+			<mesh
+				position={[midPoint.x, midPoint.y, midPoint.z]}
+				quaternion={quaternion}
+				renderOrder={998}
+			>
+				<cylinderGeometry args={[0.01, 0.01, segLength, 23, 1]} />
+				<meshStandardMaterial
+					color="#237640"
+					emissive="#237640"
+					emissiveIntensity={0.23}
+					roughness={0.15}
+					metalness={0.8}
+					depthTest={true}
+					depthWrite={true}
+				/>
 			</mesh>
 		</>
 	);
 }
-
-// da finire check

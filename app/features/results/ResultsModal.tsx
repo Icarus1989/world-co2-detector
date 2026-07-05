@@ -363,5 +363,3 @@ export default function ResultsModal({
 		</motion.section>
 	);
 }
-
-// pulito manca ultimo check

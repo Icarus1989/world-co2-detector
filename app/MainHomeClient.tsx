@@ -25,12 +25,9 @@ export function MainHomeClient(props: MainHomeClientProps) {
 	function handleSearchSubmit(target: SearchTargetType) {
 		submitSearch(target);
 
-		// da sistemare no object window
 		window.setTimeout(() => {
-			// setIsResultsOpen(true);
 			openResults();
 		}, 1200);
-		// da sistemare
 	}
 
 	return (

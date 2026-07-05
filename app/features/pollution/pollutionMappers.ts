@@ -248,5 +248,3 @@ export function mapOpenMeteoResponseToDataset(params: {
 		warnings: params.warnings ?? []
 	};
 }
-
-// pulito manca ultimo check

@@ -82,7 +82,6 @@ export async function geocodePlaceAction(
 	const query = params.query.trim();
 
 	if (!token) {
-		console.log("Problema API Key Mapbox");
 		return {
 			ok: false,
 			error: "Problema API Key Mapbox"
@@ -90,7 +89,6 @@ export async function geocodePlaceAction(
 	}
 
 	if (query.length < 2) {
-		console.log("Servono almeno 2 caratteri per iniziare la ricerca...");
 		return {
 			ok: false,
 			error: "Servono almeno 2 caratteri per iniziare la ricerca..."
