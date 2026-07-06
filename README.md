@@ -135,11 +135,11 @@ Oltre a questo è possibile selezionare un range temporale per la ricerca. Una v
 
 ### 3D Globe
 
-Ho voluto spingere oltre il mio limite e ampliare le mie conoscenze per dare a questo progetto un significato profondo e per nulla nascosto, anzi ben visibile fin da subito: un mondo diviso in singoli Stati, riunito dopo le rotture e rinsaldato con filamenti d’oro, come un vaso giapponese riparato con la tecnica kintsugi, che conferisce nuova bellezza e ancora più valore ad un oggetto rotto in precedenza.
+Ho voluto dare a questo progetto un significato profondo e per nulla nascosto, anzi ben visibile fin da subito: un mondo diviso in singoli Stati, riunito dopo le rotture e rinsaldato con filamenti d’oro, come un vaso giapponese riparato con la tecnica kintsugi, che conferisce nuova bellezza e ancora più valore ad un oggetto rotto in precedenza.
 
-La creazione di un insieme di mesh tridimensionali utilizzando Three.js, per ricreare ogni singolo paese del mondo, senza un modello in 3D ottenuto da applicazioni di disegno apposite ma utilizzando ed elaborando i dati dei confini dei singoli Paesi, è stata una sfida appassionante.
+Ho dovuto spingere oltre il mio limite e ampliare di molto le mie conoscenze per creare un insieme di mesh tridimensionali utilizzando Three.js, per generare ogni singolo paese del mondo, senza un modello in 3D ottenuto da applicazioni di disegno apposite ma utilizzando ed elaborando i dati dei confini dei singoli Paesi, ed è stata una sfida appassionante.
 
-Partendo da ore di studio della documentazione ufficiale incompleta fino ad ottenere risultati che bloccavano fisicamente il computer che uso per lo sviluppo e costringendomi e allo stop per l’eccessivo riscaldamento, passando per centinaia di esempi che davano direzioni su logiche molto complesse ma quasi sempre non applicabili, fino ad ottenere il primo modello dell’Europa per passare poi alla prima metà del globo, capire che non esistevano dati realmente completi per ogni Paese del mondo e dover fisicamente completarli per dare equilibrio a tutto e giungere finalmente ad una soluzione stabile, che non prosciughi le risorse del dispositivo, ma che sia impattante a livello visivo.
+Partendo da ore di studio della documentazione ufficiale fino ad ottenere risultati che bloccavano fisicamente il computer che uso per lo sviluppo e costringendomi e allo stop per l’eccessivo riscaldamento, passando per centinaia di esempi che davano direzioni su logiche molto complesse ma quasi sempre non applicabili, fino ad ottenere il primo modello dell’Europa per passare poi alla prima metà del globo, capire che non esistevano dati realmente completi per ogni Paese del mondo e dover fisicamente completarli per dare equilibrio a tutto e giungere finalmente ad una soluzione stabile, che non prosciugasse le risorse del dispositivo, ma che fosse impattante a livello visivo.
 Creando appositamente e singolarmente ogni singola texture usata nei vari livelli della parte sferica che rappresenta i mari e gli oceani, ho potuto ottenere l'effetto finale che vedrete.
 
 <hr>
@@ -153,14 +153,14 @@ Per inserire un tocco visivamente piacevole in più ai risultati ottenuti, e met
 
 ### Internationalization
 
-Ho voluto fornire la possibilità di cambiare lingua dell’interfaccia, menu e delle varie parti dell’app tramite i18next con relative utilities per le traduzioni, per poter rendere gradevole e fruibile l’esperienza ad un numero maggiore di persone. Per poterlo fare basta accedere alle impostazioni tramite il button dedicato nella parte in alto a destra della Home dell'app. Le lingue disponibili sono Italiano, Inglese, Tedesco ed Olandese.
+Fornendo la possibilità di cambiare lingua dell’interfaccia, menu e delle varie parti dell’app tramite i18next con relative utilities per le traduzioni, ho cercato di rendere gradevole e fruibile l’esperienza ad un numero maggiore di persone.
+Per cambiare lingua basta accedere alle impostazioni tramite il button dedicato nella parte in alto a destra della Home dell'app. Le lingue disponibili sono Italiano, Inglese, Tedesco ed Olandese.
 
 <hr>
 
 ### Responsive Design
 
-Creata con un approccio mobile-first, l’app è utilizzabile nella gamma completa di formati dei vari dispositivi: smartphone, tablet e desktop, comprese le modalità landscape dei dispositivi portatili.
-Test effettuati con dispositivi reali per almeno ogni tipologia di display.
+Creata con un approccio mobile-first, l’app è utilizzabile in una vasta gamma di formati di dispositivi: smartphone, tablet e desktop, comprese le modalità landscape dei dispositivi portatili.
 
 <hr>
 
@@ -174,12 +174,10 @@ Nell’eventualità di errori di caricamento dei dati delle API, verrà visualiz
 
 ### AI Usage
 
-Ho provato ad utilizzare ChatGPT per il debug ed il refactor di alcuni punti di quest'app e ad utilizzarla per colmare le innumerevoli lacune della documentazione di Three.js, tutto sommato in modo leggero.
+Ho provato ad utilizzare ChatGPT per il debug ed il refactor di alcuni punti di quest'app e ad utilizzarla per colmare le innumerevoli lacune della documentazione di Three.js.
 
-L'ho trovata interessante come esperienza in generale, penso proprio per lo stacco temporale di alcuni mesi tra la fase iniziale di questo progetto e quella finale. Nonostante abbia visto dei significativi miglioramenti, ed in fase di debug o in caso di ricerca di errori con TypeScript, si é rivelato molto utile, soprattutto di recente.
-
-Trovo comunque che in quanto a comprensione del contesto dei modelli tridimensionali ed alla loro creazione tramite codice, che penso comprenda anche una certa parte artistica o di immaginazione pura, e al trovare soluzioni realmente, almeno in parte, nuove, questo risulti ancora povero e più orientato a fornire un tentativo di risposta, più che una reale soluzione.
-Complice forse il fatto che l'ambiente di Three.js a mio parere é abbastanza lacunoso come completezza di documentazione e, forse di conseguenza, di esempi specifici.
+E' stata interessante come esperienza in generale, penso proprio per lo stacco temporale di alcuni mesi tra la fase iniziale di questo progetto e quella finale. Nonostante abbia visto dei significativi miglioramenti, ed in fase di debug o in caso di ricerca di errori con TypeScript, si sia rivelato molto utile, soprattutto di recente, trovo comunque che in quanto a comprensione del contesto dei modelli tridimensionali ed alla loro creazione tramite codice, che penso comprenda anche una certa parte artistica o di immaginazione, e al trovare soluzioni realmente, almeno in parte, nuove, questo risulti ancora lacunoso e più orientato a fornire un tentativo di risposta, più che una reale soluzione.
+Complice forse il fatto che l'ambiente di Three.js a mio parere é abbastanza ancora molto frammentato a livello di documentazione e, forse di conseguenza, di esempi specifici.
 
 <hr>
 
@@ -191,8 +189,9 @@ Data la sua semplicità d’uso con una web app creata con Next.js e dato che lo
 
 ### Conclusions
 
-Questo progetto é stato lungo da sviluppare, purtroppo interrotto e poi ripreso, anche se non dimenticato. Passando da un periodo utilizzando React Native non è stato immediato riprendere il filo logico di tutto, ma il risultato mi sembra in linea con ciò che immaginavo all'inizio.
-Ora finalmente concluderlo, al di la del risultato, rappresenta un punto che ritenevo necessario per me stesso. Spero possa trasmettervi delle emozioni e, magari, essere utile a qualcuno. Ho amato ogni istante di questo progetto, dai primi risulati visivi agli errori non rilevati ed invisibili, dai momenti nei quali le soluzioni sembravano essere vicini a quelli di fallimento che parevano distanziare l'orizzonte. Ogni istante é stato fondamentale, perché mi ha portato ad possedere conoscenze che prima non avevo e mi ha aperto e reso reali possibilità che prima solo immaginavo.
+Questo progetto é stato lungo da sviluppare, purtroppo interrotto e poi ripreso, ma finalmente concluso. Passando da un periodo utilizzando React Native non è stato immediato riprendere il filo logico di tutto, ma il risultato mi sembra in linea con ciò che immaginavo all'inizio.
+Ora finalmente arrivare alla fine, al di la del risultato, rappresenta un punto che ritenevo necessario per me stesso.
+Spero possa trasmettervi delle emozioni e, magari, essere utile a qualcuno. Ho amato ogni istante di questo progetto, dai primi risulati visivi agli errori non rilevati ed invisibili, dai momenti nei quali le soluzioni sembravano essere vicini a quelli di fallimento che parevano distanziare l'orizzonte. Ogni istante é stato fondamentale, perché mi ha portato ad possedere conoscenze che prima non avevo e mi ha aperto e reso reali possibilità che prima solo immaginavo.
 
 <hr>
 <hr>
