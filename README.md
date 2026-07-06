@@ -1,17 +1,17 @@
-**Questa é una Web App creata come progetto per il completamento del Progetto finale del Master Front End Developer di _Start2Impact_**.
-
-## Progetto:
-
 <div align="center">
-  <h2>World CO Detector</h2>
+  <h1><i>World CO Detector</i></h1>
 </div>
 
 <div align="center">
   <h3>Progetto Finale Front-End / LifeStyle</h3>
 </div>
 
+**Questa é una Web App creata come progetto per il completamento del Progetto finale del Master Front End Developer di _Start2Impact_**.
+
 <hr>
 <hr>
+
+## Progetto:
 
 <p align="center">
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Icarus1989/NOME_REPOSITORY?style=flat-square">
@@ -103,13 +103,12 @@ Hosting:
 ## Description
 
 <div align="center">
-  <img src="INSERIRE_SCREENSHOT_O_COVER" alt="World Carbon Monoxide Detector preview" width="90%">
+  <img src="https://i.ibb.co/XkfSDXTK/WCODCover.jpg" alt="World Carbon Monoxide Detector preview" width="90%">
 </div>
 
 ### Intro
 
-Questo è il progetto finale del mio percorso nel master da Front End Developer di Start2Impact.
-Un connubio, che penso si possa definire unico, delle conoscenze acquisite in anni tra i vari corsi ed il mio percorso di apprendimento personale, che mi ha portato a realizzare un’app tanto semplice nell’utilizzo quanto articolata nella costruzione delle sue singole parti.
+Questo è il progetto finale del mio percorso nel master da Front End Developer di Start2Impact, un connubio, che penso si possa definire unico, delle conoscenze acquisite in anni tra i vari corsi ed il mio percorso di apprendimento personale, che mi ha portato a realizzare un’app tanto semplice nell’utilizzo quanto articolata nella costruzione delle sue singole parti.
 
 <hr>
 
@@ -205,7 +204,7 @@ Ora finalmente concluderlo, al di la del risultato, rappresenta un punto che rit
 La Home Page dell'app presenta immediatamente il pianeta terra sotto forma artistica, ruotabile lungo un unico asse per non sovraccaricare in termini di risorse i vari dispositivi. Oltre a questo vi saranno due button: uno per aprire il Search Panel per cominciare una ricerca ed uno per le impostazioni dell'app.
 
 <div align="center">
-  <img src="INSERIRE_SCREENSHOT_HOME" alt="Home screenshot" width="80%">
+  <img src="https://i.ibb.co/PsjDhYjW/Screenshot-2026-07-06-alle-17-05-28.png" alt="Home screenshot" width="80%">
 </div>
 
 <br>
@@ -215,18 +214,12 @@ La Home Page dell'app presenta immediatamente il pianeta terra sotto forma artis
 Il pannello di ricerca permette di effettuare un'interrogazione alle API tramite nome della località, coordinate geografiche o tramite una selezione di Paesi predefinita. Oltre a questo vi é la possibilità di modificare il lasso temporale dentro il quale vengono ottenuti i dati.
 
 <div align="center">
-  <img src="INSERIRE_SCREENSHOT_SEARCH" alt="Search panel screenshot" width="80%">
+  <img src="https://i.ibb.co/rKhqcpMs/Screenshot-2026-07-06-alle-17-05-23.png" alt="Search panel screenshot" width="80%">
 </div>
 
 <br>
 
 ### Results Modal
-
-<!-- Descrivi:
-- sintesi dati
-- tabs
-- valori principali
-- trend e fonti -->
 
 Dopo aver avviato la ricerca apparirà un modal con al suo interno quattro sezioni:
 
@@ -238,7 +231,7 @@ Dopo aver avviato la ricerca apparirà un modal con al suo interno quattro sezio
 Per inserire un tocco visivamente piacevole in più ai risultati ottenuti ho voluto rendere lo sfondo del modal dei risultati un’effettiva mappa della zona cercata, ottenuta utilizzando l’API di Mapbox.
 
 <div align="center">
-  <img src="INSERIRE_SCREENSHOT_RESULTS" alt="Results modal screenshot" width="80%">
+  <img src="https://i.ibb.co/WNf03wxG/Screenshot-2026-07-06-alle-17-06-56.png" alt="Results modal screenshot" width="80%">
 </div>
 
 <br>
@@ -248,7 +241,7 @@ Per inserire un tocco visivamente piacevole in più ai risultati ottenuti ho vol
 Il pannello delle impostazioni, apribile dalla Home page con il tasto apposito, permette di accedere ad un modal About contenente i link di contatto ed a un secondo modal che consente tramite quattro buttons di modificare la lingua della UI dell'app.
 
 <div align="center">
-  <img src="INSERIRE_SCREENSHOT_SETTINGS" alt="Settings screenshot" width="80%">
+  <img src="https://i.ibb.co/0y5MdqVh/Screenshot-2026-07-06-alle-17-10-19.png" alt="Settings screenshot" width="80%">
 </div>
 
 <hr>
@@ -265,16 +258,16 @@ App per visualizzare le emissioni di monossido di carbonio
 
 Requisiti:
 
-[x] Selezione di data di inizio e fine
-[x] Selezione dello Stato e valutazione del monossido di carbonio
-[x] Selezione di latitudine e longitudine (puoi usare due campi testo) e valutazione del monossido di carbonio
-UI e UX semplice e facile da usare
-[x] Struttura dell’app organizzata e comprensibile
-[x] Design responsive
+- Selezione di data di inizio e fine
+- Selezione dello Stato e valutazione del monossido di carbonio
+- Selezione di latitudine e longitudine (puoi usare due campi testo) e valutazione del monossido di carbonio
+  UI e UX semplice e facile da usare
+- Struttura dell’app organizzata e comprensibile
+- Design responsive
 
 Bonus:
 
-[x] Dato uno Stato, visualizza un grafico con le emissioni di monossido di carbonio degli ultimi 6 mesi; per creare il grafico puoi utilizzare qualsiasi libreria grafica trovi disponibile online.
+- Dato uno Stato, visualizza un grafico con le emissioni di monossido di carbonio degli ultimi 6 mesi; per creare il grafico puoi utilizzare qualsiasi libreria grafica trovi disponibile online.
 
 <hr>
 <hr>
