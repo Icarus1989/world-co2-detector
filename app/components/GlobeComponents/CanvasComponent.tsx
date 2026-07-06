@@ -68,12 +68,44 @@ function NewEarthWaterMesh({
 	width: number;
 	height: number;
 }) {
-	const earthGeometry = new THREE.SphereGeometry(2.28, 512, 512);
+	const isMobile3D = useIsMobile3D();
+
+	const sphereSegments = isMobile3D ? 128 : 256;
+
+	const earthGeometry = useMemo(() => {
+		return new THREE.SphereGeometry(2.28, sphereSegments, sphereSegments);
+	}, [sphereSegments]);
+
+	useEffect(() => {
+		return () => {
+			earthGeometry.dispose();
+		};
+	}, [earthGeometry]);
 
 	const rakuBlackTexture = useTexture(rakuBlackImg.src);
 	const rakuBlackNormMap = useTexture(rakuBlackNormal.src);
 	const rakuBlackHeightMap = useTexture(rakuBlackHeight.src);
 	const rakuBlackAmbOccMap = useTexture(rakuBlackAmbOcc.src);
+
+	useEffect(() => {
+		const textures = [
+			rakuBlackTexture,
+			rakuBlackNormMap,
+			rakuBlackHeightMap,
+			rakuBlackAmbOccMap
+		];
+
+		textures.forEach((texture) => {
+			texture.anisotropy = isMobile3D ? 1 : 2;
+			texture.needsUpdate = true;
+		});
+	}, [
+		isMobile3D,
+		rakuBlackTexture,
+		rakuBlackNormMap,
+		rakuBlackHeightMap,
+		rakuBlackAmbOccMap
+	]);
 
 	return (
 		<mesh scale={[0.8, 0.8, 0.8]} geometry={earthGeometry} frustumCulled={true}>
@@ -94,16 +126,16 @@ function NewEarthWaterMesh({
 				thickness={10}
 				flatShading={false}
 				ior={1.5}
-				transmission={0.05}
+				transmission={isMobile3D ? 0 : 0.05}
 				opacity={1}
-				clearcoat={1}
+				clearcoat={isMobile3D ? 0.55 : 1}
 				clearcoatRoughness={0.3}
 				depthTest={true}
 				depthWrite={true}
 				alphaTest={1}
 				fog={true}
-				reflectivity={0.23}
-				sheen={0.1}
+				reflectivity={isMobile3D ? 0.12 : 0.23}
+				sheen={isMobile3D ? 0 : 0.1}
 			/>
 		</mesh>
 	);
@@ -782,7 +814,7 @@ export default function CanvasElement({
 			<Stars
 				radius={30}
 				depth={223}
-				count={460}
+				count={230}
 				factor={10}
 				saturation={0}
 				fade
@@ -845,12 +877,58 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 	const targetQuaternionRef = useRef(new THREE.Quaternion());
 	const targetScaleRef = useRef(new THREE.Vector3(1, 1, 1));
 
+	const lastAnimatedTargetKeyRef = useRef<string | null>(null);
+
+	const targetCoordinates = getTargetCoordinates(globeTarget);
+
+	const targetKey = targetCoordinates
+		? `${targetCoordinates.latitude.toFixed(
+				5
+		  )}-${targetCoordinates.longitude.toFixed(5)}`
+		: null;
+
+	// useEffect(() => {
+	// 	const targetLocalPoint = getTargetPointWithDrawThreeGeo(globeTarget, 1);
+
+	// 	if (!targetLocalPoint) {
+	// 		return;
+	// 	}
+
+	// 	const targetPointWithBaseRotation = targetLocalPoint
+	// 		.clone()
+	// 		.applyEuler(baseLandRotation)
+	// 		.normalize();
+
+	// 	const fromPoint = camera.position.clone().normalize();
+
+	// 	const nextQuaternion = new THREE.Quaternion().setFromUnitVectors(
+	// 		targetPointWithBaseRotation,
+	// 		fromPoint
+	// 	);
+
+	// 	targetQuaternionRef.current.copy(nextQuaternion);
+	// 	targetScaleRef.current.set(1.08, 1.08, 1.08);
+
+	// 	isAnimatingRef.current = true;
+	// 	invalidate();
+	// }, [globeTarget]);
+
 	useEffect(() => {
+		if (!targetKey) {
+			return;
+		}
+
+		if (lastAnimatedTargetKeyRef.current === targetKey) {
+			return;
+		}
+
 		const targetLocalPoint = getTargetPointWithDrawThreeGeo(globeTarget, 1);
 
 		if (!targetLocalPoint) {
 			return;
 		}
+
+		lastAnimatedTargetKeyRef.current = targetKey;
 
 		const targetPointWithBaseRotation = targetLocalPoint
 			.clone()
@@ -869,15 +947,48 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 
 		isAnimatingRef.current = true;
 		invalidate();
-	}, [globeTarget]);
+	}, [globeTarget, targetKey, camera, invalidate]);
 
-	useFrame(() => {
-		if (!groupRef.current) {
+	// useFrame(() => {
+	// 	if (!groupRef.current) {
+	// 		return;
+	// 	}
+
+	// 	groupRef.current.quaternion.slerp(targetQuaternionRef.current, 0.045);
+	// 	groupRef.current.scale.lerp(targetScaleRef.current, 0.035);
+
+	// 	const quaternionAngle = groupRef.current.quaternion.angleTo(
+	// 		targetQuaternionRef.current
+	// 	);
+
+	// 	const scaleDistance = groupRef.current.scale.distanceTo(
+	// 		targetScaleRef.current
+	// 	);
+
+	// 	if (quaternionAngle < 0.002 && scaleDistance < 0.002) {
+	// 		groupRef.current.quaternion.copy(targetQuaternionRef.current);
+	// 		groupRef.current.scale.copy(targetScaleRef.current);
+	// 		isAnimatingRef.current = false;
+	// 		return;
+	// 	}
+
+	// 	invalidate();
+	// });
+
+	useFrame((_, delta) => {
+		if (!isAnimatingRef.current || !groupRef.current) {
 			return;
 		}
 
-		groupRef.current.quaternion.slerp(targetQuaternionRef.current, 0.045);
-		groupRef.current.scale.lerp(targetScaleRef.current, 0.035);
+		const quaternionStep = Math.min(delta * 2.7, 0.07);
+		const scaleStep = Math.min(delta * 2.2, 0.06);
+
+		groupRef.current.quaternion.slerp(
+			targetQuaternionRef.current,
+			quaternionStep
+		);
+
+		groupRef.current.scale.lerp(targetScaleRef.current, scaleStep);
 
 		const quaternionAngle = groupRef.current.quaternion.angleTo(
 			targetQuaternionRef.current
