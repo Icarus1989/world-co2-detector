@@ -731,7 +731,7 @@ export default function CanvasElement({
 	}
 
 	return (
-		<Canvas frameloop="demand">
+		<Canvas frameloop="always">
 			<Stars
 				radius={30}
 				depth={223}
