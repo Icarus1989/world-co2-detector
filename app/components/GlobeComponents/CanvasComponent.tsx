@@ -766,9 +766,9 @@ function GlobeOrbitControls() {
 		<OrbitControls
 			autoRotate={false}
 			enableDamping={true}
-			dampingFactor={0.04}
+			dampingFactor={0.01}
 			enableZoom={false}
-			enablePan={false}
+			enablePan={true}
 			enableRotate={true}
 			minPolarAngle={Math.PI / 2}
 			maxPolarAngle={Math.PI / 2}

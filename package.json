@@ -10,8 +10,8 @@
 	},
 	"dependencies": {
 		"@react-spring/three": "^10.0.0",
-		"@react-three/drei": "^10.0.7",
-		"@react-three/fiber": "^9.1.2",
+		"@react-three/drei": "^10.7.7",
+		"@react-three/fiber": "^9.6.1",
 		"@types/three": "^0.176.0",
 		"animejs": "^3.2.2",
 		"axios": "^1.18.1",
@@ -24,7 +24,7 @@
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
 		"react-i18next": "^17.0.8",
-		"three": "^0.176.0",
+		"three": "^0.185.1",
 		"three-mesh-bvh": "^0.9.0"
 	},
 	"devDependencies": {
