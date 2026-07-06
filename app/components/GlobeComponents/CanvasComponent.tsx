@@ -2,7 +2,7 @@
 
 import { LandFeature } from "@/app/utilities/types/types";
 
-import { useState, useRef, useEffect, FC, use } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Earcut } from "three/src/extras/Earcut.js";
@@ -25,6 +25,40 @@ import rakuBlackNormal from "@/public/textures/normalsTextures/rakuBlackNormal.p
 import rakuBlackHeight from "@/public/textures/heightTextures/rakuBlackHeight.png";
 import rakuBlackAmbOcc from "@/public/textures/ambientOcclusionTextures/rakuBlackAmbientOccMap.png";
 import { getTargetCoordinates } from "@/app/features/globe/globe.utils";
+
+function detectIsMobile3D() {
+	if (typeof window === "undefined") {
+		return false;
+	}
+
+	return window.matchMedia(
+		"(max-width: 767px), (pointer: coarse), (hover: none)"
+	).matches;
+}
+
+function useIsMobile3D() {
+	const [isMobile3D, setIsMobile3D] = useState<boolean>(detectIsMobile3D);
+
+	useEffect(() => {
+		const mediaQuery = window.matchMedia(
+			"(max-width: 767px), (pointer: coarse), (hover: none)"
+		);
+
+		function updateMobileState() {
+			setIsMobile3D(mediaQuery.matches);
+		}
+
+		updateMobileState();
+
+		mediaQuery.addEventListener("change", updateMobileState);
+
+		return () => {
+			mediaQuery.removeEventListener("change", updateMobileState);
+		};
+	}, []);
+
+	return isMobile3D;
+}
 
 function NewEarthWaterMesh({
 	width,
@@ -730,8 +764,21 @@ export default function CanvasElement({
 		);
 	}
 
+	const isMobile3D = useIsMobile3D();
+
+	const canvasDpr: [number, number] = isMobile3D ? [1, 1.25] : [1, 1.75];
+
 	return (
-		<Canvas frameloop="always">
+		<Canvas
+			frameloop="demand"
+			dpr={canvasDpr}
+			gl={{
+				antialias: !isMobile3D,
+				powerPreference: "high-performance",
+				stencil: false,
+				preserveDrawingBuffer: false
+			}}
+		>
 			<Stars
 				radius={30}
 				depth={223}
@@ -746,7 +793,7 @@ export default function CanvasElement({
 
 			<SunLight position={[0, 0, 0]} />
 
-			<GlobeOrbitControls />
+			<GlobeOrbitControls isMobile3D={isMobile3D} />
 
 			<AnimatedGlobeGroup
 				globeTarget={globeTarget}
@@ -759,19 +806,23 @@ export default function CanvasElement({
 	);
 }
 
-function GlobeOrbitControls() {
+function GlobeOrbitControls({ isMobile3D }: { isMobile3D: boolean }) {
 	const { invalidate } = useThree();
 
 	return (
 		<OrbitControls
 			autoRotate={false}
-			enableDamping={true}
-			dampingFactor={0.01}
+			enableDamping={!isMobile3D}
+			dampingFactor={isMobile3D ? 0 : 0.035}
 			enableZoom={false}
-			enablePan={true}
+			enablePan={false}
 			enableRotate={true}
+			rotateSpeed={isMobile3D ? 0.35 : 0.55}
 			minPolarAngle={Math.PI / 2}
 			maxPolarAngle={Math.PI / 2}
+			touches={{
+				ONE: THREE.TOUCH.ROTATE
+			}}
 			onChange={() => invalidate()}
 		/>
 	);
