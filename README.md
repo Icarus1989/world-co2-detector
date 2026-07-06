@@ -241,7 +241,7 @@ Per inserire un tocco visivamente piacevole in più ai risultati ottenuti ho vol
 Il pannello delle impostazioni, apribile dalla Home page con il tasto apposito, permette di accedere ad un modal About contenente i link di contatto ed a un secondo modal che consente tramite quattro buttons di modificare la lingua della UI dell'app.
 
 <div align="center">
-  <img src="https://i.ibb.co/0y5MdqVh/Screenshot-2026-07-06-alle-17-10-19.png" alt="Settings screenshot" width="80%">
+  <img src="https://i.ibb.co/0y5MdqVh/Screenshot-2026-07-06-alle-17-10-19.png" alt="Settings screenshot" width="40%">
 </div>
 
 <hr>
