@@ -14,11 +14,11 @@
 ## Progetto:
 
 <p align="center">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Icarus1989/NOME_REPOSITORY?style=flat-square">
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Icarus1989/NOME_REPOSITORY"> 
-<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Icarus1989/NOME_REPOSITORY">
-<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Icarus1989/NOME_REPOSITORY">
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Icarus1989/NOME_REPOSITORY">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Icarus1989/world-co2-detector?style=flat-square">
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Icarus1989/world-co2-detector"> 
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Icarus1989/world-co2-detector">
+<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Icarus1989/world-co2-detector">
+<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Icarus1989/world-co2-detector">
 </p>
 
 <hr>
