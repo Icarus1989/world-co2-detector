@@ -1,59 +1,13 @@
-**Questa é una Web App creata come progetto per il completamento del Corso _React.js_ di _Start2Impact_**.
+**Questa é una Web App creata come progetto per il completamento del Progetto finale del Master Front End Developer di _Start2Impact_**.
 
 ## Progetto:
 
 <div align="center">
-  <h2>Progetto Finale Front-End / LifeStyle</h2>
+  <h2>World CO Detector</h2>
 </div>
 
-<hr>
-<hr>
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## To Do
-
-Inizio:
-
-- [ ] Configurare Route
-- [ ] i18?
-- [ ]
-
-ToDo:
-
-- [ ] sistemare showPicker (basta try catch per eliminare eventuali saltuari errori)
-
-<hr>
-<hr>
-
 <div align="center">
-<h1><i>World Carbon Monoxide Detector</i></h1>
-</div>
-
-**Web App created as final project for the Start2Impact Front-End Development path.**
-
-## Project
-
-<div align="center">
-  <h2>Front-End / Air Quality / Data Visualization</h2>
+  <h3>Progetto Finale Front-End / LifeStyle</h3>
 </div>
 
 <hr>
@@ -90,6 +44,7 @@ ToDo:
             <li><a href="#internationalization">Internationalization</a></li>
             <li><a href="#responsive-design">Responsive Design</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
+            <li><a href="#ai-usage">AI Usage</a></li>
             <li><a href="#host">Host</a></li>
             <li><a href="#conclusions">Conclusions</a></li>
           </ul>
@@ -98,8 +53,6 @@ ToDo:
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#trace-summary">Trace Summary</a></li>
-    <li><a href="#additional-features">Additional Features</a></li>
-    <li><a href="#future-improvements">Future Improvements</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#license">License</a></li>
@@ -155,123 +108,92 @@ Hosting:
 
 ### Intro
 
-<!-- Scrivi qui una breve introduzione al progetto:
-- obiettivo dell'app
-- perché il monossido di carbonio / qualità dell'aria
-- collegamento con la traccia Start2Impact
-- valore aggiunto rispetto a una semplice ricerca dati -->
+Questo è il progetto finale del mio percorso nel master da Front End Developer di Start2Impact.
+Un connubio, che penso si possa definire unico, delle conoscenze acquisite in anni tra i vari corsi ed il mio percorso di apprendimento personale, che mi ha portato a realizzare un’app tanto semplice nell’utilizzo quanto articolata nella costruzione delle sue singole parti.
 
 <hr>
 
 ### Main Features
 
-<!-- Elenca e descrivi brevemente:
-- ricerca per città/luogo
-- ricerca per coordinate
-- ricerca per paese
-- risultati qualità aria
-- focus su CO
-- altri inquinanti
-- trend ultimi sei mesi
-- fonti dati
-- supporto multilingua
-- responsive design -->
+Quest’app serve per determinare il livello di monossido di carbonio presente nell’aria di una determinata zona selezionata, sia essa una città, un paese o ricercata tramite coordinate geografiche.
+Oltre a questo viene fatta una rilevazione più ampia degli inquinanti, si può osservare un grafico dell’andamento di crescita di questi negli ultimi sei mesi, potendo anche personalizzare l’app in una tra quattro lingue a scelta.
+Ho cercato di mantenere l’interfaccia iniziale semplice e basilare, in modo quasi opposto rispetto agli altri progetti fatti, ma comunque cercando di mantenere un impatto visivo capace di stupire fin dal primo impatto.
 
 <hr>
 
 ### Air Quality Data
 
-<!-- Spiega:
-- uso di OpenAQ come fonte principale quando disponibile
-- uso di Open-Meteo come fallback/completamento
-- dati mostrati: CO, PM2.5, PM10, NO2, O3, SO2, AQI se presenti
-- gestione dei dati mancanti
-- limiti dei dati ambientali pubblici -->
+Per ottenere dei dati completi, sia per quanto riguarda il monossido di carbonio (CO) sia per gli altri inquinanti più comuni (PM2.5, PM10, NO2, O3 e SO2) ho dovuto utilizzare due fonti di dati, AQData e Open-Meteo. Data la combinazione dei risultati delle due per ogni ricerca si avrà un livello completo di informazioni per le principali città del mondo, ed un ventaglio abbastanza vasto per quanto riguarda le altre zone, in base alla disponibilità di sensori utilizzati dalle fonti. L'eventuale assenza totale di dati da AQData verrà sopperita da Open-meteo, fonte con dati che coprono zone più vaste, anche se a volte meno precisi rispetto alla prima.
 
 <hr>
 
 ### Search System
 
-<!-- Spiega:
-- modalità Place
-- modalità Coordinates
-- modalità Country
-- validazione campi
-- date range
-- geocoding
-- target usato per orientare globo e risultati -->
+Il pannello di ricerca attivabile tramite un semplice button permette di richiedere informazioni attraverso l’inserimento del nome della località, coordinate geografiche o tramite una veloce selezione di Paesi preimpostata.
+Oltre a questo è possibile selezionare un range temporale per la ricerca. Una volta effettuata una ricerca, verrà aggiunto al Globo tridimensionale un indicatore in corrispondenza delle coordinate risultanti, che rimarrà fino alla successiva.
 
 <hr>
 
 ### 3D Globe
 
-<!-- Spiega:
-- globo 3D con Three.js / React Three Fiber
-- rotazione verso il target selezionato
-- uso di texture e confini geografici
-- scopo visuale e interattivo -->
+Ho voluto spingere oltre il mio limite e ampliare le mie conoscenze per dare a questo progetto un significato profondo e per nulla nascosto, anzi ben visibile fin da subito: un mondo diviso in singoli Stati, riunito dopo le rotture e rinsaldato con filamenti d’oro, come un vaso giapponese riparato con la tecnica kintsugi, che conferisce nuova bellezza e ancora più valore ad un oggetto rotto in precedenza.
+
+La creazione di un insieme di mesh tridimensionali utilizzando Three.js, per ricreare ogni singolo paese del mondo, senza un modello in 3D ottenuto da applicazioni di disegno apposite ma utilizzando ed elaborando i dati dei confini dei singoli Paesi, è stata una sfida appassionante.
+
+Partendo da ore di studio della documentazione ufficiale incompleta fino ad ottenere risultati che bloccavano fisicamente il computer che uso per lo sviluppo e costringendomi e allo stop per l’eccessivo riscaldamento, passando per centinaia di esempi che davano direzioni su logiche molto complesse ma quasi sempre non applicabili, fino ad ottenere il primo modello dell’Europa per passare poi alla prima metà del globo, capire che non esistevano dati realmente completi per ogni Paese del mondo e dover fisicamente completarli per dare equilibrio a tutto e giungere finalmente ad una soluzione stabile, che non prosciughi le risorse del dispositivo, ma che sia impattante a livello visivo.
+Creando appositamente e singolarmente ogni singola texture usata nei vari livelli della parte sferica che rappresenta i mari e gli oceani, ho potuto ottenere l'effetto finale che vedrete.
 
 <hr>
 
 ### Results and Data Visualization
 
-<!-- Spiega:
-- ResultsModal
-- tab Overview
-- tab Pollutants
-- tab Trend
-- tab Sources
-- rappresentazione valori, unità, fonte dati e trend -->
+Cominciata la ricerca, verrà mostrato un puntatore nel globo tridimensionale alle coordinate della ricerca, subito dopo verrà visualizzato un modal con i risultati caricati, con una scheda per sintesi, una per i dati degli inquinanti nel dettaglio, una per il grafico con l’andamento degli scorsi sei mesi e l’ultima per le fonti dati utilizzate ed un avviso all'utente nel caso di mancanza di dati dalle fonti.
+Per inserire un tocco visivamente piacevole in più ai risultati ottenuti, e mettermi ulteriormente alla prova, ho voluto rendere lo sfondo del modal dei risultati un’effettiva mappa della zona cercata, ottenuta utilizzando l’API di Mapbox. La ritengo un'API di media difficoltà, dalla forte possibilità di personalizzazione, ma che soffre come molte altre di una documentazione troppo spesso non chiara e / o non del tutto completa e ben organizzata.
 
 <hr>
 
 ### Internationalization
 
-<!-- Spiega:
-- lingue supportate
-- i18next
-- cambio lingua tramite settings
-- traduzione labels paesi e testi UI -->
+Ho voluto fornire la possibilità di cambiare lingua dell’interfaccia, menu e delle varie parti dell’app tramite i18next con relative utilities per le traduzioni, per poter rendere gradevole e fruibile l’esperienza ad un numero maggiore di persone. Per poterlo fare basta accedere alle impostazioni tramite il button dedicato nella parte in alto a destra della Home dell'app. Le lingue disponibili sono Italiano, Inglese, Tedesco ed Olandese.
 
 <hr>
 
 ### Responsive Design
 
-<!-- Spiega:
-- adattamento mobile/tablet/desktop
-- orientamenti portrait/landscape
-- gestione CSS Modules e media query
-- difficoltà principali risolte -->
+Creata con un approccio mobile-first, l’app è utilizzabile nella gamma completa di formati dei vari dispositivi: smartphone, tablet e desktop, comprese le modalità landscape dei dispositivi portatili.
+Test effettuati con dispositivi reali per almeno ogni tipologia di display.
 
 <hr>
 
 ### Error Handling
 
-<!-- Spiega:
-- errori API
-- assenza dati
-- fallback
-- messaggi utente
-- gestione loading states -->
+Nell’eventualità di errori di caricamento dei dati delle API, verrà visualizzato un breve messaggio testuale nel modal dei risultati, fornendo delle indicazioni sintetiche ma abbastanza esplicative sul problema e sull’origine di questo.
+
+<hr>
+
+<hr>
+
+### AI Usage
+
+Ho provato ad utilizzare ChatGPT per il debug ed il refactor di alcuni punti di quest'app e ad utilizzarla per colmare le innumerevoli lacune della documentazione di Three.js, tutto sommato in modo leggero.
+
+L'ho trovata interessante come esperienza in generale, penso proprio per lo stacco temporale di alcuni mesi tra la fase iniziale di questo progetto e quella finale. Nonostante abbia visto dei significativi miglioramenti, ed in fase di debug o in caso di ricerca di errori con TypeScript, si é rivelato molto utile, soprattutto di recente.
+
+Trovo comunque che in quanto a comprensione del contesto dei modelli tridimensionali ed alla loro creazione tramite codice, che penso comprenda anche una certa parte artistica o di immaginazione pura, e al trovare soluzioni realmente, almeno in parte, nuove, questo risulti ancora povero e più orientato a fornire un tentativo di risposta, più che una reale soluzione.
+Complice forse il fatto che l'ambiente di Three.js a mio parere é abbastanza lacunoso come completezza di documentazione e, forse di conseguenza, di esempi specifici.
 
 <hr>
 
 ### Host
 
-<!-- Scrivi qui:
-- deploy su Vercel
-- motivazione scelta Vercel
-- eventuale nota su env variables -->
+Data la sua semplicità d’uso con una web app creata con Next.js e dato che lo avevo utilizzato precedentemente per lo scorso progetto, ho voluto optare per Vercel per l’hosting di questo progetto.
 
 <hr>
 
 ### Conclusions
 
-<!-- Scrivi qui:
-- cosa hai imparato
-- difficoltà principali
-- aspetti tecnici più importanti
-- possibili sviluppi futuri -->
+Questo progetto é stato lungo da sviluppare, purtroppo interrotto e poi ripreso, anche se non dimenticato. Passando da un periodo utilizzando React Native non è stato immediato riprendere il filo logico di tutto, ma il risultato mi sembra in linea con ciò che immaginavo all'inizio.
+Ora finalmente concluderlo, al di la del risultato, rappresenta un punto che ritenevo necessario per me stesso. Spero possa trasmettervi delle emozioni e, magari, essere utile a qualcuno. Ho amato ogni istante di questo progetto, dai primi risulati visivi agli errori non rilevati ed invisibili, dai momenti nei quali le soluzioni sembravano essere vicini a quelli di fallimento che parevano distanziare l'orizzonte. Ogni istante é stato fondamentale, perché mi ha portato ad possedere conoscenze che prima non avevo e mi ha aperto e reso reali possibilità che prima solo immaginavo.
 
 <hr>
 <hr>
@@ -280,10 +202,7 @@ Hosting:
 
 ### Home
 
-<!-- Descrivi brevemente la home:
-- globo 3D
-- pulsante ricerca
-- settings -->
+La Home Page dell'app presenta immediatamente il pianeta terra sotto forma artistica, ruotabile lungo un unico asse per non sovraccaricare in termini di risorse i vari dispositivi. Oltre a questo vi saranno due button: uno per aprire il Search Panel per cominciare una ricerca ed uno per le impostazioni dell'app.
 
 <div align="center">
   <img src="INSERIRE_SCREENSHOT_HOME" alt="Home screenshot" width="80%">
@@ -293,11 +212,7 @@ Hosting:
 
 ### Search Panel
 
-<!-- Descrivi:
-- ricerca per luogo
-- ricerca per coordinate
-- ricerca per paese
-- intervallo date -->
+Il pannello di ricerca permette di effettuare un'interrogazione alle API tramite nome della località, coordinate geografiche o tramite una selezione di Paesi predefinita. Oltre a questo vi é la possibilità di modificare il lasso temporale dentro il quale vengono ottenuti i dati.
 
 <div align="center">
   <img src="INSERIRE_SCREENSHOT_SEARCH" alt="Search panel screenshot" width="80%">
@@ -313,6 +228,15 @@ Hosting:
 - valori principali
 - trend e fonti -->
 
+Dopo aver avviato la ricerca apparirà un modal con al suo interno quattro sezioni:
+
+- una scheda con una sintesi rapida dei dati ottenuti con il monossido di carbonio, richiesta principale della consegna del progetto, in prima vista
+- una per i dati degli inquinanti CO, PM2.5, PM10, NO2, O3 e SO2 nel dettaglio con numero di campioni analizzati
+- una per il grafico con l’andamento del livello degli inquinanti, selezionabili nella parte superiore, degli scorsi sei mesi
+- l’ultima per le fonti dati utilizzate ed un avviso all'utente nel caso di mancanza di dati dalla fonte primaria, OpenAQ, che verrà sopperita dalla secondaria, Open-Meteo, sia in caso di risultati parziali che in totale assenza di dati.
+
+Per inserire un tocco visivamente piacevole in più ai risultati ottenuti ho voluto rendere lo sfondo del modal dei risultati un’effettiva mappa della zona cercata, ottenuta utilizzando l’API di Mapbox.
+
 <div align="center">
   <img src="INSERIRE_SCREENSHOT_RESULTS" alt="Results modal screenshot" width="80%">
 </div>
@@ -321,10 +245,7 @@ Hosting:
 
 ### Settings
 
-<!-- Descrivi:
-- cambio lingua
-- about
-- eventuali info progetto -->
+Il pannello delle impostazioni, apribile dalla Home page con il tasto apposito, permette di accedere ad un modal About contenente i link di contatto ed a un secondo modal che consente tramite quattro buttons di modificare la lingua della UI dell'app.
 
 <div align="center">
   <img src="INSERIRE_SCREENSHOT_SETTINGS" alt="Settings screenshot" width="80%">
@@ -335,48 +256,25 @@ Hosting:
 
 ## Trace Summary
 
-<!-- Inserisci qui una sintesi della traccia Start2Impact. -->
+Traccia originale del progetto:
 
-- [ ] Date range selection.
-- [ ] Country / State selection and CO evaluation.
-- [ ] Latitude / Longitude selection and CO evaluation.
-- [ ] API integration.
-- [ ] Responsive UI.
-- [ ] Clear and maintainable project structure.
-- [ ] Error and loading state management.
+Sviluppa l'interfaccia di un'applicazione web, creando una web app che interagisca con le API e implementando un CSS solido, scalabile e facilmente mantenibile.
 
-<hr>
-<hr>
+Per chi lavorerai
+App per visualizzare le emissioni di monossido di carbonio
 
-## Additional Features
+Requisiti:
 
-<!-- Elenca qui ciò che hai aggiunto oltre alla traccia base. -->
+[x] Selezione di data di inizio e fine
+[x] Selezione dello Stato e valutazione del monossido di carbonio
+[x] Selezione di latitudine e longitudine (puoi usare due campi testo) e valutazione del monossido di carbonio
+UI e UX semplice e facile da usare
+[x] Struttura dell’app organizzata e comprensibile
+[x] Design responsive
 
-- [ ] Interactive 3D globe.
-- [ ] Place search with geocoding.
-- [ ] Country search with predefined coordinates.
-- [ ] OpenAQ + Open-Meteo fallback/completion logic.
-- [ ] Six-month air quality trend.
-- [ ] Multi-language interface.
-- [ ] Animated UI overlays.
-- [ ] Detailed source tab.
-- [ ] Responsive layout for multiple devices and orientations.
+Bonus:
 
-<hr>
-<hr>
-
-## Future Improvements
-
-<!-- Elenca qui idee future senza dilungarti troppo. -->
-
-- [ ] Add more countries.
-- [ ] Improve station selection logic.
-- [ ] Add map visualization inside results.
-- [ ] Add historical comparison between years.
-- [ ] Add user-selected pollutants.
-- [ ] Improve accessibility.
-- [ ] Add PWA support.
-- [ ] Add persistent user preferences.
+[x] Dato uno Stato, visualizza un grafico con le emissioni di monossido di carbonio degli ultimi 6 mesi; per creare il grafico puoi utilizzare qualsiasi libreria grafica trovi disponibile online.
 
 <hr>
 <hr>
