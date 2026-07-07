@@ -513,3 +513,21 @@ export type SensorSelection = {
 	sensor: OpenAqSensor;
 	station: OpenAqNearbyStation;
 };
+
+export type BoundaryFeature = {
+	type: string;
+	properties: {
+		featurecla: string | null;
+		min_label: number | null;
+		min_zoom: number | null;
+		name: string;
+		name_alt: string | null;
+		name_en: string | null;
+		note: string | null;
+		scalerank: number | null;
+	};
+	geometry: {
+		type: string;
+		coordinates: [number, number][];
+	};
+};
