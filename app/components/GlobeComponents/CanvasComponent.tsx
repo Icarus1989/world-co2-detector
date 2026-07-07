@@ -975,7 +975,7 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 	// 	invalidate();
 	// });
 
-	useFrame((_, delta) => {
+	useFrame((callBack, delta) => {
 		if (!isAnimatingRef.current || !groupRef.current) {
 			return;
 		}

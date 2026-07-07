@@ -68,7 +68,7 @@
 	pointer-events: auto;
 }
 
-.gearWatermark {
+/* .gearWatermark {
 	position: absolute;
 	right: 16px;
 	top: 10px;
@@ -80,6 +80,26 @@
 	font-weight: 900;
 	line-height: 1;
 	pointer-events: none;
+} */
+
+.gearWatermark {
+	position: absolute;
+	right: 12px;
+	top: 8px;
+	z-index: 0;
+	width: 9rem;
+	height: 9rem;
+	color: rgba(91, 125, 255, 0.1);
+	opacity: 1;
+	pointer-events: none;
+}
+
+.gearWatermark svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	fill: currentColor;
 }
 
 .panelHeader {
@@ -350,9 +370,11 @@
 	}
 
 	.gearWatermark {
-		right: 12px;
-		top: 8px;
-		font-size: 7.5rem;
+		right: 2.2dvh;
+		top: 2dvh;
+		width: 9.5dvh;
+		height: 9.5dvh;
+		color: rgba(91, 125, 255, 0.09);
 	}
 
 	.panelTitle {
@@ -487,9 +509,11 @@
 	}
 
 	.gearWatermark {
-		right: 2rem;
-		top: 1.4rem;
-		font-size: 14rem;
+		right: 2dvh;
+		top: 1.4dvh;
+		width: 14dvh;
+		height: 14dvh;
+		color: rgba(91, 125, 255, 0.08);
 	}
 
 	.panelHeader {

@@ -8,6 +8,7 @@ import { useAppData } from "@/app/providers/AppDataProvider";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import styles from "./Navbar.module.css";
 import { SettingsDialogType } from "@/app/utilities/types/types";
+import { GearIcon } from "../SvgTemplates/SvgIcons/GearIcon";
 
 const panelVariants: Variants = {
 	open: {
@@ -148,8 +149,12 @@ export function Navbar() {
 						exit="closed"
 						aria-label={t("settings.panelTitle")}
 					>
-						<div className={styles["gearWatermark"]} aria-hidden="true">
+						{/* <div className={styles["gearWatermark"]} aria-hidden="true">
 							⚙
+						</div> */}
+
+						<div className={styles["gearWatermark"]} aria-hidden="true">
+							<GearIcon />
 						</div>
 
 						<div className={styles["panelHeader"]}>
