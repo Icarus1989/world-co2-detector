@@ -248,7 +248,7 @@ export default function CanvasElement({
 			goldOpaqueImgMetalness.src
 		);
 
-		const tubeRadialSegments = isMobile3D ? 12 : 20;
+		const tubeRadialSegments = isMobile3D ? 16 : 20;
 
 		function getTubeSegments(pointsLength: number) {
 			const rawSegments = isMobile3D
