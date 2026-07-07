@@ -626,7 +626,7 @@ export default function CanvasElement({
 			sheenRoughness: isMobile3D ? 0.32 : 0.23,
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.92 : 1.0,
-			specularIntensity: isMobile3D ? 0.82 : 1,
+			specularIntensity: isMobile3D ? 0.92 : 1,
 			// testing
 
 			wireframe: false,
@@ -661,7 +661,7 @@ export default function CanvasElement({
 			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
-			sheenRoughness: isMobile3D ? 0.34 : 0.223,
+			sheenRoughness: isMobile3D ? 0.3 : 0.223,
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.88 : 1.0,
 			specularIntensity: isMobile3D ? 0.88 : 1,
