@@ -287,15 +287,15 @@ export default function CanvasElement({
 
 			// testing
 
-			metalness: isMobile3D ? 0.82 : 0.97,
+			metalness: isMobile3D ? 0.92 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
-			roughness: isMobile3D ? 0.16 : 0.0323,
+			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
 			sheenRoughness: isMobile3D ? 0.32 : 0.23,
 			bumpMap: goldOpaqueRoughness,
-			reflectivity: isMobile3D ? 0.72 : 1.0,
-			specularIntensity: isMobile3D ? 0.72 : 1,
+			reflectivity: isMobile3D ? 0.92 : 1.0,
+			specularIntensity: isMobile3D ? 0.82 : 1,
 			// testing
 			wireframe: false,
 			depthTest: true,
