@@ -292,7 +292,7 @@ export default function CanvasElement({
 			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
-			sheenRoughness: isMobile3D ? 0.32 : 0.23,
+			sheenRoughness: isMobile3D ? 0.25 : 0.23,
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.92 : 1.0,
 			specularIntensity: isMobile3D ? 0.82 : 1,
@@ -344,8 +344,8 @@ export default function CanvasElement({
 
 					const startGeometry = new THREE.SphereGeometry(
 						radius,
-						isMobile3D ? 20 : 32,
-						isMobile3D ? 10 : 16
+						isMobile3D ? 28 : 32,
+						isMobile3D ? 12 : 16
 					);
 					// test
 
@@ -364,8 +364,8 @@ export default function CanvasElement({
 					// const endGeometry = new THREE.SphereGeometry(radius, 32, 16);
 					const endGeometry = new THREE.SphereGeometry(
 						radius,
-						isMobile3D ? 20 : 32,
-						isMobile3D ? 10 : 16
+						isMobile3D ? 28 : 32,
+						isMobile3D ? 12 : 16
 					);
 					// test
 
@@ -490,8 +490,8 @@ export default function CanvasElement({
 
 					const startGeometry = new THREE.SphereGeometry(
 						startSphereRadius,
-						isMobile3D ? 20 : 32,
-						isMobile3D ? 10 : 16
+						isMobile3D ? 28 : 32,
+						isMobile3D ? 12 : 16
 					);
 
 					// test
@@ -517,8 +517,8 @@ export default function CanvasElement({
 
 					const endGeometry = new THREE.SphereGeometry(
 						endSphereRadius,
-						isMobile3D ? 20 : 32,
-						isMobile3D ? 10 : 16
+						isMobile3D ? 28 : 32,
+						isMobile3D ? 12 : 16
 					);
 
 					// const endGeometry = new THREE.SphereGeometry(
@@ -618,15 +618,15 @@ export default function CanvasElement({
 			// specularIntensity: 1,
 
 			// testing
-			metalness: isMobile3D ? 0.82 : 0.97,
+			metalness: isMobile3D ? 0.9 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
-			roughness: isMobile3D ? 0.16 : 0.0323,
+			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
 			sheenRoughness: isMobile3D ? 0.32 : 0.23,
 			bumpMap: goldOpaqueRoughness,
-			reflectivity: isMobile3D ? 0.72 : 1.0,
-			specularIntensity: isMobile3D ? 0.72 : 1,
+			reflectivity: isMobile3D ? 0.92 : 1.0,
+			specularIntensity: isMobile3D ? 0.82 : 1,
 			// testing
 
 			wireframe: false,
@@ -655,16 +655,16 @@ export default function CanvasElement({
 			// specularIntensity: 1,
 
 			// testing
-			metalness: isMobile3D ? 0.78 : 0.97,
+			metalness: isMobile3D ? 0.9 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			displacementScale: 0,
-			roughness: isMobile3D ? 0.18 : 0.0323,
+			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
 			sheenRoughness: isMobile3D ? 0.34 : 0.223,
 			bumpMap: goldOpaqueRoughness,
-			reflectivity: isMobile3D ? 0.68 : 1.0,
-			specularIntensity: isMobile3D ? 0.68 : 1,
+			reflectivity: isMobile3D ? 0.88 : 1.0,
+			specularIntensity: isMobile3D ? 0.88 : 1,
 			// testing
 
 			wireframe: false,
