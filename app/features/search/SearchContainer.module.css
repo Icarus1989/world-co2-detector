@@ -8,7 +8,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	width: 100dvw;
-	height: 60dvh;
+	height: auto;
 	font-size: 16px;
 }
 
@@ -45,7 +45,7 @@
 
 @media only screen and (max-width: 640px) and (orientation: portrait) {
 	.searchContainer {
-		height: 58dvh;
+		height: auto;
 	}
 
 	.openBtnSection {
@@ -85,7 +85,7 @@
 
 @media only screen and (min-width: 900px) and (max-width: 1023px) and (orientation: landscape) {
 	.searchContainer {
-		height: 54dvh;
+		height: auto;
 	}
 
 	.openBtn {
@@ -96,7 +96,7 @@
 
 @media only screen and (min-width: 1024px) and (min-height: 600px) and (orientation: landscape) {
 	.searchContainer {
-		height: 54%;
+		height: auto;
 	}
 
 	.openBtnSection {
