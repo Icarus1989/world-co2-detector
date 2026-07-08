@@ -142,7 +142,7 @@ Ho dovuto spingere oltre il mio limite e ampliare di molto le mie conoscenze per
 Partendo da ore di studio della documentazione ufficiale, passando attraverso risultati che arrivavano a bloccare fisicamente il computer usato per lo sviluppo e mi costringevano allo stop per l’eccessivo riscaldamento. Dopo centinaia di esempi, tentativi e soluzioni non applicabili, sono arrivato prima al modello dell’Europa, poi alla prima metà del globo, fino a una soluzione stabile, visivamente impattante e meno pesante per il dispositivo.
 Creando appositamente e singolarmente ogni singola texture usata nei vari livelli della parte sferica che rappresenta i mari e gli oceani, ho potuto ottenere l'effetto finale che vedrete.
 
-> **Nota sulle prestazioni:** il modello tridimensionale del globo è uno degli elementi centrali del progetto e utilizza mesh, texture e dati geografici complessi. Nonostante le ottimizzazioni applicate, dispositivi più datati o con risorse hardware limitate potrebbero mostrare prestazioni inferiori, soprattutto durante il caricamento iniziale e l’interazione con il globo.
+> [!NOTE] > **Nota sulle prestazioni:** il modello tridimensionale del globo è uno degli elementi centrali del progetto e utilizza mesh, texture e dati geografici complessi. Nonostante le ottimizzazioni applicate, dispositivi più datati o con risorse hardware limitate potrebbero mostrare prestazioni inferiori, soprattutto durante il caricamento iniziale e l’interazione con il globo.
 
 <hr>
 
