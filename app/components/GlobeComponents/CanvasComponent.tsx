@@ -302,7 +302,7 @@ export default function CanvasElement({
 			depthWrite: true,
 			opacity: 1,
 			alphaTest: 1,
-			fog: true
+			fog: false
 		});
 
 		async function startAnalyzeBreakLines() {
@@ -618,12 +618,12 @@ export default function CanvasElement({
 			// specularIntensity: 1,
 
 			// testing
-			metalness: isMobile3D ? 0.9 : 0.97,
+			metalness: isMobile3D ? 0.94 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			roughness: isMobile3D ? 0.09 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
-			sheenRoughness: isMobile3D ? 0.32 : 0.23,
+			sheenRoughness: isMobile3D ? 0.28 : 0.23,
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.92 : 1.0,
 			specularIntensity: isMobile3D ? 0.92 : 1,
@@ -634,7 +634,7 @@ export default function CanvasElement({
 			depthWrite: true,
 			opacity: 1,
 			alphaTest: 1,
-			fog: true
+			fog: false
 		});
 
 		const intGoldMaterial = new THREE.MeshPhysicalMaterial({
@@ -655,16 +655,16 @@ export default function CanvasElement({
 			// specularIntensity: 1,
 
 			// testing
-			metalness: isMobile3D ? 0.9 : 0.97,
+			metalness: isMobile3D ? 0.94 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			displacementScale: 0,
-			roughness: isMobile3D ? 0.09 : 0.0323,
+			roughness: isMobile3D ? 0.07 : 0.0323,
 			roughnessMap: goldOpaqueRoughness,
 			sheenRoughnessMap: goldOpaqueRoughness,
 			sheenRoughness: isMobile3D ? 0.3 : 0.223,
 			bumpMap: goldOpaqueRoughness,
-			reflectivity: isMobile3D ? 0.88 : 1.0,
-			specularIntensity: isMobile3D ? 0.88 : 1,
+			reflectivity: isMobile3D ? 0.9 : 1.0,
+			specularIntensity: isMobile3D ? 0.9 : 1,
 			// testing
 
 			wireframe: false,
@@ -672,7 +672,7 @@ export default function CanvasElement({
 			depthWrite: true,
 			opacity: 1,
 			alphaTest: 1,
-			fog: true
+			fog: false
 		});
 
 		async function startAnalyzeBoundary() {

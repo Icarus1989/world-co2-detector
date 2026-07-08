@@ -122,7 +122,7 @@ Ho cercato di mantenere l’interfaccia iniziale semplice e basilare, in modo qu
 
 ### Air Quality Data
 
-Per ottenere dei dati completi, sia per quanto riguarda il monossido di carbonio (CO) sia per gli altri inquinanti più comuni (PM2.5, PM10, NO2, O3 e SO2) ho dovuto utilizzare due fonti di dati, AQData e Open-Meteo. Data la combinazione dei risultati delle due per ogni ricerca si avrà un livello completo di informazioni per le principali città del mondo, ed un ventaglio abbastanza vasto per quanto riguarda le altre zone, in base alla disponibilità di sensori utilizzati dalle fonti. L'eventuale assenza totale di dati da AQData verrà sopperita da Open-meteo, fonte con dati che coprono zone più vaste, anche se a volte meno precisi rispetto alla prima.
+Per ottenere dei dati completi, sia per quanto riguarda il monossido di carbonio (CO) sia per gli altri inquinanti più comuni (PM2.5, PM10, NO2, O3 e SO2) ho dovuto utilizzare due fonti di dati, OpenAQ e Open-Meteo. Data la combinazione dei risultati delle due per ogni ricerca si avrà un livello completo di informazioni per le principali città del mondo, ed un ventaglio abbastanza vasto per quanto riguarda le altre zone, in base alla disponibilità di sensori utilizzati dalle fonti. L'eventuale assenza totale di dati da OpenAQ verrà sopperita da Open-Meteo, fonte con dati che coprono zone più vaste, anche se a volte meno precisi rispetto alla prima.
 
 <hr>
 
@@ -139,8 +139,10 @@ Ho voluto dare a questo progetto un significato profondo e per nulla nascosto, a
 
 Ho dovuto spingere oltre il mio limite e ampliare di molto le mie conoscenze per creare un insieme di mesh tridimensionali utilizzando Three.js, per generare ogni singolo paese del mondo, senza un modello in 3D ottenuto da applicazioni di disegno apposite ma utilizzando ed elaborando i dati dei confini dei singoli Paesi, ed è stata una sfida appassionante.
 
-Partendo da ore di studio della documentazione ufficiale fino ad ottenere risultati che bloccavano fisicamente il computer che uso per lo sviluppo e costringendomi e allo stop per l’eccessivo riscaldamento, passando per centinaia di esempi che davano direzioni su logiche molto complesse ma quasi sempre non applicabili, fino ad ottenere il primo modello dell’Europa per passare poi alla prima metà del globo, capire che non esistevano dati realmente completi per ogni Paese del mondo e dover fisicamente completarli per dare equilibrio a tutto e giungere finalmente ad una soluzione stabile, che non prosciugasse le risorse del dispositivo, ma che fosse impattante a livello visivo.
+Partendo da ore di studio della documentazione ufficiale, passando attraverso risultati che arrivavano a bloccare fisicamente il computer usato per lo sviluppo e mi costringevano allo stop per l’eccessivo riscaldamento. Dopo centinaia di esempi, tentativi e soluzioni non applicabili, sono arrivato prima al modello dell’Europa, poi alla prima metà del globo, fino a una soluzione stabile, visivamente impattante e meno pesante per il dispositivo.
 Creando appositamente e singolarmente ogni singola texture usata nei vari livelli della parte sferica che rappresenta i mari e gli oceani, ho potuto ottenere l'effetto finale che vedrete.
+
+> **Nota sulle prestazioni:** il modello tridimensionale del globo è uno degli elementi centrali del progetto e utilizza mesh, texture e dati geografici complessi. Nonostante le ottimizzazioni applicate, dispositivi più datati o con risorse hardware limitate potrebbero mostrare prestazioni inferiori, soprattutto durante il caricamento iniziale e l’interazione con il globo.
 
 <hr>
 
@@ -174,10 +176,10 @@ Nell’eventualità di errori di caricamento dei dati delle API, verrà visualiz
 
 ### AI Usage
 
-Ho provato ad utilizzare ChatGPT per il debug ed il refactor di alcuni punti di quest'app e ad utilizzarla per colmare le innumerevoli lacune della documentazione di Three.js.
+Ho provato ad utilizzare ChatGPT per il debug ed il refactor di alcuni punti di quest'app e per tentare di colmare le innumerevoli lacune della documentazione di Three.js.
 
-E' stata interessante come esperienza in generale, penso proprio per lo stacco temporale di alcuni mesi tra la fase iniziale di questo progetto e quella finale. Nonostante abbia visto dei significativi miglioramenti, ed in fase di debug o in caso di ricerca di errori con TypeScript, si sia rivelato molto utile, soprattutto di recente, trovo comunque che in quanto a comprensione del contesto dei modelli tridimensionali ed alla loro creazione tramite codice, che penso comprenda anche una certa parte artistica o di immaginazione, e al trovare soluzioni realmente, almeno in parte, nuove, questo risulti ancora lacunoso e più orientato a fornire un tentativo di risposta, più che una reale soluzione.
-Complice forse il fatto che l'ambiente di Three.js a mio parere é abbastanza ancora molto frammentato a livello di documentazione e, forse di conseguenza, di esempi specifici.
+È stata interessante come esperienza in generale, penso proprio per lo stacco temporale di alcuni mesi tra la fase iniziale di questo progetto e quella finale. Nonostante abbia visto dei significativi miglioramenti, ed in fase di debug o in caso di ricerca di errori con TypeScript, si sia rivelato molto utile, soprattutto di recente, trovo comunque che in quanto a comprensione del contesto dei modelli tridimensionali ed alla loro creazione tramite codice, che penso comprenda anche una certa parte artistica o di immaginazione, e al trovare soluzioni realmente, almeno in parte, nuove, questo risulti ancora lacunoso e più orientato a fornire un tentativo di risposta, più che una reale soluzione.
+Complice forse il fatto che l'ambiente di Three.js a mio parere è ancora piuttosto frammentato a livello di documentazione e, forse di conseguenza, di esempi specifici.
 
 <hr>
 
@@ -190,8 +192,8 @@ Data la sua semplicità d’uso con una web app creata con Next.js e dato che lo
 ### Conclusions
 
 Questo progetto é stato lungo da sviluppare, purtroppo interrotto e poi ripreso, ma finalmente concluso. Passando da un periodo utilizzando React Native non è stato immediato riprendere il filo logico di tutto, ma il risultato mi sembra in linea con ciò che immaginavo all'inizio.
-Ora finalmente arrivare alla fine, al di la del risultato, rappresenta un punto che ritenevo necessario per me stesso.
-Spero possa trasmettervi delle emozioni e, magari, essere utile a qualcuno. Ho amato ogni istante di questo progetto, dai primi risulati visivi agli errori non rilevati ed invisibili, dai momenti nei quali le soluzioni sembravano essere vicini a quelli di fallimento che parevano distanziare l'orizzonte. Ogni istante é stato fondamentale, perché mi ha portato ad possedere conoscenze che prima non avevo e mi ha aperto e reso reali possibilità che prima solo immaginavo.
+Ora finalmente arrivare alla fine, al di là del risultato, rappresenta un traguardo che ritenevo necessario per me stesso.
+Spero possa trasmettervi delle emozioni e, magari, essere utile a qualcuno. Ho amato ogni istante di questo progetto, dai primi risultati visivi agli errori non rilevati ed invisibili, dai momenti nei quali le soluzioni sembravano essere vicine a quelli di fallimento che parevano distanziare l'orizzonte. Ogni istante é stato fondamentale, perché mi ha portato a possedere conoscenze che prima non avevo e mi ha aperto e reso reali possibilità che prima solo immaginavo.
 
 <hr>
 <hr>
@@ -210,7 +212,7 @@ La Home Page dell'app presenta immediatamente il pianeta terra sotto forma artis
 
 ### Search Panel
 
-Il pannello di ricerca permette di effettuare un'interrogazione alle API tramite nome della località, coordinate geografiche o tramite una selezione di Paesi predefinita. Oltre a questo vi é la possibilità di modificare il lasso temporale dentro il quale vengono ottenuti i dati.
+Il pannello di ricerca permette di effettuare un'interrogazione alle API tramite nome della località, coordinate geografiche o tramite una selezione di Paesi predefinita. Oltre a questo vi è la possibilità di modificare il lasso temporale dentro il quale vengono ottenuti i dati.
 
 <div align="center">
   <img src="https://i.ibb.co/rKhqcpMs/Screenshot-2026-07-06-alle-17-05-23.png" alt="Search panel screenshot" width="80%">
@@ -291,7 +293,7 @@ Bonus:
 
 ## Demo
 
-[Project URL](INSERIRE_LINK_VERCEL)
+[Project URL](https://world-co2-detector.vercel.app/)
 
 <br>
 <p><a href="#begin">&#9650; Back to summary</a></p>
