@@ -64,5 +64,3 @@ export function MainHomeClient(props: MainHomeClientProps) {
 		</MainPrimary>
 	);
 }
-
-// da rifinire mnca ultimo check

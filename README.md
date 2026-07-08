@@ -124,6 +124,9 @@ Ho cercato di mantenere l’interfaccia iniziale semplice e basilare, in modo qu
 
 Per ottenere dei dati completi, sia per quanto riguarda il monossido di carbonio (CO) sia per gli altri inquinanti più comuni (PM2.5, PM10, NO2, O3 e SO2) ho dovuto utilizzare due fonti di dati, OpenAQ e Open-Meteo. Data la combinazione dei risultati delle due per ogni ricerca si avrà un livello completo di informazioni per le principali città del mondo, ed un ventaglio abbastanza vasto per quanto riguarda le altre zone, in base alla disponibilità di sensori utilizzati dalle fonti. L'eventuale assenza totale di dati da OpenAQ verrà sopperita da Open-Meteo, fonte con dati che coprono zone più vaste, anche se a volte meno precisi rispetto alla prima.
 
+> [!NOTE]
+> Tutte le API Keys sono state resettate e cambiate dalla fase di sviluppo a quella di produzione.
+
 <hr>
 
 ### Search System

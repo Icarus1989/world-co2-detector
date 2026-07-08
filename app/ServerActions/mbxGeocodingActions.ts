@@ -84,7 +84,7 @@ export async function geocodePlaceAction(
 	if (!token) {
 		return {
 			ok: false,
-			error: "Problema API Key Mapbox"
+			error: "Checking Mapbox API Key"
 		};
 	}
 

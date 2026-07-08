@@ -1,4 +1,4 @@
-import axios, { AxiosHeaders } from "axios";
+import axios from "axios";
 
 export const openMeteoAirClient = axios.create({
 	baseURL: "https://air-quality-api.open-meteo.com/v1",

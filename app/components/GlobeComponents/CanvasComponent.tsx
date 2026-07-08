@@ -216,24 +216,6 @@ export default function CanvasElement({
 	useEffect(() => {
 		let ignore = false;
 
-		// type BoundaryFeature = {
-		// 	type: string;
-		// 	properties: {
-		// 		featurecla: string | null;
-		// 		min_label: number | null;
-		// 		min_zoom: number | null;
-		// 		name: string;
-		// 		name_alt: string | null;
-		// 		name_en: string | null;
-		// 		note: string | null;
-		// 		scalerank: number | null;
-		// 	};
-		// 	geometry: {
-		// 		type: string;
-		// 		coordinates: [number, number][];
-		// 	};
-		// };
-
 		const goldOpaqueTexture = new THREE.TextureLoader().load(goldOpaqueImg.src);
 
 		const goldOpaqueNormals = new THREE.TextureLoader().load(
@@ -275,18 +257,6 @@ export default function CanvasElement({
 			envMap: goldOpaqueTexture,
 			envMapIntensity: 1.0,
 			normalMap: goldOpaqueNormals,
-			// metalness: 0.97,
-			// metalnessMap: goldOpaqueMetalness,
-			// roughness: 0.0323,
-			// roughnessMap: goldOpaqueRoughness,
-			// sheenRoughnessMap: goldOpaqueRoughness,
-			// sheenRoughness: 0.23,
-			// bumpMap: goldOpaqueRoughness,
-			// reflectivity: 1.0,
-			// specularIntensity: 1,
-
-			// testing
-
 			metalness: isMobile3D ? 0.92 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			roughness: isMobile3D ? 0.09 : 0.0323,
@@ -296,7 +266,6 @@ export default function CanvasElement({
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.92 : 1.0,
 			specularIntensity: isMobile3D ? 0.82 : 1,
-			// testing
 			wireframe: false,
 			depthTest: true,
 			depthWrite: true,
@@ -339,15 +308,11 @@ export default function CanvasElement({
 
 				const startSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const startMeasures = arr[0];
-					// test
-					// const startGeometry = new THREE.SphereGeometry(radius, 32, 16);
-
 					const startGeometry = new THREE.SphereGeometry(
 						radius,
 						isMobile3D ? 28 : 32,
 						isMobile3D ? 12 : 16
 					);
-					// test
 
 					startGeometry.translate(
 						startMeasures[0],
@@ -359,15 +324,11 @@ export default function CanvasElement({
 
 				const endSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const endMeasures = arr[arr.length - 1];
-
-					// test
-					// const endGeometry = new THREE.SphereGeometry(radius, 32, 16);
 					const endGeometry = new THREE.SphereGeometry(
 						radius,
 						isMobile3D ? 28 : 32,
 						isMobile3D ? 12 : 16
 					);
-					// test
 
 					endGeometry.translate(endMeasures[0], endMeasures[1], endMeasures[2]);
 					return endGeometry;
@@ -380,15 +341,6 @@ export default function CanvasElement({
 
 					const curveTop = new THREE.CatmullRomCurve3(vect3Arr);
 					curveTop.curveType = "catmullrom";
-					// const geometry = new THREE.TubeGeometry(
-					// 	curveTop,
-					// 	(arr.length - 1) * 2,
-					// 	radius,
-					// 	20,
-					// 	false
-					// );
-
-					// testing
 					const geometry = new THREE.TubeGeometry(
 						curveTop,
 						getTubeSegments(arr.length),
@@ -396,7 +348,6 @@ export default function CanvasElement({
 						tubeRadialSegments,
 						false
 					);
-					// testing
 
 					return geometry;
 				});
@@ -468,9 +419,6 @@ export default function CanvasElement({
 
 				const startSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const startMeasures = arr[0];
-
-					// test
-
 					const startSphereRadius =
 						initialArray.length > 223
 							? 0.0263
@@ -478,23 +426,11 @@ export default function CanvasElement({
 							? 0.0235
 							: 0.0203;
 
-					// const startGeometry = new THREE.SphereGeometry(
-					// 	initialArray.length > 223
-					// 		? 0.0263
-					// 		: initialArray.length > 100
-					// 		? 0.0235
-					// 		: 0.0203,
-					// 	32,
-					// 	16
-					// );
-
 					const startGeometry = new THREE.SphereGeometry(
 						startSphereRadius,
 						isMobile3D ? 28 : 32,
 						isMobile3D ? 12 : 16
 					);
-
-					// test
 
 					startGeometry.translate(
 						startMeasures[0],
@@ -507,7 +443,6 @@ export default function CanvasElement({
 				const endSphereGeometries = xyxPointsArraysTop.map((arr, index) => {
 					const endMeasures = arr[arr.length - 1];
 
-					// test
 					const endSphereRadius =
 						initialArray.length > 223
 							? 0.0263
@@ -520,18 +455,6 @@ export default function CanvasElement({
 						isMobile3D ? 28 : 32,
 						isMobile3D ? 12 : 16
 					);
-
-					// const endGeometry = new THREE.SphereGeometry(
-					// 	initialArray.length > 223
-					// 		? 0.0263
-					// 		: initialArray.length > 100
-					// 		? 0.0235
-					// 		: 0.0203,
-					// 	32,
-					// 	16
-					// );
-
-					// test
 
 					endGeometry.translate(endMeasures[0], endMeasures[1], endMeasures[2]);
 					return endGeometry;
@@ -547,15 +470,7 @@ export default function CanvasElement({
 
 					const curveTop = new THREE.CatmullRomCurve3(vect3Arr);
 					curveTop.curveType = "catmullrom";
-					// const geometry = new THREE.TubeGeometry(
-					// 	curveTop,
-					// 	(arr.length - 1) * 2,
-					// 	radius,
-					// 	20,
-					// 	false
-					// );
 
-					// testing
 					const geometry = new THREE.TubeGeometry(
 						curveTop,
 						getTubeSegments(arr.length),
@@ -563,7 +478,7 @@ export default function CanvasElement({
 						tubeRadialSegments,
 						false
 					);
-					// testing
+
 					return geometry;
 				});
 
@@ -607,17 +522,6 @@ export default function CanvasElement({
 			envMap: goldOpaqueTexture,
 			envMapIntensity: 1.0,
 			normalMap: goldOpaqueNormals,
-			// metalness: 0.97,
-			// metalnessMap: goldOpaqueMetalness,
-			// roughness: 0.0323,
-			// roughnessMap: goldOpaqueRoughness,
-			// sheenRoughnessMap: goldOpaqueRoughness,
-			// sheenRoughness: 0.23,
-			// bumpMap: goldOpaqueRoughness,
-			// reflectivity: 1.0,
-			// specularIntensity: 1,
-
-			// testing
 			metalness: isMobile3D ? 0.94 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			roughness: isMobile3D ? 0.09 : 0.0323,
@@ -627,8 +531,6 @@ export default function CanvasElement({
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.92 : 1.0,
 			specularIntensity: isMobile3D ? 0.92 : 1,
-			// testing
-
 			wireframe: false,
 			depthTest: true,
 			depthWrite: true,
@@ -641,20 +543,7 @@ export default function CanvasElement({
 			color: 0xb58629,
 			emissive: 0xb58629,
 			emissiveIntensity: 0,
-
 			normalMap: goldOpaqueNormals,
-			// metalness: 0.97,
-			// metalnessMap: goldOpaqueMetalness,
-			// displacementScale: 0,
-			// roughness: 0.0323,
-			// roughnessMap: goldOpaqueRoughness,
-			// sheenRoughnessMap: goldOpaqueRoughness,
-			// sheenRoughness: 0.223,
-			// bumpMap: goldOpaqueRoughness,
-			// reflectivity: 1.0,
-			// specularIntensity: 1,
-
-			// testing
 			metalness: isMobile3D ? 0.94 : 0.97,
 			metalnessMap: goldOpaqueMetalness,
 			displacementScale: 0,
@@ -665,8 +554,6 @@ export default function CanvasElement({
 			bumpMap: goldOpaqueRoughness,
 			reflectivity: isMobile3D ? 0.9 : 1.0,
 			specularIntensity: isMobile3D ? 0.9 : 1,
-			// testing
-
 			wireframe: false,
 			depthTest: true,
 			depthWrite: true,
@@ -727,15 +614,6 @@ export default function CanvasElement({
 
 					const curveTop = new THREE.CatmullRomCurve3(vect3Arr);
 					curveTop.curveType = "catmullrom";
-					// const geometry = new THREE.TubeGeometry(
-					// 	curveTop,
-					// 	(arr.length - 1) * 2,
-					// 	radius,
-					// 	20,
-					// 	true
-					// );
-
-					// testing
 					const geometry = new THREE.TubeGeometry(
 						curveTop,
 						getTubeSegments(arr.length),
@@ -743,7 +621,6 @@ export default function CanvasElement({
 						tubeRadialSegments,
 						true
 					);
-					// testing
 					return geometry;
 				});
 
@@ -1034,32 +911,6 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 		  )}-${targetCoordinates.longitude.toFixed(5)}`
 		: null;
 
-	// useEffect(() => {
-	// 	const targetLocalPoint = getTargetPointWithDrawThreeGeo(globeTarget, 1);
-
-	// 	if (!targetLocalPoint) {
-	// 		return;
-	// 	}
-
-	// 	const targetPointWithBaseRotation = targetLocalPoint
-	// 		.clone()
-	// 		.applyEuler(baseLandRotation)
-	// 		.normalize();
-
-	// 	const fromPoint = camera.position.clone().normalize();
-
-	// 	const nextQuaternion = new THREE.Quaternion().setFromUnitVectors(
-	// 		targetPointWithBaseRotation,
-	// 		fromPoint
-	// 	);
-
-	// 	targetQuaternionRef.current.copy(nextQuaternion);
-	// 	targetScaleRef.current.set(1.08, 1.08, 1.08);
-
-	// 	isAnimatingRef.current = true;
-	// 	invalidate();
-	// }, [globeTarget]);
-
 	useEffect(() => {
 		if (!targetKey) {
 			return;
@@ -1096,33 +947,7 @@ function AnimatedGlobeGroup(props: AnimatedGlobeGroupProps) {
 		invalidate();
 	}, [globeTarget, targetKey, camera, invalidate]);
 
-	// useFrame(() => {
-	// 	if (!groupRef.current) {
-	// 		return;
-	// 	}
-
-	// 	groupRef.current.quaternion.slerp(targetQuaternionRef.current, 0.045);
-	// 	groupRef.current.scale.lerp(targetScaleRef.current, 0.035);
-
-	// 	const quaternionAngle = groupRef.current.quaternion.angleTo(
-	// 		targetQuaternionRef.current
-	// 	);
-
-	// 	const scaleDistance = groupRef.current.scale.distanceTo(
-	// 		targetScaleRef.current
-	// 	);
-
-	// 	if (quaternionAngle < 0.002 && scaleDistance < 0.002) {
-	// 		groupRef.current.quaternion.copy(targetQuaternionRef.current);
-	// 		groupRef.current.scale.copy(targetScaleRef.current);
-	// 		isAnimatingRef.current = false;
-	// 		return;
-	// 	}
-
-	// 	invalidate();
-	// });
-
-	useFrame((callBack, delta) => {
+	useFrame((cBk, delta) => {
 		if (!isAnimatingRef.current || !groupRef.current) {
 			return;
 		}

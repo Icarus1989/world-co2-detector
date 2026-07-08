@@ -15,10 +15,7 @@ import {
 	SensorSelection,
 	SixMonthsActionResult
 } from "../utilities/types/types";
-import {
-	openAqClient,
-	openMeteoAirClient
-} from "../lib/connections/axiosClient";
+import { openAqClient } from "../lib/connections/axiosClient";
 import { mapOpenMeteoResponseToDataset } from "../features/pollution/pollutionMappers";
 
 const openMeteoVariables = [
@@ -206,25 +203,6 @@ async function cleanAPIError(errorObj: unknown) {
 	}
 
 	return "Errore sconosciuto durante il recupero dei dati.";
-}
-
-async function findStation(station: OpenAqNearbyStation) {
-	try {
-		const res = await openAqClient.get(`/locations/${station.id}/latest`, {
-			params: {
-				limit: 100
-			}
-		});
-
-		return {
-			...station,
-			latestCount: Array.isArray(res.data?.results)
-				? res.data.results.length
-				: 0
-		};
-	} catch (error) {
-		return station;
-	}
 }
 
 async function getNearbyStationsAQ(params: {
@@ -425,7 +403,6 @@ function getLatestValueforSensor(params: {
 	latestByLocation: OpenAqLastRead[];
 }) {
 	const latestFromLoc = params.latestByLocation.find((read: any) => {
-		// return read.sensorId === params.sensor.id;
 		return Number(getLatestSensorId(read)) === Number(params.sensor.id);
 	});
 
@@ -539,7 +516,7 @@ async function buildOpenAqDataset(params: {
 
 	if (missingPolluts.length > 0) {
 		warns.push(
-			`OpenAQ non espone dati latest per: ${missingPolluts.join(
+			`OpenAQ non espone dati recenti per: ${missingPolluts.join(
 				", "
 			)} nell'area selezionata.`
 		);

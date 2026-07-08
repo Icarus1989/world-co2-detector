@@ -30,7 +30,7 @@ export const resources = {
 				place: "Luogo",
 				coordinates: "Coordinate",
 				country: "Stato",
-				placePlaceholder: "Es. Venezia, Berlin, Tokyo",
+				placePlaceholder: "es. Venezia, l'Aia, Tokyo",
 				latitude: "Latitudine",
 				longitude: "Longitudine",
 				countryCode: "Stato",

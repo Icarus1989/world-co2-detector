@@ -68,20 +68,6 @@
 	pointer-events: auto;
 }
 
-/* .gearWatermark {
-	position: absolute;
-	right: 16px;
-	top: 10px;
-	z-index: 0;
-	width: auto;
-	height: auto;
-	color: rgba(255, 255, 255, 0.06);
-	font-size: 9rem;
-	font-weight: 900;
-	line-height: 1;
-	pointer-events: none;
-} */
-
 .gearWatermark {
 	position: absolute;
 	right: 12px;
@@ -98,7 +84,6 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-
 	fill: currentColor;
 }
 

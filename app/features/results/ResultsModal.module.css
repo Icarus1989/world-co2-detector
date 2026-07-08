@@ -2,16 +2,12 @@
 	position: fixed;
 	inset: 0;
 	z-index: 60;
-
 	display: grid;
 	place-items: center;
-
 	width: 100dvw;
 	height: 100dvh;
-
 	overflow: hidden;
 	padding: 18px;
-
 	background: radial-gradient(
 			circle at 50% 0%,
 			rgba(58, 93, 180, 0.2),
@@ -600,7 +596,6 @@
 
 	.closeBtn {
 		padding: 8px 11px;
-
 		font-size: 0.82rem;
 	}
 
@@ -707,7 +702,6 @@
 	.infoGrid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 16px;
-
 		margin: 24px 0 0 0;
 	}
 
@@ -1017,7 +1011,6 @@
 	.pollutantCardText {
 		width: 100%;
 		height: auto;
-
 		color: #7df9ff;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -1039,7 +1032,6 @@
 
 	.tabTitle {
 		margin: 1dvh 0 1dvh 2dvh;
-
 		font-size: 2.6dvh;
 		font-weight: 700;
 	}
@@ -1047,9 +1039,7 @@
 	.topValue {
 		width: 100%;
 		height: auto;
-
 		margin: 0;
-
 		color: white;
 		font-size: 1.8dvh;
 		font-weight: 800;

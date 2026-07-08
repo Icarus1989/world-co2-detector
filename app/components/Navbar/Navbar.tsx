@@ -149,10 +149,6 @@ export function Navbar() {
 						exit="closed"
 						aria-label={t("settings.panelTitle")}
 					>
-						{/* <div className={styles["gearWatermark"]} aria-hidden="true">
-							⚙
-						</div> */}
-
 						<div className={styles["gearWatermark"]} aria-hidden="true">
 							<GearIcon />
 						</div>

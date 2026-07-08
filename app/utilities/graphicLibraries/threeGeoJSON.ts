@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { StructureData } from "../types/types";
 
 /* Draw GeoJSON
 
@@ -7,6 +6,8 @@ Iterates through the latitude and longitude values, converts the values to XYZ c
 and draws the geoJSON geometries.
 
 */
+
+// Nota: Utility esterna
 
 export function drawThreeGeo(
 	json: any,

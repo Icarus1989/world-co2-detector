@@ -4,19 +4,15 @@
 	right: 0;
 	bottom: 24px;
 	z-index: 80;
-
 	display: flex;
 	flex-direction: column;
-
 	width: min(92dvw, 520px);
 	height: auto;
 	max-height: 86dvh;
-
 	overflow-x: hidden;
 	overflow-y: auto;
 	padding: 20px;
 	margin: 0 auto;
-
 	color: white;
 	background: linear-gradient(
 		180deg,
@@ -309,9 +305,7 @@
 		width: 100%;
 		max-width: 100%;
 		min-width: 0;
-
 		padding: 11px 13px;
-
 		box-sizing: border-box;
 	}
 
